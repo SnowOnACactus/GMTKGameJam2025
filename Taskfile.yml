@@ -11,6 +11,12 @@ vars:
   # GODOT_EXECUTABLE: "godot4"
 
 tasks:
+  git:
+    dir: "{{.ROOT_DIR}}"
+    cmds:
+      - "echo "
+      - "git commit -m 'Latest changes'"
+
   git:commit:
     dir: "{{.ROOT_DIR}}"
     cmds:
