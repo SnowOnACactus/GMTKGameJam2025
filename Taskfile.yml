@@ -14,8 +14,13 @@ tasks:
   git:
     dir: "{{.ROOT_DIR}}"
     cmds:
-      - "echo "
-      - "git commit -m 'Latest changes'"
+      - "echo ''"
+      - "echo '==== Basic git steps ===='"
+      - "echo 'task git:commit'"
+      - "echo 'task git:push'"
+      - "echo 'task git:pull'"
+      - "echo ''"
+    silent: true
 
   git:commit:
     dir: "{{.ROOT_DIR}}"
@@ -26,8 +31,9 @@ tasks:
   git:push:
     dir: "{{.ROOT_DIR}}"
     cmds:
-      - "git pull --rebase"
+      # - "git pull --rebase"
       - "git push"
+      - "echo 'Go to github Pull Request, merge your changes"
 
   git:pull:
     dir: "{{.ROOT_DIR}}"
