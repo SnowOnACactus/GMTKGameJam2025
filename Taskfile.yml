@@ -1,0 +1,197 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  ROOT_DIR: "{{.TASKFILE_DIR}}"
+  PROJECT_DIR: "{{.ROOT_DIR}}"
+  GODOT_EXECUTABLE: "godot"
+  # Alternative paths for common Godot installations
+  # GODOT_EXECUTABLE: "/Applications/Godot.app/Contents/MacOS/Godot"
+  # GODOT_EXECUTABLE: "godot4"
+
+tasks:
+  git:commit:
+    dir: "{{.ROOT_DIR}}"
+    cmds:
+      - "git add ."
+      - "git commit -m 'Latest changes'"
+  
+  git:push:
+    dir: "{{.ROOT_DIR}}"
+    cmds:
+      - "git pull --rebase"
+      - "git push"
+
+  git:pull:
+    dir: "{{.ROOT_DIR}}"
+    cmds:
+      - "git fetch"
+      - "git merge origin/master"
+
+  default:
+    desc: "Show available tasks"
+    cmds:
+      - task --list
+    silent: true
+
+  install:
+    desc: "Install project dependencies (Godot 4.4+ required)"
+    dir: "{{.ROOT_DIR}}"
+    cmds:
+      - echo "Agent Runner requires Godot 4.4 or later"
+      - echo "Download from https://godotengine.org/download"
+      - echo "Alternatively, install via package managers"
+      - echo "  macOS - brew install --cask godot"
+      - echo "  Linux - flatpak install flathub org.godotengine.Godot"
+      - echo "  Windows - winget install GodotEngine.GodotEngine"
+    silent: true
+
+  dev:
+    desc: "Open project in Godot Editor"
+    dir: "{{.PROJECT_DIR}}"
+    cmd: "{{.GODOT_EXECUTABLE}} --editor project.godot"
+
+  run:
+    desc: "Run the game directly"
+    dir: "{{.PROJECT_DIR}}"
+    cmd: "{{.GODOT_EXECUTABLE}} project.godot"
+
+  run:headless:
+    desc: "Run the game in headless mode (for CI/testing)"
+    dir: "{{.PROJECT_DIR}}"
+    cmd: "{{.GODOT_EXECUTABLE}} --headless project.godot"
+
+  test:
+    desc: "Run all tests (placeholder - requires GUT test framework)"
+    dir: "{{.PROJECT_DIR}}"
+    cmds:
+      - echo "Running basic project validation..."
+      - "{{.GODOT_EXECUTABLE}} --headless --check-only project.godot"
+      - echo "Note - Full test suite requires GUT (Godot Unit Test) framework"
+      - echo "Install GUT from https://github.com/bitwes/Gut"
+    silent: true
+
+  validate:
+    desc: "Validate project files and scenes"
+    dir: "{{.PROJECT_DIR}}"
+    cmds:
+      - echo "Validating Godot project..."
+      - "{{.GODOT_EXECUTABLE}} --headless --check-only project.godot"
+      - echo "Project validation complete"
+
+  build:
+    desc: "Build game for current platform"
+    dir: "{{.PROJECT_DIR}}"
+    cmds:
+      - echo "Building Agent Runner..."
+      - "{{.GODOT_EXECUTABLE}} --headless --export-debug \"Desktop\" ../builds/AgentRunner"
+      - echo "Build complete - builds/AgentRunner"
+
+  build:release:
+    desc: "Build release version for current platform"
+    dir: "{{.PROJECT_DIR}}"
+    cmds:
+      - echo "Building Agent Runner (Release)..."
+      - "{{.GODOT_EXECUTABLE}} --headless --export-release \"Desktop\" ../builds/AgentRunner-Release"
+      - echo "Release build complete - builds/AgentRunner-Release"
+
+  build:all:
+    desc: "Build for all configured platforms"
+    dir: "{{.PROJECT_DIR}}"
+    cmds:
+      - echo "Building for all platforms..."
+      - echo "Note - Export presets must be configured in Godot Editor first"
+      - "{{.GODOT_EXECUTABLE}} --headless --export-debug \"Windows Desktop\" ../builds/AgentRunner-Windows.exe"
+      - "{{.GODOT_EXECUTABLE}} --headless --export-debug \"macOS\" ../builds/AgentRunner-macOS.zip"
+      - "{{.GODOT_EXECUTABLE}} --headless --export-debug \"Linux/X11\" ../builds/AgentRunner-Linux"
+      - echo "All platform builds complete in builds/ directory"
+
+  build:web:
+    desc: "Build for web/HTML5 (requires export template)"
+    dir: "{{.PROJECT_DIR}}"
+    cmds:
+      - echo "Building for web..."
+      - "{{.GODOT_EXECUTABLE}} --headless --export-debug \"Web\" ../builds/web/index.html"
+      - echo "Web build complete - builds/web/"
+
+  clean:
+    desc: "Clean build artifacts and temporary files"
+    dir: "{{.ROOT_DIR}}"
+    cmds:
+      - rm -rf builds/
+      - rm -rf agent-runner/.godot/
+      - echo "Clean complete"
+
+  lint:
+    desc: "Check GDScript code style (requires gdtoolkit)"
+    dir: "{{.PROJECT_DIR}}"
+    cmds:
+      - echo "Checking GDScript style..."
+      - echo "Note - Install gdtoolkit for full linting - pip install gdtoolkit"
+      - echo "Run - gdformat --check scripts/"
+      - echo "Run - gdlint scripts/"
+    silent: true
+
+  format:
+    desc: "Format GDScript code (requires gdtoolkit)"
+    dir: "{{.PROJECT_DIR}}"
+    cmds:
+      - echo "Formatting GDScript code..."
+      - echo "Note - Install gdtoolkit - pip install gdtoolkit"
+      - echo "Run - gdformat scripts/"
+    silent: true
+
+  docs:
+    desc: "Generate project documentation"
+    dir: "{{.ROOT_DIR}}"
+    cmds:
+      - echo "Generating documentation..."
+      - echo "See README.md in agent-runner/ for development guide"
+      - echo "See doc/ directory for game design documentation"
+    silent: true
+
+  setup:
+    desc: "Initial project setup and validation"
+    dir: "{{.ROOT_DIR}}"
+    deps: [validate]
+    cmds:
+      - mkdir -p builds/
+      - echo "Project setup complete"
+      - echo "Run 'task dev' to open in Godot Editor"
+      - echo "Run 'task run' to play the game"
+
+  check:
+    desc: "Run full quality check (validate + build test)"
+    dir: "{{.ROOT_DIR}}"
+    deps: [validate, test]
+    cmds:
+      - echo "Running build test..."
+      - task: build
+      - echo "All quality checks passed"
+
+  package:
+    desc: "Package game for distribution"
+    dir: "{{.ROOT_DIR}}"
+    deps: [clean, build:release]
+    cmds:
+      - echo "Creating distribution package..."
+      - mkdir -p dist/
+      - cp -r builds/ dist/
+      - cp README.md dist/
+      - cp doc/story-theme-guide.md dist/
+      - echo "Distribution package ready in dist/"
+
+  serve:web:
+    desc: "Serve web build locally for testing"
+    dir: "{{.ROOT_DIR}}/builds/web"
+    deps: [build:web]
+    cmd: python3 -m http.server 8000
+
+  benchmark:
+    desc: "Run performance benchmarks"
+    dir: "{{.PROJECT_DIR}}"
+    cmds:
+      - echo "Running performance tests..."
+      - "{{.GODOT_EXECUTABLE}} --headless --benchmark project.godot"
+      - echo "Benchmark complete"
