@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://deue1j80mi8ri"]
+[gd_scene load_steps=4 format=3 uid="uid://deue1j80mi8ri"]
+
+[ext_resource type="Script" uid="uid://b7l2uygwenmyy" path="res://IntroToGodot/cam_character.gd" id="1_5p8x4"]
+[ext_resource type="Texture2D" uid="uid://csajmtpgokcch" path="res://icon.svg" id="2_7vjhq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xlvr"]
+size = Vector2(64, 64)
 
 [node name="CamCharacter" type="CharacterBody2D"]
+script = ExtResource("1_5p8x4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7vjhq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1xlvr")

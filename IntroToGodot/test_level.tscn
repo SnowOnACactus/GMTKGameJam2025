@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct64vopgkcm7b"]
+[gd_scene load_steps=3 format=3 uid="uid://ct64vopgkcm7b"]
 
 [ext_resource type="Texture2D" uid="uid://cxsju3d7u3p2p" path="res://IntroToGodot/Backgrounds/backgroundCastles.png" id="1_36s3v"]
+[ext_resource type="PackedScene" uid="uid://deue1j80mi8ri" path="res://IntroToGodot/cam_character.tscn" id="2_8xdvj"]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -8,3 +9,5 @@
 texture = ExtResource("1_36s3v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CamCharacter" parent="." instance=ExtResource("2_8xdvj")]
