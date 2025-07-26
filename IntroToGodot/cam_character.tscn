@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://deue1j80mi8ri"]
+
+[node name="CamCharacter" type="CharacterBody2D"]
