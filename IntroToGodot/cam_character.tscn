@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://deue1j80mi8ri"]
 
-[ext_resource type="Script" uid="uid://b7l2uygwenmyy" path="res://IntroToGodot/cam_character.gd" id="1_5p8x4"]
+[ext_resource type="Script" path="res://IntroToGodot/cam_character.gd" id="1_5p8x4"]
 [ext_resource type="Texture2D" uid="uid://csajmtpgokcch" path="res://icon.svg" id="2_7vjhq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xlvr"]
