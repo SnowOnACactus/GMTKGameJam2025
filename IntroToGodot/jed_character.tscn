@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://dmb6x8rdh78of"]
+[gd_scene load_steps=4 format=3 uid="uid://dmb6x8rdh78of"]
+
+[ext_resource type="Script" uid="uid://b3o8ngxx1qrfe" path="res://IntroToGodot/jed_character_script.gd" id="1_w2d2j"]
+[ext_resource type="Texture2D" uid="uid://ch22gm25jpa8h" path="res://IntroToGodot/spaceship.webp" id="2_g0pdl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ryjvh"]
+radius = 45.9619
+height = 173.948
 
 [node name="JedCharacter" type="CharacterBody2D"]
+script = ExtResource("1_w2d2j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(302.174, 232.812)
+scale = Vector2(0.120585, 0.120585)
+texture = ExtResource("2_g0pdl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(285.052, 214)
+rotation = -0.785398
+shape = SubResource("CapsuleShape2D_ryjvh")
