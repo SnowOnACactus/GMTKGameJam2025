@@ -27,13 +27,15 @@ tasks:
     cmds:
       - "git add ."
       - "git commit -m 'Latest changes'"
+    silent: true
   
   git:push:
     dir: "{{.ROOT_DIR}}"
     cmds:
       # - "git pull --rebase"
       - "git push"
-      - "echo 'Go to github Pull Request, merge your changes"
+      - "echo 'Go to github Pull Request, merge your changes'"
+    silent: true
 
   git:pull:
     dir: "{{.ROOT_DIR}}"
