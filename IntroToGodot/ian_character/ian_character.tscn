@@ -6,9 +6,14 @@
 script/source = "extends CharacterBody2D
 @onready var _sprite_2d: Sprite2D = %Sprite2D
 @onready var _collision_shape_2d: CollisionShape2D = %CollisionShape2D
-var max_speed := 400.0
+@onready var _timer: Timer = $Timer
+var normal_speed := 400.0
+var current_speed := 400.0
 var acceleration := 100.0
 var decceleration := 50.0
+var boost_speed := 1000.0
+var boost_acceleration := 1000.0
+
 
 func _ready() -> void:
 	pass
@@ -17,12 +22,36 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector(\"move_left\", \"move_right\", \"move_up\", \"move_down\")
 	var has_input_direction := direction.length() > 0.0
 	if has_input_direction:
-		var desired_velocity := direction * max_speed
+		var desired_velocity := direction * current_speed
 		velocity = velocity.move_toward(desired_velocity, acceleration * delta)
+		_sprite_2d.rotation = direction.angle() + PI/2
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, decceleration * delta)
 	
 	move_and_slide()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"boost\"):
+		boost()
+	if event.is_action_pressed(\"brake\"):
+		brake()
+	if event.is_action_released(\"brake\"):
+		release_brake()
+	
+func boost() -> void:
+	current_speed = boost_speed
+	acceleration = boost_acceleration
+	_timer.start()
+	_timer.timeout.connect(func() -> void: 
+		current_speed = normal_speed
+		acceleration = 100.0
+		)
+
+func brake() -> void:
+	decceleration = 1000.0
+
+func release_brake() -> void:
+	decceleration = 50.0
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s3k8m"]
@@ -33,8 +62,12 @@ script = SubResource("GDScript_gbr6c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_gbr6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_s3k8m")
+
+[node name="Timer" type="Timer" parent="."]
