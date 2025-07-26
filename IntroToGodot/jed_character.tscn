@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmb6x8rdh78of"]
 
-[ext_resource type="Script" uid="uid://b3o8ngxx1qrfe" path="res://IntroToGodot/jed_character_script.gd" id="1_w2d2j"]
+[ext_resource type="Script" path="res://IntroToGodot/jed_character_script.gd" id="1_w2d2j"]
 [ext_resource type="Texture2D" uid="uid://ch22gm25jpa8h" path="res://IntroToGodot/spaceship.webp" id="2_g0pdl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ryjvh"]
