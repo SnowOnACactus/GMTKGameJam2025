@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccahfwx22rc8k"
-path="res://.godot/imported/backgroundForest.png-4370e45e6e4cdbc017c01099dbc4b1ee.ctex"
+uid="uid://rpld3smpplya"
+path="res://.godot/imported/hills.png-2ec4f5ea052639ab2d065fcd02582c11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://IntroToGodot/Backgrounds/backgroundForest.png"
-dest_files=["res://.godot/imported/backgroundForest.png-4370e45e6e4cdbc017c01099dbc4b1ee.ctex"]
+source_file="res://Backgrounds/Elements/hills.png"
+dest_files=["res://.godot/imported/hills.png-2ec4f5ea052639ab2d065fcd02582c11.ctex"]
 
 [params]
 

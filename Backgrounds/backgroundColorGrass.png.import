@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rpld3smpplya"
-path="res://.godot/imported/hills.png-6e6c7039b3db54e546a69a05ab80f044.ctex"
+uid="uid://dbv4r0yfvuq0b"
+path="res://.godot/imported/backgroundColorGrass.png-1708a1eb72a79c5eb9cb4902edc2008b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://IntroToGodot/Backgrounds/Elements/hills.png"
-dest_files=["res://.godot/imported/hills.png-6e6c7039b3db54e546a69a05ab80f044.ctex"]
+source_file="res://Backgrounds/backgroundColorGrass.png"
+dest_files=["res://.godot/imported/backgroundColorGrass.png-1708a1eb72a79c5eb9cb4902edc2008b.ctex"]
 
 [params]
 

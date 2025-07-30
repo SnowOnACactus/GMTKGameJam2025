@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxsju3d7u3p2p"
-path="res://.godot/imported/backgroundCastles.png-0a7ea5c5284bc31ee4110234ed078c3c.ctex"
+uid="uid://bd2l2a15nglc8"
+path="res://.godot/imported/guy.png-7556bba8256d38ad77de8d48694a51bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://IntroToGodot/Backgrounds/backgroundCastles.png"
-dest_files=["res://.godot/imported/backgroundCastles.png-0a7ea5c5284bc31ee4110234ed078c3c.ctex"]
+source_file="res://Runners/guy.png"
+dest_files=["res://.godot/imported/guy.png-7556bba8256d38ad77de8d48694a51bb.ctex"]
 
 [params]
 

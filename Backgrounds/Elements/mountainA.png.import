@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3pbj160nnmee"
-path="res://.godot/imported/backgroundColorFall.png-0b77d8e72f426c7c7e1044a0e8e3d860.ctex"
+uid="uid://cqyb6hds321yd"
+path="res://.godot/imported/mountainA.png-395792dd7539c713eeb876fea7475579.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://IntroToGodot/Backgrounds/backgroundColorFall.png"
-dest_files=["res://.godot/imported/backgroundColorFall.png-0b77d8e72f426c7c7e1044a0e8e3d860.ctex"]
+source_file="res://Backgrounds/Elements/mountainA.png"
+dest_files=["res://.godot/imported/mountainA.png-395792dd7539c713eeb876fea7475579.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8y5ha6pxxsln"
-path="res://.godot/imported/backgroundColorForest.png-0daf3b0301b7b282dfc6c681f5f6d8ad.ctex"
+path="res://.godot/imported/backgroundColorForest.png-cd21393aa3dbcc2984f1a0267b1c4465.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://IntroToGodot/Backgrounds/backgroundColorForest.png"
-dest_files=["res://.godot/imported/backgroundColorForest.png-0daf3b0301b7b282dfc6c681f5f6d8ad.ctex"]
+source_file="res://Backgrounds/backgroundColorForest.png"
+dest_files=["res://.godot/imported/backgroundColorForest.png-cd21393aa3dbcc2984f1a0267b1c4465.ctex"]
 
 [params]
 

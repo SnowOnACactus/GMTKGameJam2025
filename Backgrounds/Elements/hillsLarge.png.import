@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eg4fmvoey3bg"
-path="res://.godot/imported/mountainB.png-70bc566eb6fe97ee03655b5f00767413.ctex"
+uid="uid://yhb513rkp25n"
+path="res://.godot/imported/hillsLarge.png-00dc1a9c59408377d0acc66cd03321a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://IntroToGodot/Backgrounds/Elements/mountainB.png"
-dest_files=["res://.godot/imported/mountainB.png-70bc566eb6fe97ee03655b5f00767413.ctex"]
+source_file="res://Backgrounds/Elements/hillsLarge.png"
+dest_files=["res://.godot/imported/hillsLarge.png-00dc1a9c59408377d0acc66cd03321a5.ctex"]
 
 [params]
 

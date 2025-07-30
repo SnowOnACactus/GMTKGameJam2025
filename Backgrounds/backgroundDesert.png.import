@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy2w4n12ijsfb"
-path="res://.godot/imported/cloudLayer2.png-b3859e9fdef30690e209824ef8699ecc.ctex"
+uid="uid://udwg3baokj1g"
+path="res://.godot/imported/backgroundDesert.png-016cb45ce1befa5fee2bd97c3b04f0d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://IntroToGodot/Backgrounds/Elements/cloudLayer2.png"
-dest_files=["res://.godot/imported/cloudLayer2.png-b3859e9fdef30690e209824ef8699ecc.ctex"]
+source_file="res://Backgrounds/backgroundDesert.png"
+dest_files=["res://.godot/imported/backgroundDesert.png-016cb45ce1befa5fee2bd97c3b04f0d3.ctex"]
 
 [params]
 
