@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://wtcdc5r5wspd" path="res://Runners/basic_runner.tscn" id="2_dx3vu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dx3vu"]
-size = Vector2(1177, 24)
+size = Vector2(1734, 24)
 
 [node name="Racetrack" type="Node2D"]
 
@@ -16,7 +16,7 @@ texture = ExtResource("1_p0cb6")
 [node name="Floor" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(578.5, 596)
+position = Vector2(610, 596)
 shape = SubResource("RectangleShape2D_dx3vu")
 
 [node name="Runner" parent="." instance=ExtResource("2_dx3vu")]
