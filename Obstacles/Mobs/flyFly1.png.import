@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpqtotju7rgx5"
-path="res://.godot/imported/slimeWalk1.png-f4aec7bb27395fbd078500d74880e173.ctex"
+uid="uid://bmces31yqs5fk"
+path="res://.godot/imported/flyFly1.png-9c856bdedf32334b761ca1398ef723fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Base pack/Enemies/slimeWalk1.png"
-dest_files=["res://.godot/imported/slimeWalk1.png-f4aec7bb27395fbd078500d74880e173.ctex"]
+source_file="res://Obstacles/Mobs/flyFly1.png"
+dest_files=["res://.godot/imported/flyFly1.png-9c856bdedf32334b761ca1398ef723fc.ctex"]
 
 [params]
 

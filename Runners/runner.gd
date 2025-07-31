@@ -17,13 +17,9 @@ signal hurt_or_heal
 		health = num
 		hurt_or_heal.emit(health)
 
-const PLATFORM = preload("res://Obstacles/platform.tscn")
 var _hovering_item: Node = null
-
-var has_item := false:
-	set(bool):
-		_thought_bubble.visible = bool
-		has_item = bool
+var held_item: Dictionary = {}
+var has_item := false
 var _is_crouched := false:
 	set(bool):
 		_is_crouched = bool
@@ -47,23 +43,22 @@ const JUMP_VELOCITY = -600.0
 func _ready() -> void:
 	_pickup_radius.area_entered.connect(
 		func(body) -> void: 
-			print(body)
 			if body is Pickup: 
 				_on_pickup(body)
 			if body.get_parent() is Mob:
 				health -= 1
-				print(health)
 	)
 
 func _on_pickup(body) -> void:
-	#TO-DO: generate obstacle pickup
 	has_item = true
+	_thought_bubble.visible = true
+	held_item = body.pick_random_item()
+	_item_thought.texture = held_item.texture
 	body.queue_free()
 
 func _on_attack(direction) -> void:
 	#show sword
-	_weapon.monitoring = true
-	_sword.visible = true
+	_weapon.visible = true
 	var tween = create_tween()
 	#swing sword
 	if direction < 0:
@@ -73,21 +68,29 @@ func _on_attack(direction) -> void:
 	#hide and reset sword at the end of animation
 	tween.finished.connect(
 		func() -> void:
-			_weapon.monitoring = false
-			_sword.visible = false
+			_weapon.visible = false
 			_weapon.rotation = 0
 	)
 
 func _on_use_press() -> void:
 	_thought_bubble.visible = false
-	_hovering_item = PLATFORM.instantiate()
+	_hovering_item = held_item.scene.instantiate()
+	_hovering_item.process_mode = Node.PROCESS_MODE_DISABLED
+	held_item = {}
 	_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
 	add_child(_hovering_item)
 
 func _on_use_release() -> void:
 	# Let the item go in the scene world where it was
 	if _hovering_item:
+		_hovering_item.process_mode = Node.PROCESS_MODE_INHERIT
+		if _hovering_item is Mob:
+			_hovering_item.starting_position = _hovering_item.global_position
+			print(_hovering_item.starting_position)
 		_hovering_item.reparent(get_tree().get_root().get_node("GameScene"), true)
+		print(_hovering_item.get_parent().position)
+		if _hovering_item is Mob:
+			print(_hovering_item.starting_position)
 		_hovering_item = null
 		has_item = false
 		unlock.emit()
@@ -109,7 +112,8 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		_is_crouched = false
+		if _is_crouched:
+			_is_crouched = false
 		_sprite.play("jump")
 		
 

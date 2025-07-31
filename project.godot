@@ -23,6 +23,10 @@ project/assembly_name="New Game Project"
 
 import/use_multiple_threads=false
 
+[global_group]
+
+PickupChoice="Chance to spawn from a pickup box"
+
 [input]
 
 move_left={

@@ -60,11 +60,11 @@ region = Rect2(100, 300, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gtk2o"]
 atlas = ExtResource("2_r5bnu")
-region = Rect2(101, 196, 98, 85)
+region = Rect2(101, 200, 101, 79)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsime"]
 atlas = ExtResource("2_r5bnu")
-region = Rect2(200, 100, 100, 100)
+region = Rect2(202, 101, 101, 101)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2trx"]
 atlas = ExtResource("2_r5bnu")
@@ -180,7 +180,7 @@ size = Vector2(50.1308, 21.1129)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nqshr"]
 radius = 31.0
-height = 88.0
+height = 82.0
 
 [node name="Runner" type="CharacterBody2D"]
 script = ExtResource("1_hn08k")
@@ -206,11 +206,11 @@ scale = Vector2(14.3605, 6.66129)
 texture = ExtResource("4_nqshr")
 
 [node name="Weapon" type="Area2D" parent="."]
+visible = false
 monitoring = false
 monitorable = false
 
 [node name="Sword" type="Sprite2D" parent="Weapon"]
-visible = false
 position = Vector2(27, -75)
 rotation = 0.289725
 texture = ExtResource("4_lqk5h")
@@ -221,5 +221,5 @@ rotation = -1.28107
 shape = SubResource("RectangleShape2D_nqshr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_nqshr")

@@ -37,13 +37,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a5l8j"]
-radius = 22.0907
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_jfs4r"]
-radius = 79.404
+radius = 24.0832
 
-[node name="SlimeMob" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jfs4r"]
+radius = 11.0
+height = 44.0
+
+[node name="SlimeMob" type="CharacterBody2D" groups=["PickupChoice"]]
 script = ExtResource("1_oojpn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -52,11 +53,13 @@ sprite_frames = SubResource("SpriteFrames_cbkkl")
 animation = &"walk"
 frame_progress = 0.537243
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -5)
-shape = SubResource("CircleShape2D_a5l8j")
-
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_jfs4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_jfs4r")

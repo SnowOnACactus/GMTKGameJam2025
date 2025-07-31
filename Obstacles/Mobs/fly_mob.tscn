@@ -41,10 +41,10 @@ animations = [{
 radius = 17.0294
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u1h0b"]
-radius = 17.0
-height = 60.216
+radius = 11.9867
+height = 42.0476
 
-[node name="FlyMob" type="CharacterBody2D"]
+[node name="FlyMob" type="CharacterBody2D" groups=["PickupChoice"]]
 script = ExtResource("1_p7r53")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -61,5 +61,5 @@ shape = SubResource("CircleShape2D_a5l8j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-1, -8)
-rotation = -1.52367
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_u1h0b")

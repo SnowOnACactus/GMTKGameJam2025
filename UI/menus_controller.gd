@@ -1,6 +1,7 @@
 extends CanvasLayer
 @onready var settings_menu: Control = $SettingsMenu
 @onready var pause_menu: Control = $PauseMenu
+@onready var upgrade_menu: Control = $UpgradeMenu
 
 
 
@@ -8,6 +9,7 @@ extends CanvasLayer
 func _ready() -> void:
 	pause_menu.hide()
 	settings_menu.hide()
+	upgrade_menu.hide()
 	pause_menu.resume_button.pressed.connect(func () -> void:
 		get_tree().paused = false
 		pause_menu.hide()
@@ -23,6 +25,16 @@ func _ready() -> void:
 		settings_menu.hide()
 		pause_menu.show()
 	)
+	#TO-DO - make these upgrades do something
+	upgrade_menu.upgrade_1.pressed.connect(func() -> void:
+		upgrade_menu.hide()
+		get_tree().paused = false
+	)
+	upgrade_menu.upgrade_2.pressed.connect(func() -> void:
+		upgrade_menu.hide()
+		get_tree().paused = false
+	)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

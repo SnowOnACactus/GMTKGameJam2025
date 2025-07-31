@@ -9,6 +9,7 @@ const PICKUP = preload("res://Pickup/pickup.tscn")
 @onready var _heart_3: Sprite2D = $Heart3
 const _HEART_EMPTY = preload("res://Runners/hud_heartEmpty.png")
 const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
+@onready var menu_controller: CanvasLayer = $MenuController
 
 var loop_number := 0:
 	set(num):
@@ -31,7 +32,9 @@ func _on_loop() -> void:
 	spawn_pickup()
 	_progress_gate.open = false
 	loop_number += 1
-	#TO-DO offer upgrade?
+	if (floor(loop_number/5.0) == loop_number/5.0):
+		menu_controller.upgrade_menu.show()
+		get_tree().paused = true
 
 #probably a better way to do this...
 func _on_hurt_or_heal(health: int) -> void:
