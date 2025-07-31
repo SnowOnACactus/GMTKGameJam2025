@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6aloh0ft0hn1"
-path="res://.godot/imported/swordSilver.png-617a98c399507528b930c28017bf5ba3.ctex"
+path="res://.godot/imported/swordSilver.png-36242635634cae0df18d1626dd389077.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Request pack/Tiles/swordSilver.png"
-dest_files=["res://.godot/imported/swordSilver.png-617a98c399507528b930c28017bf5ba3.ctex"]
+source_file="res://Runners/swordSilver.png"
+dest_files=["res://.godot/imported/swordSilver.png-36242635634cae0df18d1626dd389077.ctex"]
 
 [params]
 

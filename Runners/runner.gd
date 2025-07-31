@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var _pickup_radius: Area2D = $PickupRadius
 @onready var _thought_bubble: Sprite2D = $ThoughtBubble
 @onready var _item_thought: Sprite2D = $ThoughtBubble/ItemThought
+@onready var _weapon: Area2D = $Weapon
+@onready var _sword: Sprite2D = $Weapon/Sword
 
 var has_item = false:
 	set(bool):
@@ -29,6 +31,24 @@ func _use_item() -> void:
 	#TO-DO
 	pass
 
+func _on_attack(direction) -> void:
+	#show sword
+	_weapon.monitoring = true
+	_sword.visible = true
+	var tween = create_tween()
+	#swing sword
+	if direction < 0:
+		tween.tween_property(_weapon, "rotation_degrees", -150.0, 0.1)
+	else:
+		tween.tween_property(_weapon, "rotation_degrees", 100.0, 0.1)
+	#hide sword at the end of animation
+	tween.finished.connect(
+		func() -> void:
+			_weapon.monitoring = false
+			_sword.visible = false
+			_weapon.rotation = 0
+	)
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -44,13 +64,16 @@ func _physics_process(delta: float) -> void:
 		global_position.x += get_viewport_rect().size.x + 90
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		_sprite.play("jump")
+	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("move_left", "move_right")
+	if Input.is_action_just_pressed("attack"):
+		_on_attack(direction)
 	if velocity.y > 0:
 		_sprite.play("fall")
 	if direction:
