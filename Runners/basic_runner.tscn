@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://wtcdc5r5wspd"]
+[gd_scene load_steps=28 format=3 uid="uid://wtcdc5r5wspd"]
 
 [ext_resource type="Script" uid="uid://c7mi6hc8y2wlr" path="res://Runners/runner.gd" id="1_hn08k"]
 [ext_resource type="Texture2D" uid="uid://bd2l2a15nglc8" path="res://Runners/guy.png" id="2_r5bnu"]
 [ext_resource type="Texture2D" uid="uid://y6od2d23okcl" path="res://Runners/thought_bubble.png" id="3_e4vk3"]
 [ext_resource type="Texture2D" uid="uid://c6aloh0ft0hn1" path="res://Runners/swordSilver.png" id="4_lqk5h"]
+[ext_resource type="Texture2D" uid="uid://bhoo4tdmhwy5b" path="res://Obstacles/castleCenter_rounded.png" id="4_nqshr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqshr"]
 atlas = ExtResource("2_r5bnu")
@@ -173,8 +174,8 @@ script = ExtResource("1_hn08k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sc1do")
-animation = &"fall"
-frame_progress = 0.857831
+animation = &"walk"
+frame_progress = 0.72532
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2xrxr")
@@ -191,6 +192,9 @@ scale = Vector2(0.0596875, 0.118105)
 texture = ExtResource("3_e4vk3")
 
 [node name="ItemThought" type="Sprite2D" parent="ThoughtBubble"]
+position = Vector2(10.4707, -198.145)
+scale = Vector2(14.3605, 6.66129)
+texture = ExtResource("4_nqshr")
 
 [node name="Weapon" type="Area2D" parent="."]
 monitoring = false
