@@ -1,0 +1,58 @@
+extends CharacterBody2D
+@onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _pickup_radius: Area2D = $PickupRadius
+@onready var _thought_bubble: Sprite2D = $ThoughtBubble
+@onready var _item_thought: Sprite2D = $ThoughtBubble/ItemThought
+
+var has_item = false:
+	set(bool):
+		_thought_bubble.visible = bool
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+signal loop
+
+func _ready() -> void:
+	_pickup_radius.area_entered.connect(
+		func(body) -> void: 
+			if body is Pickup: 
+				_on_pickup(body)
+	)
+
+func _on_pickup(body) -> void:
+	#TO-DO: generate obstacle pickup
+	#TO-DO: add item image to _item_thought
+	has_item = true
+	body.queue_free()
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	
+	#Run from right side to left
+	if global_position.x > get_viewport_rect().size.x + 50:
+		global_position.x -= get_viewport_rect().size.x + 90
+		loop.emit()
+	
+	#Run from left to right - do we want this?
+	if global_position.x < -50:
+		global_position.x += get_viewport_rect().size.x + 90
+	
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis("ui_left", "ui_right")
+	if direction:
+		if direction < 0: 
+			_sprite.flip_h = true
+		else:
+			_sprite.flip_h = false
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()

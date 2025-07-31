@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dokcmfnd1hm3i"]
+
+[ext_resource type="Texture2D" uid="uid://c1v16ut2hq7xj" path="res://ArtAssets/Backgrounds/backgroundColorDesert.png" id="1_p0cb6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dx3vu"]
+size = Vector2(1734, 24)
+
+[node name="Racetrack" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(575.5, 417)
+scale = Vector2(1.12402, 1)
+texture = ExtResource("1_p0cb6")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(610, 596)
+shape = SubResource("RectangleShape2D_dx3vu")

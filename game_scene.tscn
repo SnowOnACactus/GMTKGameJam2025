@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyy3d4ih2jjg8"]
+
+[ext_resource type="Script" uid="uid://dh5v3mh50aex" path="res://game_scene.gd" id="1_v1wow"]
+[ext_resource type="PackedScene" uid="uid://dokcmfnd1hm3i" path="res://Tracks/racetrack.tscn" id="2_mixcd"]
+[ext_resource type="PackedScene" uid="uid://wtcdc5r5wspd" path="res://Runners/basic_runner.tscn" id="3_mj2jn"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_v1wow")
+
+[node name="Racetrack" parent="." instance=ExtResource("2_mixcd")]
+
+[node name="Runner" parent="." instance=ExtResource("3_mj2jn")]
+position = Vector2(1081, 532)
