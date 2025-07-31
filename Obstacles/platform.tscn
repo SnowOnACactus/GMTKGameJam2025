@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf3l3jg1rwsx"]
+
+[ext_resource type="Texture2D" uid="uid://cbujyou4vok1l" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleLeft.png" id="1_ly373"]
+[ext_resource type="Texture2D" uid="uid://b37cfd0lws81c" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleMid.png" id="2_m6yps"]
+[ext_resource type="Texture2D" uid="uid://bh2ujnhxukvwo" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleRight.png" id="3_yve67"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvuld"]
+size = Vector2(212, 72)
+
+[node name="Platform" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-70, 0)
+texture = ExtResource("1_ly373")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("2_m6yps")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(70, 0)
+texture = ExtResource("3_yve67")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wvuld")
