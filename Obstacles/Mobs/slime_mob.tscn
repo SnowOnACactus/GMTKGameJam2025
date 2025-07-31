@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dasmqhuk23sr3"]
+
+[ext_resource type="Script" uid="uid://bkrco2c25vk7y" path="res://Obstacles/Mobs/slime_mob.gd" id="1_oojpn"]
+[ext_resource type="Texture2D" uid="uid://ch4kohbc0q0ux" path="res://Obstacles/Mobs/enemies.svg" id="2_ondcl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6csbf"]
+atlas = ExtResource("2_ondcl")
+region = Rect2(140, 0, 70, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tux3k"]
+atlas = ExtResource("2_ondcl")
+region = Rect2(0, 0, 70, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjrjm"]
+atlas = ExtResource("2_ondcl")
+region = Rect2(70, 0, 70, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbkkl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6csbf")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tux3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjrjm")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5l8j"]
+radius = 21.0
+
+[node name="SlimeMob" type="CharacterBody2D"]
+script = ExtResource("1_oojpn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9, 0)
+sprite_frames = SubResource("SpriteFrames_cbkkl")
+animation = &"walk"
+frame_progress = 0.537243
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -5)
+shape = SubResource("CircleShape2D_a5l8j")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, -5)
+shape = SubResource("CircleShape2D_a5l8j")

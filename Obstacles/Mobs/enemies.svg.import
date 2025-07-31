@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6aloh0ft0hn1"
-path="res://.godot/imported/swordSilver.png-617a98c399507528b930c28017bf5ba3.ctex"
+uid="uid://ch4kohbc0q0ux"
+path="res://.godot/imported/enemies.svg-bd0c14080dd3ba1a755ebf3106a315ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Request pack/Tiles/swordSilver.png"
-dest_files=["res://.godot/imported/swordSilver.png-617a98c399507528b930c28017bf5ba3.ctex"]
+source_file="res://Obstacles/Mobs/enemies.svg"
+dest_files=["res://.godot/imported/enemies.svg-bd0c14080dd3ba1a755ebf3106a315ce.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
