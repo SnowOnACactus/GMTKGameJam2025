@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://wtcdc5r5wspd"]
+[gd_scene load_steps=29 format=3 uid="uid://wtcdc5r5wspd"]
 
 [ext_resource type="Script" uid="uid://c7mi6hc8y2wlr" path="res://Runners/runner.gd" id="1_hn08k"]
 [ext_resource type="Texture2D" uid="uid://bd2l2a15nglc8" path="res://Runners/guy.png" id="2_r5bnu"]
@@ -57,6 +57,10 @@ region = Rect2(300, 200, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_84ame"]
 atlas = ExtResource("2_r5bnu")
 region = Rect2(100, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtk2o"]
+atlas = ExtResource("2_r5bnu")
+region = Rect2(101, 196, 98, 85)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsime"]
 atlas = ExtResource("2_r5bnu")
@@ -126,6 +130,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gtk2o")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jsime")
 }],
 "loop": true,
@@ -160,25 +172,22 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2xrxr"]
-radius = 44.7214
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8xdv"]
-radius = 43.9318
+radius = 39.0128
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqshr"]
 size = Vector2(50.1308, 21.1129)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nqshr"]
+radius = 31.0
+height = 88.0
 
 [node name="Runner" type="CharacterBody2D"]
 script = ExtResource("1_hn08k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sc1do")
-animation = &"walk"
-frame_progress = 0.72532
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_2xrxr")
+animation = &"idle"
 
 [node name="PickupRadius" type="Area2D" parent="."]
 
@@ -210,3 +219,7 @@ texture = ExtResource("4_lqk5h")
 position = Vector2(29.6555, -82.4378)
 rotation = -1.28107
 shape = SubResource("RectangleShape2D_nqshr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_nqshr")

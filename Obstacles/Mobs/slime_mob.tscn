@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dasmqhuk23sr3"]
+[gd_scene load_steps=9 format=3 uid="uid://dasmqhuk23sr3"]
 
 [ext_resource type="Script" uid="uid://bkrco2c25vk7y" path="res://Obstacles/Mobs/slime_mob.gd" id="1_oojpn"]
 [ext_resource type="Texture2D" uid="uid://ch4kohbc0q0ux" path="res://Obstacles/Mobs/enemies.svg" id="2_ondcl"]
@@ -38,7 +38,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5l8j"]
-radius = 21.0
+radius = 22.0907
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jfs4r"]
+radius = 79.404
 
 [node name="SlimeMob" type="CharacterBody2D"]
 script = ExtResource("1_oojpn")
@@ -56,5 +59,4 @@ shape = SubResource("CircleShape2D_a5l8j")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-1, -5)
-shape = SubResource("CircleShape2D_a5l8j")
+shape = SubResource("CircleShape2D_jfs4r")

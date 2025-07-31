@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://ur4sqm4vdxd8"]
+
+[ext_resource type="Theme" uid="uid://mxw65pyn6hxu" path="res://ui/menuStyles.tres" id="1_1cwhq"]
+[ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_mdv54"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0gn4"]
+bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mdv54")
+
+[node name="PauseBackground" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -156.0
+offset_right = 192.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o0gn4")
+
+[node name="PauseVBox" type="VBoxContainer" parent="PauseBackground"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="PauseTitle" type="RichTextLabel" parent="PauseBackground/PauseVBox"]
+layout_mode = 2
+theme = ExtResource("1_1cwhq")
+bbcode_enabled = true
+text = "[center]Game Paused[/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="ResumeButton" type="Button" parent="PauseBackground/PauseVBox"]
+layout_mode = 2
+theme = ExtResource("1_1cwhq")
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="PauseBackground/PauseVBox"]
+layout_mode = 2
+theme = ExtResource("1_1cwhq")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="PauseBackground/PauseVBox"]
+layout_mode = 2
+theme = ExtResource("1_1cwhq")
+text = "Quit"

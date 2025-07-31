@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk702xxd4t01e"
-path="res://.godot/imported/hud_heartEmpty.png-80c3b72c1ddf7c1273287bb4d7d0bd8b.ctex"
+uid="uid://byh418b0f75dc"
+path="res://.godot/imported/hud_heartFull.png-e2dc4c7f8124ad6a0c7e4164d8aabd4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Base pack/HUD/hud_heartEmpty.png"
-dest_files=["res://.godot/imported/hud_heartEmpty.png-80c3b72c1ddf7c1273287bb4d7d0bd8b.ctex"]
+source_file="res://Runners/hud_heartFull.png"
+dest_files=["res://.godot/imported/hud_heartFull.png-e2dc4c7f8124ad6a0c7e4164d8aabd4a.ctex"]
 
 [params]
 
