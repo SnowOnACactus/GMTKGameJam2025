@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyy3d4ih2jjg8"]
+[gd_scene load_steps=6 format=3 uid="uid://dyy3d4ih2jjg8"]
 
 [ext_resource type="Script" uid="uid://dh5v3mh50aex" path="res://game_scene.gd" id="1_v1wow"]
 [ext_resource type="PackedScene" uid="uid://dokcmfnd1hm3i" path="res://Tracks/racetrack.tscn" id="2_mixcd"]
 [ext_resource type="PackedScene" uid="uid://wtcdc5r5wspd" path="res://Runners/basic_runner.tscn" id="3_mj2jn"]
+[ext_resource type="PackedScene" uid="uid://dasmqhuk23sr3" path="res://Obstacles/Mobs/slime_mob.tscn" id="4_mixcd"]
+[ext_resource type="PackedScene" uid="uid://3e5fu37docg2" path="res://Obstacles/Mobs/fly_mob.tscn" id="5_mj2jn"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_v1wow")
@@ -11,3 +13,9 @@ script = ExtResource("1_v1wow")
 
 [node name="Runner" parent="." instance=ExtResource("3_mj2jn")]
 position = Vector2(1081, 532)
+
+[node name="SlimeMob" parent="." instance=ExtResource("4_mixcd")]
+position = Vector2(627, 580)
+
+[node name="FlyMob" parent="." instance=ExtResource("5_mj2jn")]
+position = Vector2(508, 332)

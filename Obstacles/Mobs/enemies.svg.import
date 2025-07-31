@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch4kohbc0q0ux"
-path="res://.godot/imported/enemies.svg-007474aac670a6e060d2ae7ba0746c07.ctex"
+path="res://.godot/imported/enemies.svg-bd0c14080dd3ba1a755ebf3106a315ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Base pack/Vector/enemies.svg"
-dest_files=["res://.godot/imported/enemies.svg-007474aac670a6e060d2ae7ba0746c07.ctex"]
+source_file="res://Obstacles/Mobs/enemies.svg"
+dest_files=["res://.godot/imported/enemies.svg-bd0c14080dd3ba1a755ebf3106a315ce.ctex"]
 
 [params]
 

@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://3e5fu37docg2"]
+
+[ext_resource type="Script" uid="uid://dx8qjxqvm7h0e" path="res://Obstacles/Mobs/fly_mob.gd" id="1_p7r53"]
+[ext_resource type="Texture2D" uid="uid://ch4kohbc0q0ux" path="res://Obstacles/Mobs/enemies.svg" id="2_hpk4e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7r53"]
+atlas = ExtResource("2_hpk4e")
+region = Rect2(158, 49, 79, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpk4e"]
+atlas = ExtResource("2_hpk4e")
+region = Rect2(0, 49, 79, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyo4k"]
+atlas = ExtResource("2_hpk4e")
+region = Rect2(79, 49, 79, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbkkl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7r53")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpk4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyo4k")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5l8j"]
+radius = 21.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u1h0b"]
+radius = 17.0
+height = 52.0365
+
+[node name="FlyMob" type="CharacterBody2D"]
+script = ExtResource("1_p7r53")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -5)
+sprite_frames = SubResource("SpriteFrames_cbkkl")
+animation = &"fly"
+frame_progress = 0.123253
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -5)
+shape = SubResource("CircleShape2D_a5l8j")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, -8)
+rotation = -1.52367
+shape = SubResource("CapsuleShape2D_u1h0b")
