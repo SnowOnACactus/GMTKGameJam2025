@@ -2,14 +2,10 @@ extends CanvasLayer
 @onready var settings_menu: Control = $SettingsMenu
 @onready var pause_menu: Control = $PauseMenu
 @onready var upgrade_menu: Control = $UpgradeMenu
+@onready var game_over_screen: Control = $GameOverScreen
 
-
-
-# Called when the node enters the scene tree for the first time.
+# Connecting all the menu's buttons.
 func _ready() -> void:
-	pause_menu.hide()
-	settings_menu.hide()
-	upgrade_menu.hide()
 	pause_menu.resume_button.pressed.connect(func () -> void:
 		get_tree().paused = false
 		pause_menu.hide()
@@ -34,12 +30,18 @@ func _ready() -> void:
 		upgrade_menu.hide()
 		get_tree().paused = false
 	)
-	
+	game_over_screen.try_again_button.pressed.connect(func () -> void:
+		get_tree().paused = false
+		get_tree().reload_current_scene()
+	)
+	game_over_screen.quit_button.pressed.connect(func () -> void:
+		get_tree().quit()
+	)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Listen for pause
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and game_over_screen.visible == false and upgrade_menu.visible == false:
 		if get_tree().paused == true:
 			pause_menu.hide()
 			settings_menu.hide()

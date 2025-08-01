@@ -2,6 +2,7 @@ extends CharacterBody2D
 signal loop
 signal unlock
 signal hurt_or_heal
+signal game_over
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _pickup_radius: Area2D = $PickupRadius
@@ -165,5 +166,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func die() -> void:
-	#show gameover screen
-	pass
+	#TO-DO - play death sound
+	game_over.emit()
+	_sprite.play("die")
+	set_physics_process(false)

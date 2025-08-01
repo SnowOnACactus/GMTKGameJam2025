@@ -1,16 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckbr71skloy0f"]
+[gd_scene load_steps=6 format=3 uid="uid://ckbr71skloy0f"]
 
 [ext_resource type="Script" uid="uid://ihu24kdnay4l" path="res://UI/menus_controller.gd" id="1_74dlg"]
 [ext_resource type="PackedScene" uid="uid://1pdtv7n5omoc" path="res://UI/settings_menu.tscn" id="2_g0lap"]
 [ext_resource type="PackedScene" uid="uid://ur4sqm4vdxd8" path="res://UI/pause_menu.tscn" id="3_71joh"]
 [ext_resource type="PackedScene" uid="uid://c4lejrw3cexiu" path="res://UI/upgrade_menu.tscn" id="4_4hamd"]
+[ext_resource type="PackedScene" uid="uid://bi1ndy6r7yut1" path="res://UI/game_over_screen.tscn" id="5_pluqf"]
 
 [node name="MenuController" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_74dlg")
 
 [node name="SettingsMenu" parent="." instance=ExtResource("2_g0lap")]
+visible = false
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_71joh")]
+visible = false
 
 [node name="UpgradeMenu" parent="." instance=ExtResource("4_4hamd")]
+visible = false
+
+[node name="GameOverScreen" parent="." instance=ExtResource("5_pluqf")]
+visible = false

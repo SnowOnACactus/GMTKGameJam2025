@@ -22,6 +22,11 @@ func _ready() -> void:
 	_runner.loop.connect(_on_loop)
 	_runner.unlock.connect(func() -> void: _progress_gate.open = true)
 	_runner.hurt_or_heal.connect(_on_hurt_or_heal)
+	_runner.game_over.connect(func() -> void:
+		await get_tree().create_timer(2.5).timeout
+		menu_controller.game_over_screen.show()
+		get_tree().paused = true
+	)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
