@@ -1,17 +1,18 @@
 extends Node2D
 @onready var _runner: CharacterBody2D = $Runner
 const PICKUP = preload("res://Pickup/pickup.tscn")
-@onready var _progress_gate: StaticBody2D = $Boundries/ProgressGate
+@onready var _progress_gate: StaticBody2D = $CanvasLayer/Boundries/ProgressGate
 @onready var _loop_display: RichTextLabel = $CanvasLayer/LoopDisplay
-@onready var _heart_1: Sprite2D = $Heart1
-@onready var _heart_2: Sprite2D = $Heart2
-@onready var _heart_3: Sprite2D = $Heart3
+@onready var _heart_1: Sprite2D = $CanvasLayer/Heart1
+@onready var _heart_2: Sprite2D = $CanvasLayer/Heart2
+@onready var _heart_3: Sprite2D = $CanvasLayer/Heart3
 const _HEART_EMPTY = preload("res://Runners/hud_heartEmpty.png")
 const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var menu_controller: CanvasLayer = $MenuController
-@onready var _loop_timer: Timer = $LoopTimer
-@onready var _time_left: RichTextLabel = $LoopTimer/TimeLeft
+@onready var _loop_timer: Timer = $CanvasLayer/LoopTimer
+@onready var _time_left: RichTextLabel = $CanvasLayer/LoopTimer/TimeLeft
 @onready var taunt: RichTextLabel = $CanvasLayer/Taunt
+@onready var camera_2d: Camera2D = $Camera2D
 
 
 
@@ -35,6 +36,11 @@ func _ready() -> void:
 		taunt.text = "Can you make it through 20 loops?"
 	)
 	_loop_timer.timeout.connect(func() -> void: game_over("time"))
+	#var tween = create_tween()
+	#tween.tween_property(camera_2d, "zoom", Vector2(0.5,0.5), 10)
+	#var tween2 = create_tween()
+	#tween2.tween_property(camera_2d, "position", Vector2(get_viewport_rect().size.x/4, get_viewport_rect().size.y/4), 10)
+	
 
 func game_over(reason) -> void:
 	_loop_timer.stop()
