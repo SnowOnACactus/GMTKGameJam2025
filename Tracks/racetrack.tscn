@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dokcmfnd1hm3i"]
 
-[ext_resource type="Texture2D" uid="uid://c8y5ha6pxxsln" path="res://ArtAssets/Backgrounds/backgroundColorForest.png" id="1_dk0rx"]
+[ext_resource type="Texture2D" uid="uid://c8y5ha6pxxsln" path="res://main_scene/backgroundColorForest.png" id="1_dk0rx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dx3vu"]
 size = Vector2(1734, 24)

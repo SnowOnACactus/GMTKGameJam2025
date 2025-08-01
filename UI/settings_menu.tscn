@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://1pdtv7n5omoc"]
+
+[ext_resource type="Theme" uid="uid://mxw65pyn6hxu" path="res://ui/menuStyles.tres" id="1_ov8y0"]
+[ext_resource type="Script" path="res://ui/settings_menu.gd" id="1_p1327"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jg4jf"]
+bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p1327")
+
+[node name="SettingsBackground" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.467
+anchor_top = 0.415
+anchor_right = 0.6
+anchor_bottom = 0.593
+offset_left = -128.64
+offset_top = -64.2
+offset_bottom = -0.440002
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jg4jf")
+
+[node name="SettingsVBox" type="VBoxContainer" parent="SettingsBackground"]
+process_mode = 3
+layout_mode = 2
+alignment = 1
+
+[node name="SettingsTitle" type="RichTextLabel" parent="SettingsBackground/SettingsVBox"]
+layout_mode = 2
+theme = ExtResource("1_ov8y0")
+bbcode_enabled = true
+text = "[center]Settings[/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MusicHBox" type="HBoxContainer" parent="SettingsBackground/SettingsVBox"]
+layout_mode = 2
+
+[node name="MusicLabel" type="RichTextLabel" parent="SettingsBackground/SettingsVBox/MusicHBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+bbcode_enabled = true
+text = "[center]Music[/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MusicSlider" type="HSlider" parent="SettingsBackground/SettingsVBox/MusicHBox"]
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme = ExtResource("1_ov8y0")
+max_value = 1.0
+step = 0.01
+value = 1.0
+metadata/_edit_group_ = true
+
+[node name="SoundsHBox" type="HBoxContainer" parent="SettingsBackground/SettingsVBox"]
+layout_mode = 2
+
+[node name="SoundsLabel" type="RichTextLabel" parent="SettingsBackground/SettingsVBox/SoundsHBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+bbcode_enabled = true
+text = "[center]Sounds[/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="SoundsSlider" type="HSlider" parent="SettingsBackground/SettingsVBox/SoundsHBox"]
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme = ExtResource("1_ov8y0")
+max_value = 1.0
+step = 0.01
+value = 1.0
+metadata/_edit_group_ = true
+
+[node name="BackButton" type="Button" parent="SettingsBackground/SettingsVBox"]
+layout_mode = 2
+theme = ExtResource("1_ov8y0")
+text = "Back"

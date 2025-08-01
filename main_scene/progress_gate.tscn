@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://bta7exht03qie"]
+
+[ext_resource type="Script" uid="uid://c0lc4wici3nth" path="res://main_scene/progress_gate.gd" id="1_m1qjn"]
+[ext_resource type="Texture2D" uid="uid://bbkdvvlb8m188" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleCenter.png" id="1_pmq8q"]
+[ext_resource type="Texture2D" uid="uid://b5pqhrb3lyn73" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/door_closedMid.png" id="2_s6fsl"]
+[ext_resource type="Texture2D" uid="uid://dg2fofhnsacru" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/door_closedTop.png" id="3_1wrhe"]
+[ext_resource type="Texture2D" uid="uid://bvvx6jnb7kw46" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/door_openTop.png" id="5_iehft"]
+[ext_resource type="Texture2D" uid="uid://cwangkm2bmh52" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/door_openMid.png" id="6_1cf6k"]
+
+[sub_resource type="TileSet" id="TileSet_m1qjn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iehft"]
+size = Vector2(92, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1qjn"]
+size = Vector2(45, 460)
+
+[node name="ProgressGate" type="StaticBody2D"]
+script = ExtResource("1_m1qjn")
+
+[node name="Sprite2D" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_m1qjn")
+
+[node name="CastleCenter" type="Sprite2D" parent="."]
+position = Vector2(10, 453)
+texture = ExtResource("1_pmq8q")
+
+[node name="CastleCenter2" type="Sprite2D" parent="."]
+position = Vector2(10, 383)
+texture = ExtResource("1_pmq8q")
+
+[node name="DoorClosedMid" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10, 541)
+texture = ExtResource("2_s6fsl")
+
+[node name="DoorClosedTop" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10, 472)
+texture = ExtResource("3_1wrhe")
+
+[node name="CastleCenter3" type="Sprite2D" parent="."]
+position = Vector2(10, 179)
+texture = ExtResource("1_pmq8q")
+
+[node name="CastleCenter4" type="Sprite2D" parent="."]
+position = Vector2(10, 109)
+texture = ExtResource("1_pmq8q")
+
+[node name="CastleCenter5" type="Sprite2D" parent="."]
+position = Vector2(10, 40)
+texture = ExtResource("1_pmq8q")
+
+[node name="CastleCenter6" type="Sprite2D" parent="."]
+position = Vector2(10, -30)
+texture = ExtResource("1_pmq8q")
+
+[node name="CastleCenter7" type="Sprite2D" parent="."]
+position = Vector2(10, 313)
+texture = ExtResource("1_pmq8q")
+
+[node name="CastleCenter8" type="Sprite2D" parent="."]
+position = Vector2(10, 247)
+texture = ExtResource("1_pmq8q")
+
+[node name="DoorOpenTop" type="Sprite2D" parent="."]
+position = Vector2(10, 473)
+texture = ExtResource("5_iehft")
+
+[node name="DoorOpenMid" type="Sprite2D" parent="."]
+position = Vector2(10, 540)
+texture = ExtResource("6_1cf6k")
+
+[node name="DoorCollider" type="CollisionShape2D" parent="."]
+position = Vector2(36, 513.5)
+shape = SubResource("RectangleShape2D_iehft")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(36.5, 220)
+shape = SubResource("RectangleShape2D_m1qjn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(36.5, 220)
+shape = SubResource("RectangleShape2D_m1qjn")
+
+[node name="DoorCollider" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12, 513.5)
+shape = SubResource("RectangleShape2D_iehft")
+disabled = true

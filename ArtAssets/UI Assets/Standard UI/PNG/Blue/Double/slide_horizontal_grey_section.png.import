@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ba6271hg6wbct"
+path="res://.godot/imported/slide_horizontal_grey_section.png-b8994f9e05872cccc51a1945c6ed76fd.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://ArtAssets/UI Assets/Standard UI/PNG/Blue/Double/slide_horizontal_grey_section.png"
+dest_files=["res://.godot/imported/slide_horizontal_grey_section.png-b8994f9e05872cccc51a1945c6ed76fd.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
