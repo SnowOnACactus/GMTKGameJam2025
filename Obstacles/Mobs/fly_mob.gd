@@ -14,7 +14,8 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 	if position.x > starting_position.x + 100.0:
 		_dir_right = false
-		_sprite.flip_h = false
+		_sprite.flip_h = true 
+		#comments
 	if position.x < starting_position.x - 100.0:
 		_dir_right = true
 		_sprite.flip_h = true
