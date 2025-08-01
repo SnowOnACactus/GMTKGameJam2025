@@ -16,6 +16,7 @@ signal game_over
 @export var health := 3:
 	set(num):
 		if num <= 0:
+			game_over.emit()
 			die()
 		health = num
 		hurt_or_heal.emit(health)
@@ -125,7 +126,10 @@ func _physics_process(delta: float) -> void:
 		if _is_crouched:
 			_is_crouched = false
 		_sprite.play("jump")
-		
+	
+	# stop jump when released
+	if Input.is_action_just_released("jump") and velocity.y < 0:
+		velocity.y = 0
 
 	if Input.is_action_just_pressed("move_down") and is_on_floor():
 		_is_crouched = true
@@ -167,6 +171,5 @@ func _physics_process(delta: float) -> void:
 
 func die() -> void:
 	#TO-DO - play death sound
-	game_over.emit()
 	_sprite.play("die")
 	set_physics_process(false)

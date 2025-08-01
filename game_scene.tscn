@@ -90,3 +90,20 @@ texture = ExtResource("10_miq82")
 [node name="Heart3" type="Sprite2D" parent="."]
 position = Vector2(153, 613)
 texture = ExtResource("10_miq82")
+
+[node name="LoopTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[node name="TimeLeft" type="RichTextLabel" parent="LoopTimer"]
+offset_left = 882.0
+offset_right = 1027.0
+offset_bottom = 64.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Time left: 15s"
+fit_content = true
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
