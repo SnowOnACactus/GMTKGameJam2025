@@ -281,3 +281,5 @@ shape = SubResource("CapsuleShape2D_nqshr")
 visible = false
 position = Vector2(52, -17)
 texture = ExtResource("6_bhrub")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
