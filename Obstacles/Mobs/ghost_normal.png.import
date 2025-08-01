@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byvokgul66sd8"
-path="res://.godot/imported/spikes.png-063eac7102dd9893d48d206e3fa4985f.ctex"
+uid="uid://b53hfvjjbe1yt"
+path="res://.godot/imported/ghost_normal.png-c142bb5cdd512eac8b2260e26c031dee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Base pack/Items/spikes.png"
-dest_files=["res://.godot/imported/spikes.png-063eac7102dd9893d48d206e3fa4985f.ctex"]
+source_file="res://Obstacles/Mobs/ghost_normal.png"
+dest_files=["res://.godot/imported/ghost_normal.png-c142bb5cdd512eac8b2260e26c031dee.ctex"]
 
 [params]
 

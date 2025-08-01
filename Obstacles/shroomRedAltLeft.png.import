@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnf7id76ki0l"
-path="res://.godot/imported/ghost_dead.png-f31d7cbc1bd0823b135e7fed18fbb845.ctex"
+uid="uid://dqdufv1s5hb64"
+path="res://.godot/imported/shroomRedAltLeft.png-b7601b823c65563ea20bdec8e71ebb99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Extra animations and enemies/Enemy sprites/ghost_dead.png"
-dest_files=["res://.godot/imported/ghost_dead.png-f31d7cbc1bd0823b135e7fed18fbb845.ctex"]
+source_file="res://Obstacles/shroomRedAltLeft.png"
+dest_files=["res://.godot/imported/shroomRedAltLeft.png-b7601b823c65563ea20bdec8e71ebb99.ctex"]
 
 [params]
 

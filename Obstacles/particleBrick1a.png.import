@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbh3t75wbi47f"
-path="res://.godot/imported/ghost_hit.png-87cfdbe8ec468d676335f49853c4d631.ctex"
+uid="uid://eascmnwiu6e2"
+path="res://.godot/imported/particleBrick1a.png-d3e26a8be838183813815cf86273ba74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Extra animations and enemies/Enemy sprites/ghost_hit.png"
-dest_files=["res://.godot/imported/ghost_hit.png-87cfdbe8ec468d676335f49853c4d631.ctex"]
+source_file="res://Obstacles/particleBrick1a.png"
+dest_files=["res://.godot/imported/particleBrick1a.png-d3e26a8be838183813815cf86273ba74.ctex"]
 
 [params]
 

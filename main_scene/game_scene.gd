@@ -1,6 +1,5 @@
 extends Node2D
 @onready var _runner: CharacterBody2D = $Runner
-@onready var _racetrack: Node2D = $Racetrack
 const PICKUP = preload("res://Pickup/pickup.tscn")
 @onready var _progress_gate: StaticBody2D = $Boundries/ProgressGate
 @onready var _loop_display: RichTextLabel = $CanvasLayer/LoopDisplay

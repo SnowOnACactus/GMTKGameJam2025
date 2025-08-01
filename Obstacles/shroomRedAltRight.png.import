@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eascmnwiu6e2"
-path="res://.godot/imported/particleBrick1a.png-5f7b580e9198e52eac02ed5c6f1a5ac9.ctex"
+uid="uid://bc0k01exrwf0u"
+path="res://.godot/imported/shroomRedAltRight.png-b2603e70bffe888ea0060e4a987361d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Base pack/Items/particleBrick1a.png"
-dest_files=["res://.godot/imported/particleBrick1a.png-5f7b580e9198e52eac02ed5c6f1a5ac9.ctex"]
+source_file="res://Obstacles/shroomRedAltRight.png"
+dest_files=["res://.godot/imported/shroomRedAltRight.png-b2603e70bffe888ea0060e4a987361d9.ctex"]
 
 [params]
 

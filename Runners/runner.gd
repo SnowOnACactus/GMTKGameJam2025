@@ -5,13 +5,13 @@ signal hurt_or_heal
 signal game_over
 signal overlap
 
+const SPEED = 300.0
+const JUMP_VELOCITY = -600.0
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _pickup_radius: Area2D = $PickupRadius
 @onready var _thought_bubble: Sprite2D = $ThoughtBubble
 @onready var _item_thought: Sprite2D = $ThoughtBubble/ItemThought
 @onready var _weapon: Area2D = $Weapon
-@onready var _sword: Sprite2D = $Weapon/Sword
-@onready var _collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var _placement_confirmation: Sprite2D = $PlacementConfirmation
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
@@ -21,7 +21,8 @@ var sounds := {
 	"thought": {"audio": preload("res://Runners/543183__garuda1982__plop-sound-effect.wav"), "start_time": 0.3},
 	"jump": {"audio": preload("res://Runners/456374__felixyadomi__hop8.wav"), "start_time": 0.0},
 	"pain": {"audio": preload("res://Runners/434462__dersuperanton__getting-hit-hugh.wav"), "start_time": 0.1},
-	"game_over": {"audio": preload("res://Runners/382310__mountain_man__game-over-arcade.wav"), "start_time": 0.0}
+	"game_over": {"audio": preload("res://Runners/382310__mountain_man__game-over-arcade.wav"), "start_time": 0.0},
+	"boing": {"audio": preload("res://Runners/540790__magnuswaker__boing-2.wav"), "start_time": 0.0}
 }
 
 
@@ -50,13 +51,11 @@ var _is_crouched := false:
 			_hovering_item.position.y -= 30
 			
 		_sprite.flip_h = !_sprite.flip_h
-var _faced_right := true:
+var faced_right := true:
 	set(bool):
-		_faced_right = bool
+		faced_right = bool
 		_sprite.flip_h = bool
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
 
 
 func _ready() -> void:
@@ -64,8 +63,11 @@ func _ready() -> void:
 		func(body) -> void: 
 			if body is Pickup: 
 				_on_pickup(body)
-			if body.get_parent() is Mob:
+			if body.get_parent() is Mob or body.get_parent() is Hurt:
 				health -= 1
+			if body.get_parent() is Bouncy:
+				velocity.y = -1000
+				play("boing")
 	)
 
 func _on_pickup(body) -> void:
@@ -183,9 +185,9 @@ func _physics_process(delta: float) -> void:
 		
 	if direction:
 		if direction < 0: 
-			_faced_right = true
+			faced_right = true
 		if direction > 0:
-			_faced_right = false
+			faced_right = false
 		if velocity.y == 0:
 			_sprite.play("walk")
 		velocity.x = direction * SPEED
