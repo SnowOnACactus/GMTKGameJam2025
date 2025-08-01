@@ -240,8 +240,7 @@ script = ExtResource("1_hn08k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sc1do")
-animation = &"crouch"
-frame_progress = 0.573766
+animation = &"idle"
 
 [node name="PickupRadius" type="Area2D" parent="."]
 

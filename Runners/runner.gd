@@ -89,7 +89,6 @@ func _on_use_press() -> void:
 func _on_use_release() -> void:
 	# Let the item go in the scene world where it was
 	if _hovering_item:
-		print(_hovering_item.hitbox.get_overlapping_areas())
 		if !_hovering_item.hitbox.has_overlapping_areas():
 			if _hovering_item is Mob:
 				_hovering_item.starting_position = _hovering_item.global_position
