@@ -2,6 +2,7 @@ extends Mob
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var starting_position:= position
 @onready var hitbox: Area2D = $Hitbox
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var _dir_right = false
 var _dir_up = false

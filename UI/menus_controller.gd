@@ -17,6 +17,10 @@ func _ready() -> void:
 	pause_menu.quit_button.pressed.connect(func () -> void:
 		get_tree().quit()
 	)
+	pause_menu.restart_button.pressed.connect(func () -> void:
+		get_tree().paused = false
+		get_tree().reload_current_scene()
+	)
 	settings_menu.back_button.pressed.connect(func () -> void:
 		settings_menu.hide()
 		pause_menu.show()

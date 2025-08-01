@@ -12,7 +12,11 @@ const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var menu_controller: CanvasLayer = $MenuController
 @onready var _loop_timer: Timer = $LoopTimer
 @onready var _time_left: RichTextLabel = $LoopTimer/TimeLeft
-@onready var _taunt: RichTextLabel = $CanvasLayer/Taunt
+@onready var taunt: RichTextLabel = $CanvasLayer/Taunt
+
+
+
+var tutorial_done := false
 
 var loop_number := 0:
 	set(num):
@@ -27,9 +31,9 @@ func _ready() -> void:
 	_runner.hurt_or_heal.connect(_on_hurt_or_heal)
 	_runner.game_over.connect(func() -> void: game_over("die"))
 	_runner.overlap.connect(func() -> void:
-		_taunt.text = "[color=red]Overlapping is not allowed. Try again![/color]"
+		taunt.text = "[color=red]Overlapping is not allowed. Try again![/color]"
 		await get_tree().create_timer(2.0).timeout
-		_taunt.text = "Can you make it to 20?"
+		taunt.text = "Can you make it through 20 loops?"
 	)
 	_loop_timer.timeout.connect(func() -> void: game_over("time"))
 
@@ -55,6 +59,13 @@ func _on_loop() -> void:
 	var new_time = _loop_timer.time_left + 10
 	_loop_timer.wait_time = new_time
 	_loop_timer.start()
+	if loop_number == 1:
+		taunt.text = "Collect the item to open the door"
+	if loop_number == 2:
+		taunt.text = "Watch your health and remaining time!"
+		tutorial_done = true
+	if loop_number == 3:
+		taunt.text = "Can you make it through 20 loops?"
 	if (floor(loop_number/5.0) == loop_number/5.0):
 		menu_controller.upgrade_menu.show()
 		get_tree().paused = true

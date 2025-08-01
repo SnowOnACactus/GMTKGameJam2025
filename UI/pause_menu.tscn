@@ -59,3 +59,8 @@ text = "Options"
 layout_mode = 2
 theme = ExtResource("1_1cwhq")
 text = "Quit"
+
+[node name="RestartButton" type="Button" parent="PauseBackground/PauseVBox"]
+layout_mode = 2
+theme = ExtResource("1_1cwhq")
+text = "Restart"

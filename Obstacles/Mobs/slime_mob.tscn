@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dasmqhuk23sr3"]
+[gd_scene load_steps=10 format=3 uid="uid://dasmqhuk23sr3"]
 
 [ext_resource type="Script" uid="uid://bkrco2c25vk7y" path="res://Obstacles/Mobs/slime_mob.gd" id="1_oojpn"]
 [ext_resource type="Texture2D" uid="uid://ch4kohbc0q0ux" path="res://Obstacles/Mobs/enemies.svg" id="2_ondcl"]
+[ext_resource type="AudioStream" uid="uid://pq72o147kb74" path="res://Obstacles/Mobs/353250__zuzek06__slimejump.wav" id="3_pykqv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6csbf"]
 atlas = ExtResource("2_ondcl")
@@ -63,3 +64,6 @@ shape = SubResource("CircleShape2D_jfs4r")
 position = Vector2(0, -10)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_jfs4r")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pykqv")

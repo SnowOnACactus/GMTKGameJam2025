@@ -2,6 +2,7 @@ extends Control
 @onready var resume_button: Button = $PauseBackground/PauseVBox/ResumeButton
 @onready var options_button: Button = $PauseBackground/PauseVBox/OptionsButton
 @onready var quit_button: Button = $PauseBackground/PauseVBox/QuitButton
+@onready var restart_button: Button = $PauseBackground/PauseVBox/RestartButton
 
 
 # Called when the node enters the scene tree for the first time.

@@ -13,18 +13,26 @@ signal overlap
 @onready var _sword: Sprite2D = $Weapon/Sword
 @onready var _collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var _placement_confirmation: Sprite2D = $PlacementConfirmation
-@onready var tutorial: Control = $"../Tutorial"
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
-var _tutorial_done := false:
-	set(bool):
-		_tutorial_done = bool
-		tutorial.visible = !bool
+# This dictionary of dictionaries allows us to label a song and call for it to play("key") 
+# at a specific time just by using the key - please keep to this format
+var sounds := {
+	"thought": {"audio": preload("res://Runners/543183__garuda1982__plop-sound-effect.wav"), "start_time": 0.3},
+	"jump": {"audio": preload("res://Runners/456374__felixyadomi__hop8.wav"), "start_time": 0.0},
+	"pain": {"audio": preload("res://Runners/434462__dersuperanton__getting-hit-hugh.wav"), "start_time": 0.1},
+	"game_over": {"audio": preload("res://Runners/382310__mountain_man__game-over-arcade.wav"), "start_time": 0.0}
+}
+
+
 
 @export var health := 3:
 	set(num):
-		if num <= 0:
+		if num == 0:
 			game_over.emit()
 			die()
+		if num > 0 and num < health:
+			play("pain")
 		health = num
 		hurt_or_heal.emit(health)
 
@@ -66,6 +74,8 @@ func _on_pickup(body) -> void:
 	held_item = body.pick_random_item()
 	_item_thought.texture = held_item.texture
 	body.queue_free()
+	if !get_parent().tutorial_done:
+		get_parent().taunt.text = "Hold E to preview placement"
 
 func _on_attack(direction) -> void:
 	#show sword
@@ -85,6 +95,7 @@ func _on_attack(direction) -> void:
 
 func _on_use_press() -> void:
 	if !_hovering_item:
+		play("thought")
 		_thought_bubble.visible = false
 		_hovering_item = held_item.scene.instantiate()
 		held_item = {}
@@ -92,6 +103,8 @@ func _on_use_press() -> void:
 		add_child(_hovering_item)
 		_hovering_item.set_physics_process(false)
 		_placement_confirmation.visible = true
+		if !get_parent().tutorial_done:
+			get_parent().taunt.text = "Release E to place the obstacle in a free space"
 
 func _on_use_release() -> void:
 	# Let the item go in the scene world where it was
@@ -107,6 +120,10 @@ func _on_use_release() -> void:
 			unlock.emit()
 		else:
 			overlap.emit()
+
+func play (sound: String) -> void:
+	audio_stream_player_2d.stream = sounds[sound].audio
+	audio_stream_player_2d.play(sounds[sound].start_time)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -134,6 +151,7 @@ func _physics_process(delta: float) -> void:
 		if _is_crouched:
 			_is_crouched = false
 		_sprite.play("jump")
+		play("jump")
 	
 	# stop jump when released
 	if Input.is_action_just_released("jump") and velocity.y < 0:
@@ -178,6 +196,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func die() -> void:
-	#TO-DO - play death sound
+	play("game_over")
 	_sprite.play("die")
 	set_physics_process(false)
