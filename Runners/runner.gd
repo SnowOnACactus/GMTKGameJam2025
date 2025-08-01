@@ -10,6 +10,8 @@ signal hurt_or_heal
 @onready var _weapon: Area2D = $Weapon
 @onready var _sword: Sprite2D = $Weapon/Sword
 @onready var _collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var _placement_confirmation: Sprite2D = $PlacementConfirmation
+
 @export var health := 3:
 	set(num):
 		if num <= 0:
@@ -73,27 +75,28 @@ func _on_attack(direction) -> void:
 	)
 
 func _on_use_press() -> void:
-	_thought_bubble.visible = false
-	_hovering_item = held_item.scene.instantiate()
-	_hovering_item.process_mode = Node.PROCESS_MODE_DISABLED
-	held_item = {}
-	_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
-	add_child(_hovering_item)
+	if !_hovering_item:
+		_thought_bubble.visible = false
+		_hovering_item = held_item.scene.instantiate()
+		held_item = {}
+		_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
+		add_child(_hovering_item)
+		_hovering_item.set_physics_process(false)
+		_placement_confirmation.visible = true
 
 func _on_use_release() -> void:
 	# Let the item go in the scene world where it was
 	if _hovering_item:
-		_hovering_item.process_mode = Node.PROCESS_MODE_INHERIT
-		if _hovering_item is Mob:
-			_hovering_item.starting_position = _hovering_item.global_position
-			print(_hovering_item.starting_position)
-		_hovering_item.reparent(get_tree().get_root().get_node("GameScene"), true)
-		print(_hovering_item.get_parent().position)
-		if _hovering_item is Mob:
-			print(_hovering_item.starting_position)
-		_hovering_item = null
-		has_item = false
-		unlock.emit()
+		print(_hovering_item.hitbox.get_overlapping_areas())
+		if !_hovering_item.hitbox.has_overlapping_areas():
+			if _hovering_item is Mob:
+				_hovering_item.starting_position = _hovering_item.global_position
+			_hovering_item.reparent(get_tree().get_root().get_node("GameScene"), true)
+			_hovering_item.set_physics_process(true)
+			_hovering_item = null
+			has_item = false
+			_placement_confirmation.visible = false
+			unlock.emit()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -105,10 +108,16 @@ func _physics_process(delta: float) -> void:
 		global_position.x -= get_viewport_rect().size.x + 90
 		loop.emit()
 	
-	#Run from left to right - do we want this?
-	if global_position.x < -50:
-		global_position.x += get_viewport_rect().size.x + 90
+	#Run from left to right - do we want this? Commenting out as it currently can trigger loops
+	#if global_position.x < -50:
+	#	global_position.x += get_viewport_rect().size.x + 90
 	
+	#display placement errors:
+	if _hovering_item and _hovering_item.hitbox.has_overlapping_areas():
+		_placement_confirmation.texture = preload("res://Runners/icon_cross.png")
+	if _hovering_item and !_hovering_item.hitbox.has_overlapping_areas():
+		_placement_confirmation.texture = preload("res://Runners/icon_checkmark.png")
+		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY

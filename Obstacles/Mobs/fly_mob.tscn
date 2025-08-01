@@ -38,10 +38,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a5l8j"]
-radius = 17.0294
+radius = 13.0384
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u1h0b"]
-radius = 11.9867
+radius = 13.0
 height = 42.0476
 
 [node name="FlyMob" type="CharacterBody2D" groups=["PickupChoice"]]
@@ -60,6 +60,6 @@ shape = SubResource("CircleShape2D_a5l8j")
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-1, -8)
+position = Vector2(-1, -5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_u1h0b")

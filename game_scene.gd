@@ -59,4 +59,4 @@ func _on_hurt_or_heal(health: int) -> void:
 func spawn_pickup() -> void:
 	var pickup = PICKUP.instantiate()
 	add_child(pickup)
-	pickup.global_position = Vector2(randf_range(100, get_viewport_rect().size.x - 100), 450)
+	pickup.global_position = Vector2(randf_range(100, get_viewport_rect().size.x/2), 450)

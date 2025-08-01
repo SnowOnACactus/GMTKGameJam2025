@@ -1,6 +1,8 @@
 extends Mob
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var starting_position:= position
+@onready var hitbox: Area2D = $Hitbox
+
 var _dir_right = false
 
 func _ready() -> void:
