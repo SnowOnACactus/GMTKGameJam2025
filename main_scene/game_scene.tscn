@@ -88,23 +88,6 @@ fit_content = true
 autowrap_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Boundries" parent="CanvasLayer" instance=ExtResource("6_kdryc")]
-position = Vector2(288, 616)
-scale = Vector2(10, 1)
-script = null
-
-[node name="LeftWall" type="StaticBody2D" parent="CanvasLayer/Boundries"]
-position = Vector2(82.3, -610)
-scale = Vector2(0.1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Boundries/LeftWall"]
-position = Vector2(-1158, 285.5)
-shape = SubResource("RectangleShape2D_miq82")
-
-[node name="ProgressGate" parent="CanvasLayer/Boundries" instance=ExtResource("8_e35lh")]
-position = Vector2(82.3, -610)
-scale = Vector2(0.1, 1)
-
 [node name="Heart1" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(33, 613)
 texture = ExtResource("10_miq82")
@@ -125,3 +108,20 @@ bus = &"Music"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 321)
+
+[node name="Boundries" parent="." instance=ExtResource("6_kdryc")]
+position = Vector2(288, 616)
+scale = Vector2(10, 1)
+script = null
+
+[node name="LeftWall" type="StaticBody2D" parent="Boundries"]
+position = Vector2(82.3, -610)
+scale = Vector2(0.1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/LeftWall"]
+position = Vector2(-1158, 285.5)
+shape = SubResource("RectangleShape2D_miq82")
+
+[node name="ProgressGate" parent="Boundries" instance=ExtResource("8_e35lh")]
+position = Vector2(82.3, -610)
+scale = Vector2(0.1, 1)

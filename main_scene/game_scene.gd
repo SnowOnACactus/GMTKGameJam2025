@@ -1,7 +1,7 @@
 extends Node2D
 @onready var _runner: CharacterBody2D = $Runner
 const PICKUP = preload("res://Pickup/pickup.tscn")
-@onready var _progress_gate: StaticBody2D = $CanvasLayer/Boundries/ProgressGate
+@onready var _progress_gate: StaticBody2D = $Boundries/ProgressGate
 @onready var _loop_display: RichTextLabel = $CanvasLayer/LoopDisplay
 @onready var _heart_1: Sprite2D = $CanvasLayer/Heart1
 @onready var _heart_2: Sprite2D = $CanvasLayer/Heart2
@@ -13,8 +13,6 @@ const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var _time_left: RichTextLabel = $CanvasLayer/LoopTimer/TimeLeft
 @onready var taunt: RichTextLabel = $CanvasLayer/Taunt
 @onready var camera_2d: Camera2D = $Camera2D
-
-
 
 var tutorial_done := false
 
