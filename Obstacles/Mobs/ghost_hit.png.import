@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b53hfvjjbe1yt"
-path="res://.godot/imported/ghost_normal.png-14ee4b9bd2719598e4b018fd70b71c24.ctex"
+uid="uid://cbh3t75wbi47f"
+path="res://.godot/imported/ghost_hit.png-2b1eecce6c2d9c5895f30a003d3fb305.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Extra animations and enemies/Enemy sprites/ghost_normal.png"
-dest_files=["res://.godot/imported/ghost_normal.png-14ee4b9bd2719598e4b018fd70b71c24.ctex"]
+source_file="res://Obstacles/Mobs/ghost_hit.png"
+dest_files=["res://.godot/imported/ghost_hit.png-2b1eecce6c2d9c5895f30a003d3fb305.ctex"]
 
 [params]
 

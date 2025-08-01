@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c515bxlcrr2nb"]
+
+[ext_resource type="Texture2D" uid="uid://byvokgul66sd8" path="res://Obstacles/spikes.png" id="1_s4xqn"]
+[ext_resource type="Script" uid="uid://c5pdtsx62hl60" path="res://Obstacles/spike_trap.gd" id="1_tcqjr"]
+[ext_resource type="Texture2D" uid="uid://eascmnwiu6e2" path="res://Obstacles/particleBrick1a.png" id="2_tcqjr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jmf2"]
+size = Vector2(70, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8xb6"]
+size = Vector2(58, 56)
+
+[node name="SpikeTrap" type="StaticBody2D"]
+script = ExtResource("1_tcqjr")
+
+[node name="Spikes" type="Sprite2D" parent="."]
+position = Vector2(0, -35)
+texture = ExtResource("1_s4xqn")
+
+[node name="Platform" type="Sprite2D" parent="."]
+position = Vector2(-8.34465e-07, 11.5)
+scale = Vector2(3.68421, 1.64286)
+texture = ExtResource("2_tcqjr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_7jmf2")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_e8xb6")

@@ -226,7 +226,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f8xdv"]
-radius = 39.0128
+radius = 36.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqshr"]
 size = Vector2(50.1308, 21.1129)
@@ -236,6 +236,7 @@ radius = 31.0
 height = 82.0
 
 [node name="Runner" type="CharacterBody2D"]
+z_index = 100
 script = ExtResource("1_hn08k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc0k01exrwf0u"
-path="res://.godot/imported/shroomRedAltRight.png-a21f702517d1a9100b87f8452b8bdcf4.ctex"
+uid="uid://clrvi8f2em54g"
+path="res://.godot/imported/ghost.png-1c8c5eb19f429fd45006a825256a0d5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/Platformer Art Complete Pack/Mushroom expansion/PNG/shroomRedAltRight.png"
-dest_files=["res://.godot/imported/shroomRedAltRight.png-a21f702517d1a9100b87f8452b8bdcf4.ctex"]
+source_file="res://Obstacles/Mobs/ghost.png"
+dest_files=["res://.godot/imported/ghost.png-1c8c5eb19f429fd45006a825256a0d5a.ctex"]
 
 [params]
 
