@@ -3,6 +3,7 @@ signal loop
 signal unlock
 signal hurt_or_heal
 signal game_over
+signal overlap
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _pickup_radius: Area2D = $PickupRadius
@@ -12,6 +13,12 @@ signal game_over
 @onready var _sword: Sprite2D = $Weapon/Sword
 @onready var _collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var _placement_confirmation: Sprite2D = $PlacementConfirmation
+@onready var tutorial: Control = $"../Tutorial"
+
+var _tutorial_done := false:
+	set(bool):
+		_tutorial_done = bool
+		tutorial.visible = !bool
 
 @export var health := 3:
 	set(num):
@@ -98,6 +105,8 @@ func _on_use_release() -> void:
 			has_item = false
 			_placement_confirmation.visible = false
 			unlock.emit()
+		else:
+			overlap.emit()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

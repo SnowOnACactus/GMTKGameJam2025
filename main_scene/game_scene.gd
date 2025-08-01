@@ -12,6 +12,7 @@ const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var menu_controller: CanvasLayer = $MenuController
 @onready var _loop_timer: Timer = $LoopTimer
 @onready var _time_left: RichTextLabel = $LoopTimer/TimeLeft
+@onready var _taunt: RichTextLabel = $CanvasLayer/Taunt
 
 var loop_number := 0:
 	set(num):
@@ -25,6 +26,11 @@ func _ready() -> void:
 	_runner.unlock.connect(func() -> void: _progress_gate.open = true)
 	_runner.hurt_or_heal.connect(_on_hurt_or_heal)
 	_runner.game_over.connect(func() -> void: game_over("die"))
+	_runner.overlap.connect(func() -> void:
+		_taunt.text = "[color=red]Overlapping is not allowed. Try again![/color]"
+		await get_tree().create_timer(2.0).timeout
+		_taunt.text = "Can you make it to 20?"
+	)
 	_loop_timer.timeout.connect(func() -> void: game_over("time"))
 
 func game_over(reason) -> void:
