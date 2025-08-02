@@ -1,6 +1,6 @@
 extends MarginContainer
 @onready var title: Label = $VBoxContainer/Title
-@onready var texture: TextureRect = $VBoxContainer/Panel/Texture
+@onready var texture: TextureRect = $VBoxContainer/Texture
 @onready var get_button: Button = $VBoxContainer/GetButton
 @onready var explaination: Label = $VBoxContainer/Explaination
 

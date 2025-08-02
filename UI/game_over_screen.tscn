@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi1ndy6r7yut1"]
+[gd_scene load_steps=3 format=3 uid="uid://bi1ndy6r7yut1"]
 
 [ext_resource type="Script" uid="uid://fu2m3kcdti3s" path="res://UI/game_over_screen.gd" id="1_ftyas"]
 [ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="1_yjwqv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0gn4"]
-bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -16,7 +13,7 @@ grow_vertical = 2
 theme = ExtResource("1_yjwqv")
 script = ExtResource("1_ftyas")
 
-[node name="GameOverBackground" type="PanelContainer" parent="."]
+[node name="GameOverBackground" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,36 +21,61 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -192.0
-offset_top = -156.0
+offset_top = -128.0
 offset_right = 192.0
-offset_bottom = 100.0
+offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yjwqv")
-theme_override_styles/panel = SubResource("StyleBoxFlat_o0gn4")
 
 [node name="GameOverVBox" type="VBoxContainer" parent="GameOverBackground"]
 process_mode = 3
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -106.5
+offset_right = 139.0
+offset_bottom = 106.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_yjwqv")
 alignment = 1
 
-[node name="GameOverTitle" type="RichTextLabel" parent="GameOverBackground/GameOverVBox"]
+[node name="MarginContainer" type="MarginContainer" parent="GameOverBackground/GameOverVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GameOverTitle" type="Label" parent="GameOverBackground/GameOverVBox/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("1_yjwqv")
-bbcode_enabled = true
-text = "[center]Game Over[/center]"
-fit_content = true
-autowrap_mode = 0
+theme_override_font_sizes/font_size = 34
+text = "Game Over"
+horizontal_alignment = 1
 
-[node name="TryAgainButton" type="Button" parent="GameOverBackground/GameOverVBox"]
+[node name="MarginContainer2" type="MarginContainer" parent="GameOverBackground/GameOverVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_bottom = 5
+
+[node name="TryAgainButton" type="Button" parent="GameOverBackground/GameOverVBox/MarginContainer2"]
 layout_mode = 2
 theme = ExtResource("1_yjwqv")
 text = "Try Again?"
 
-[node name="QuitButton" type="Button" parent="GameOverBackground/GameOverVBox"]
+[node name="MarginContainer3" type="MarginContainer" parent="GameOverBackground/GameOverVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 5
+
+[node name="QuitButton" type="Button" parent="GameOverBackground/GameOverVBox/MarginContainer3"]
 layout_mode = 2
 theme = ExtResource("1_yjwqv")
 text = "Quit"
