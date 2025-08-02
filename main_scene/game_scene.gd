@@ -14,6 +14,7 @@ const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var taunt: RichTextLabel = $CanvasLayer/Taunt
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var shield: Sprite2D = $CanvasLayer/HealthDisplay/Shield
+@onready var _audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var alarm: AudioStreamPlayer2D = $"Alarm sound effect"
 var _alarm_not_sounded = true
 
@@ -39,6 +40,7 @@ func _ready() -> void:
 	)
 	_runner.shield_broken.connect(shield.hide)
 	_loop_timer.timeout.connect(func() -> void: game_over("time"))
+	_audio_stream_player_2d.finished.connect(_audio_stream_player_2d.play)
 	#var tween = create_tween()
 	#tween.tween_property(camera_2d, "zoom", Vector2(0.5,0.5), 10)
 	#var tween2 = create_tween()

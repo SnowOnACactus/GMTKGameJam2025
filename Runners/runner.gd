@@ -155,12 +155,9 @@ func _on_use_release() -> void:
 	# Let the item go in the scene world where it was
 	if _hovering_item:
 		if !_hovering_item.hitbox.has_overlapping_areas():
-			if _hovering_item is Mob:
-				print(_hovering_item.starting_position)
-				_hovering_item.starting_position = _hovering_item.global_position
-				print(_hovering_item.starting_position)
-				print(_thought_bubble.position)
 			_hovering_item.reparent(get_tree().get_root().get_node("GameScene"), true)
+			if _hovering_item is Mob:
+				_hovering_item.starting_position = _hovering_item.global_position * 2
 			_hovering_item.set_physics_process(true)
 			_hovering_item = null
 			has_item = false
@@ -195,7 +192,8 @@ func _physics_process(delta: float) -> void:
 		_placement_confirmation.texture = preload("res://Runners/icon_cross.png")
 	if _hovering_item and !_hovering_item.hitbox.has_overlapping_areas():
 		_placement_confirmation.texture = preload("res://Runners/icon_checkmark.png")
-		
+	
+
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or (wings_upgrade and !_double_jumped)):
 		velocity.y = jump_velocity
@@ -212,7 +210,6 @@ func _physics_process(delta: float) -> void:
 	# stop jump when released
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y = 0
-
 	if Input.is_action_just_pressed("move_down") and is_on_floor():
 		_is_crouched = true
 

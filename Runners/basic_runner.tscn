@@ -250,12 +250,11 @@ height = 82.0
 [node name="Runner" type="CharacterBody2D"]
 z_index = 100
 script = ExtResource("1_hn08k")
-health = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sc1do")
 animation = &"ouch"
-frame_progress = 0.974441
+frame_progress = 0.598929
 
 [node name="PickupRadius" type="Area2D" parent="."]
 

@@ -11,10 +11,10 @@ func _ready() -> void:
 	_sprite.play("fly")
 
 func _physics_process(delta: float) -> void:
-	if position.x > starting_position.x + 100.0:
+	if position.x > starting_position.x + 200.0:
 		_dir_right = false
 		_sprite.flip_h = false
-	if position.x < starting_position.x - 100.0:
+	if position.x < starting_position.x - 200.0:
 		_dir_right = true
 		_sprite.flip_h = true
 	if _dir_right:
