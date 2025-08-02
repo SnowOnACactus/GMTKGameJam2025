@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ur4sqm4vdxd8"]
+[gd_scene load_steps=3 format=3 uid="uid://ur4sqm4vdxd8"]
 
 [ext_resource type="Script" uid="uid://dw6hlum7opf1b" path="res://UI/pause_menu.gd" id="1_mdv54"]
 [ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="2_jfm1e"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0gn4"]
-bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -13,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_jfm1e")
 script = ExtResource("1_mdv54")
 
 [node name="PauseBackground" type="PanelContainer" parent="."]
@@ -29,7 +27,6 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_jfm1e")
-theme_override_styles/panel = SubResource("StyleBoxFlat_o0gn4")
 
 [node name="PauseVBox" type="VBoxContainer" parent="PauseBackground"]
 process_mode = 3

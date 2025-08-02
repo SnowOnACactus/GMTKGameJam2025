@@ -64,6 +64,7 @@ func _on_loop() -> void:
 	loop_number += 1
 	var new_time = _loop_timer.time_left + 10
 	_loop_timer.wait_time = new_time
+	
 	_loop_timer.start()
 	if loop_number == 1:
 		taunt.text = "Collect the item to open the door"
