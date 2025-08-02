@@ -7,7 +7,7 @@ signal overlap
 signal shield_broken
 
 var speed = 300.0
-var jump_velocity = -600.0
+var jump_velocity = -500.0
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _pickup_radius: Area2D = $PickupRadius
 @onready var _thought_bubble: Sprite2D = $ThoughtBubble
@@ -77,6 +77,10 @@ var _is_crouched := false:
 		_sprite.flip_h = !_sprite.flip_h
 var faced_right := true:
 	set(bool):
+		if _hovering_item and bool:
+			_hovering_item.position.x = _thought_bubble.position.x - 200
+		if _hovering_item and !bool:
+			_hovering_item.position.x = _thought_bubble.position.x + 200
 		faced_right = bool
 		_sprite.flip_h = bool
 
@@ -90,6 +94,7 @@ func _ready() -> void:
 			if (body.get_parent() is Mob or body.get_parent() is Hurt) and !invulnerable_frames:
 				if removal_upgrade:
 					body.get_parent().queue_free()
+					removal_upgrade = false
 				else:
 					if shielded:
 						shielded = false
@@ -99,6 +104,7 @@ func _ready() -> void:
 			if body.get_parent() is Bouncy:
 				if removal_upgrade:
 					body.get_parent().queue_free()
+					removal_upgrade = false
 				else:
 					velocity.y = -1000
 					play("boing")
@@ -135,7 +141,10 @@ func _on_use_press() -> void:
 		_thought_bubble.visible = false
 		_hovering_item = held_item.scene.instantiate()
 		held_item = {}
-		_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
+		if faced_right:
+			_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
+		if !faced_right:
+			_hovering_item.position = Vector2(_thought_bubble.position.x - 200, _thought_bubble.position.y)
 		add_child(_hovering_item)
 		_hovering_item.set_physics_process(false)
 		_placement_confirmation.visible = true
@@ -147,6 +156,7 @@ func _on_use_release() -> void:
 	if _hovering_item:
 		if !_hovering_item.hitbox.has_overlapping_areas():
 			if _hovering_item is Mob:
+				# this doesn't appear to be working correctly
 				_hovering_item.starting_position = _hovering_item.global_position
 			_hovering_item.reparent(get_tree().get_root().get_node("GameScene"), true)
 			_hovering_item.set_physics_process(true)
@@ -167,8 +177,8 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	#Run from right side to left
-	if global_position.x > get_viewport_rect().size.x + 50:
-		global_position.x -= get_viewport_rect().size.x + 90
+	if global_position.x > get_viewport_rect().size.x + 25:
+		global_position.x -= get_viewport_rect().size.x + 40
 		loop.emit()
 	
 	#Run from left to right - do we want this? Commenting out as it currently can trigger loops
@@ -216,7 +226,6 @@ func _physics_process(delta: float) -> void:
 		_on_use_release()
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	if Input.is_action_just_pressed("attack"):

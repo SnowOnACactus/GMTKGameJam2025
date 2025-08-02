@@ -1,11 +1,11 @@
 extends Node2D
 @onready var _runner: CharacterBody2D = $Runner
 const PICKUP = preload("res://Pickup/pickup.tscn")
-@onready var _progress_gate: StaticBody2D = $Boundries/ProgressGate
+@onready var _progress_gate: StaticBody2D = $ProgressGate
 @onready var _loop_display: RichTextLabel = $CanvasLayer/LoopDisplay
-@onready var _heart_1: Sprite2D = $CanvasLayer/Heart1
-@onready var _heart_2: Sprite2D = $CanvasLayer/Heart2
-@onready var _heart_3: Sprite2D = $CanvasLayer/Heart3
+@onready var _heart_1: Sprite2D = $CanvasLayer/HealthDisplay/Heart1
+@onready var _heart_2: Sprite2D = $CanvasLayer/HealthDisplay/Heart2
+@onready var _heart_3: Sprite2D = $CanvasLayer/HealthDisplay/Heart3
 const _HEART_EMPTY = preload("res://Runners/hud_heartEmpty.png")
 const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var menu_controller: CanvasLayer = $MenuController
@@ -13,7 +13,7 @@ const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var _time_left: RichTextLabel = $CanvasLayer/LoopTimer/TimeLeft
 @onready var taunt: RichTextLabel = $CanvasLayer/Taunt
 @onready var camera_2d: Camera2D = $Camera2D
-@onready var shield: Sprite2D = $CanvasLayer/Shield
+@onready var shield: Sprite2D = $CanvasLayer/HealthDisplay/Shield
 
 
 var tutorial_done := false
