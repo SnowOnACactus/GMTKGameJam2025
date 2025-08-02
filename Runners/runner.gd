@@ -156,8 +156,10 @@ func _on_use_release() -> void:
 	if _hovering_item:
 		if !_hovering_item.hitbox.has_overlapping_areas():
 			if _hovering_item is Mob:
-				# this doesn't appear to be working correctly
+				print(_hovering_item.starting_position)
 				_hovering_item.starting_position = _hovering_item.global_position
+				print(_hovering_item.starting_position)
+				print(_thought_bubble.position)
 			_hovering_item.reparent(get_tree().get_root().get_node("GameScene"), true)
 			_hovering_item.set_physics_process(true)
 			_hovering_item = null

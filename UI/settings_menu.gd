@@ -1,8 +1,8 @@
 extends Control
 
-@onready var back_button: Button = $SettingsBackground/SettingsVBox/BackButton
-@onready var _music_slider: HSlider = $SettingsBackground/SettingsVBox/MusicHBox/MusicSlider
-@onready var _sounds_slider: HSlider = $SettingsBackground/SettingsVBox/SoundsHBox/SoundsSlider
+@onready var back_button: Button = $SettingsBackground/MarginContainer/SettingsVBox/BackButton
+@onready var _music_slider: HSlider = $SettingsBackground/MarginContainer/SettingsVBox/MarginContainer/MusicHBox/MusicSlider
+@onready var _sounds_slider: HSlider = $SettingsBackground/MarginContainer/SettingsVBox/MarginContainer2/SoundsHBox/SoundsSlider
 
 
 # Called when the node enters the scene tree for the first time.

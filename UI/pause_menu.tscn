@@ -13,7 +13,7 @@ grow_vertical = 2
 theme = ExtResource("2_jfm1e")
 script = ExtResource("1_mdv54")
 
-[node name="PauseBackground" type="PanelContainer" parent="."]
+[node name="PauseBackground" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,36 +30,67 @@ theme = ExtResource("2_jfm1e")
 
 [node name="PauseVBox" type="VBoxContainer" parent="PauseBackground"]
 process_mode = 3
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.5
+offset_top = -107.5
+offset_right = 130.5
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_jfm1e")
 alignment = 1
 
-[node name="PauseTitle" type="RichTextLabel" parent="PauseBackground/PauseVBox"]
+[node name="MarginContainer" type="MarginContainer" parent="PauseBackground/PauseVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PauseTitle" type="Label" parent="PauseBackground/PauseVBox/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("2_jfm1e")
-bbcode_enabled = true
-text = "[center]Game Paused[/center]"
-fit_content = true
-autowrap_mode = 0
+theme_override_font_sizes/font_size = 29
+text = "Game Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="PauseBackground/PauseVBox"]
+[node name="MarginContainer2" type="MarginContainer" parent="PauseBackground/PauseVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ResumeButton" type="Button" parent="PauseBackground/PauseVBox/MarginContainer2"]
 layout_mode = 2
 theme = ExtResource("2_jfm1e")
 text = "Resume"
 
-[node name="OptionsButton" type="Button" parent="PauseBackground/PauseVBox"]
+[node name="MarginContainer3" type="MarginContainer" parent="PauseBackground/PauseVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OptionsButton" type="Button" parent="PauseBackground/PauseVBox/MarginContainer3"]
 layout_mode = 2
 theme = ExtResource("2_jfm1e")
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="PauseBackground/PauseVBox"]
+[node name="MarginContainer4" type="MarginContainer" parent="PauseBackground/PauseVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuitButton" type="Button" parent="PauseBackground/PauseVBox/MarginContainer4"]
 layout_mode = 2
 theme = ExtResource("2_jfm1e")
 text = "Quit"
 
-[node name="RestartButton" type="Button" parent="PauseBackground/PauseVBox"]
+[node name="MarginContainer5" type="MarginContainer" parent="PauseBackground/PauseVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RestartButton" type="Button" parent="PauseBackground/PauseVBox/MarginContainer5"]
 layout_mode = 2
 theme = ExtResource("2_jfm1e")
 text = "Restart"

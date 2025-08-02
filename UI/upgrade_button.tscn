@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsthn337a4tpl"]
 
 [ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="1_7xvuj"]
-[ext_resource type="Script" path="res://UI/upgrade_button.gd" id="1_n4eqk"]
+[ext_resource type="Script" uid="uid://cm6w8g2bair67" path="res://UI/upgrade_button.gd" id="1_n4eqk"]
 [ext_resource type="Texture2D" uid="uid://b5b3rrq8x1yag" path="res://Upgrades/shrink.png" id="3_7xvuj"]
 
 [node name="UpgradeButton" type="MarginContainer"]
@@ -22,34 +22,21 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_7xvuj")
 text = "Filler"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="VBoxContainer"]
+[node name="Texture" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("1_7xvuj")
-
-[node name="Texture" type="TextureRect" parent="VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -35.0
-offset_right = 35.0
-offset_bottom = 35.0
-grow_horizontal = 2
-grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 theme = ExtResource("1_7xvuj")
 texture = ExtResource("3_7xvuj")
-expand_mode = 4
-stretch_mode = 3
+stretch_mode = 2
 
 [node name="GetButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 10
 theme = ExtResource("1_7xvuj")
 text = "Get Upgrade"
 
@@ -58,3 +45,6 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_7xvuj")
 text = "Filler"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

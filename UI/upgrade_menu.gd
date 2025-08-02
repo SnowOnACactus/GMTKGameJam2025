@@ -37,6 +37,12 @@ func choose_upgrade(button) -> void:
 func refresh_upgrades() -> void:
 	choose_upgrade(upgrade_1)
 	choose_upgrade(upgrade_2)
+	if upgrade_1.texture.texture == upgrade_2.texture.texture:
+		choose_upgrade(upgrade_2)
+	if upgrade_1.texture.texture == upgrade_2.texture.texture:
+		choose_upgrade(upgrade_2)
+	if upgrade_1.texture.texture == upgrade_2.texture.texture:
+		choose_upgrade(upgrade_2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
