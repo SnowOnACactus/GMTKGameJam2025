@@ -14,10 +14,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if position.x > starting_position.x + 100.0:
+	if position.x > starting_position.x + 150.0:
 		_dir_right = false
 		_sprite.flip_h = false
-	if position.x < starting_position.x - 100.0:
+	if position.x < starting_position.x - 150.0:
 		_dir_right = true
 		_sprite.flip_h = true
 	if _dir_right:
