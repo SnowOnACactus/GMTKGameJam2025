@@ -18,3 +18,4 @@ Pain sound - https://freesound.org/people/dersuperanton/sounds/434462/
 Game over - https://freesound.org/people/dersuperanton/sounds/434462/
 Boing sound - https://freesound.org/people/magnuswaker/sounds/540790/
 Shrink upgrade - https://www.flaticon.com/free-icon/shrink_6469466
+Pastel Theme - https://intergenic.itch.io/godot-theme-pastel
