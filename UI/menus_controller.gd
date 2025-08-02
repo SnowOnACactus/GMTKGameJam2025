@@ -6,6 +6,7 @@ extends CanvasLayer
 
 # Connecting all the menu's buttons.
 func _ready() -> void:
+	upgrade_menu.show()
 	pause_menu.resume_button.pressed.connect(func () -> void:
 		get_tree().paused = false
 		pause_menu.hide()
@@ -26,11 +27,11 @@ func _ready() -> void:
 		pause_menu.show()
 	)
 	#TO-DO - make these upgrades do something
-	upgrade_menu.upgrade_1.pressed.connect(func() -> void:
+	upgrade_menu.upgrade_1.get_button.pressed.connect(func() -> void:
 		upgrade_menu.hide()
 		get_tree().paused = false
 	)
-	upgrade_menu.upgrade_2.pressed.connect(func() -> void:
+	upgrade_menu.upgrade_2.get_button.pressed.connect(func() -> void:
 		upgrade_menu.hide()
 		get_tree().paused = false
 	)
