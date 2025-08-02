@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1stk66ddlo5e"]
+
+[ext_resource type="Script" uid="uid://b6277pvilca1w" path="res://Runners/item_spawn_poof.gd" id="1_qcysv"]
+
+[sub_resource type="Curve" id="Curve_xquab"]
+_limits = [0.0, 1.0, 0.0, 1.10227]
+_data = [Vector2(0, 0.325843), 0.0, 0.0, 0, 0, Vector2(0.726498, 0.662921), 0.0, 0.0, 0, 0, Vector2(1.10227, 0.0674158), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_qcysv"]
+offsets = PackedFloat32Array(0, 0.613333, 1)
+colors = PackedColorArray(0.991639, 0.918569, 0.703106, 1, 0.996646, 0.964603, 0.871069, 1, 1, 1, 1, 0)
+
+[node name="ItemSpawnPoof" type="Node2D"]
+script = ExtResource("1_qcysv")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 25.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 60.0
+scale_amount_min = 15.0
+scale_amount_max = 40.0
+scale_amount_curve = SubResource("Curve_xquab")
+color_ramp = SubResource("Gradient_qcysv")
+hue_variation_min = -0.2
+hue_variation_max = 0.2
