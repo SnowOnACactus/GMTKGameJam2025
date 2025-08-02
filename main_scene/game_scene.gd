@@ -59,12 +59,14 @@ func game_over(reason) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_time_left.text = "Time left: " + (str(floori(_loop_timer.get_time_left()))) + "s"
+	#5sec alert sound and red text
 	if (floori(_loop_timer.get_time_left())) <=5:
-		if _alarm_not_sounded:
+		if _alarm_not_sounded and (floori(_loop_timer.get_time_left())) > 0:
 			_alarm_not_sounded = false
 			alarm.play()
 		_time_left.add_theme_color_override("default_color", Color(1,0,0))
 	else:
+		#reset text to black
 		_time_left.add_theme_color_override("default_color", Color(0,0,0))
 
 func _on_loop() -> void:

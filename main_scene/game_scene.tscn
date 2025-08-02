@@ -169,6 +169,7 @@ position = Vector2(836, 1226)
 
 [node name="FlyMob" parent="." instance=ExtResource("5_mj2jn")]
 position = Vector2(1932, 1078)
+motion_mode = 0
 
 [node name="Runner" parent="." instance=ExtResource("3_mj2jn")]
 position = Vector2(102, 1194)
