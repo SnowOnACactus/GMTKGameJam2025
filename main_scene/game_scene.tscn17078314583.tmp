@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dyy3d4ih2jjg8"]
+[gd_scene load_steps=18 format=3 uid="uid://dyy3d4ih2jjg8"]
 
 [ext_resource type="Script" uid="uid://dh5v3mh50aex" path="res://main_scene/game_scene.gd" id="1_v1wow"]
 [ext_resource type="Texture2D" uid="uid://c8y5ha6pxxsln" path="res://main_scene/backgroundColorForest.png" id="2_j5hk1"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://cbujyou4vok1l" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleLeft.png" id="13_48phd"]
 [ext_resource type="Texture2D" uid="uid://b37cfd0lws81c" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleMid.png" id="14_ajot5"]
 [ext_resource type="Texture2D" uid="uid://bh2ujnhxukvwo" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleRight.png" id="15_7vkts"]
-[ext_resource type="AudioStream" uid="uid://cayxklrvjrxc0" path="res://main_scene/error-011-352286.ogg" id="16_ajot5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sj2o7"]
 size = Vector2(543, 72)
@@ -179,6 +178,3 @@ position = Vector2(2257, 712)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
 position = Vector2(-2412.5, -137.25)
 shape = SubResource("RectangleShape2D_miq82")
-
-[node name="Alarm sound effect" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("16_ajot5")

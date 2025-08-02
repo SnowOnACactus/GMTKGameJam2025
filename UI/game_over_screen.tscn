@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi1ndy6r7yut1"]
+[gd_scene load_steps=3 format=3 uid="uid://bi1ndy6r7yut1"]
 
 [ext_resource type="Script" uid="uid://fu2m3kcdti3s" path="res://UI/game_over_screen.gd" id="1_ftyas"]
 [ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="1_yjwqv"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0gn4"]
-bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -30,7 +27,6 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yjwqv")
-theme_override_styles/panel = SubResource("StyleBoxFlat_o0gn4")
 
 [node name="GameOverVBox" type="VBoxContainer" parent="GameOverBackground"]
 process_mode = 3
