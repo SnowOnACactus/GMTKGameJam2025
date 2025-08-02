@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dasmqhuk23sr3"]
+[gd_scene load_steps=11 format=3 uid="uid://dasmqhuk23sr3"]
 
 [ext_resource type="Script" uid="uid://bkrco2c25vk7y" path="res://Obstacles/Mobs/slime_mob.gd" id="1_oojpn"]
 [ext_resource type="Texture2D" uid="uid://ch4kohbc0q0ux" path="res://Obstacles/Mobs/enemies.svg" id="2_ondcl"]
 [ext_resource type="AudioStream" uid="uid://pq72o147kb74" path="res://Obstacles/Mobs/353250__zuzek06__slimejump.wav" id="3_pykqv"]
+[ext_resource type="PackedScene" uid="uid://c1stk66ddlo5e" path="res://Runners/item_spawn_poof.tscn" id="4_f1i04"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6csbf"]
 atlas = ExtResource("2_ondcl")
@@ -53,6 +54,9 @@ position = Vector2(9, 0)
 sprite_frames = SubResource("SpriteFrames_cbkkl")
 animation = &"walk"
 frame_progress = 0.537243
+
+[node name="ItemSpawnPoof" parent="AnimatedSprite2D" instance=ExtResource("4_f1i04")]
+position = Vector2(-13, -6)
 
 [node name="Hitbox" type="Area2D" parent="."]
 
