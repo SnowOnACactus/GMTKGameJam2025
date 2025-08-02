@@ -19,3 +19,10 @@ Game over - https://freesound.org/people/dersuperanton/sounds/434462/
 Boing sound - https://freesound.org/people/magnuswaker/sounds/540790/
 Shrink upgrade - https://www.flaticon.com/free-icon/shrink_6469466
 Pastel Theme - https://intergenic.itch.io/godot-theme-pastel
+Wings upgrade - https://www.vecteezy.com/png/9384742-angel-wings-clipart-design-illustration
+Shield upgrade - https://www.flaticon.com/free-icon/shield_9414678
+Invulnerability upgrade - https://www.flaticon.com/free-icon/muscles_6042780
+Jump upgrade - https://www.flaticon.com/free-icon/parkour_17097034?term=jump&page=1&position=13&origin=search&related_id=17097034
+Speed upgrade - https://www.flaticon.com/free-icon/running_9233257?term=speed&related_id=9233257
+Rotate upgrade - https://www.flaticon.com/free-icon/rotate_14356777?term=rotate&page=1&position=39&origin=search&related_id=14356777
+Destroy upgrade - https://www.flaticon.com/free-icon/destroyed-planet_12950674?term=destroy&page=1&position=15&origin=search&related_id=12950674

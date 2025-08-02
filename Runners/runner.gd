@@ -4,9 +4,10 @@ signal unlock
 signal hurt_or_heal
 signal game_over
 signal overlap
+signal shield_broken
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+var speed = 300.0
+var jump_velocity = -600.0
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _pickup_radius: Area2D = $PickupRadius
 @onready var _thought_bubble: Sprite2D = $ThoughtBubble
@@ -25,15 +26,37 @@ var sounds := {
 	"boing": {"audio": preload("res://Runners/540790__magnuswaker__boing-2.wav"), "start_time": 0.0}
 }
 
+var invulnerable_frames := false:
+	set(bool):
+		if bool == true:
+			invulnerable_frames = true
+			await get_tree().create_timer(invulnerable_upgrade).timeout
+			invulnerable_frames = false
+		else:
+			invulnerable_frames = false
 var sword_upgrade := false
 var wings_upgrade := false
 var _double_jumped := false
+var rotation_upgrade := false
+var invulnerable_upgrade := 1
+var shielded := false:
+	set(bool):
+		if bool == false: shield_broken.emit()
+		shielded = bool
+var removal_upgrade = false
+var shield_upgrade := false:
+	set(bool):
+		if bool == true: shielded = true
+		shield_upgrade = bool
+
 @export var health := 3:
 	set(num):
 		if num == 0:
 			game_over.emit()
 			die()
 		if num > 0 and num < health:
+			invulnerable_frames = true
+			_sprite.play("ouch")
 			play("pain")
 		health = num
 		hurt_or_heal.emit(health)
@@ -64,11 +87,21 @@ func _ready() -> void:
 		func(body) -> void: 
 			if body is Pickup: 
 				_on_pickup(body)
-			if body.get_parent() is Mob or body.get_parent() is Hurt:
-				health -= 1
+			if (body.get_parent() is Mob or body.get_parent() is Hurt) and !invulnerable_frames:
+				if removal_upgrade:
+					body.get_parent().queue_free()
+				else:
+					if shielded:
+						shielded = false
+						invulnerable_frames = true
+					else:
+						health -= 1
 			if body.get_parent() is Bouncy:
-				velocity.y = -1000
-				play("boing")
+				if removal_upgrade:
+					body.get_parent().queue_free()
+				else:
+					velocity.y = -1000
+					play("boing")
 	)
 
 func _on_pickup(body) -> void:
@@ -142,6 +175,9 @@ func _physics_process(delta: float) -> void:
 	#if global_position.x < -50:
 	#	global_position.x += get_viewport_rect().size.x + 90
 	
+	if rotation_upgrade and _hovering_item:
+		_hovering_item.rotation += delta
+	
 	#display placement errors:
 	if _hovering_item and _hovering_item.hitbox.has_overlapping_areas():
 		_placement_confirmation.texture = preload("res://Runners/icon_cross.png")
@@ -150,7 +186,7 @@ func _physics_process(delta: float) -> void:
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or (wings_upgrade and !_double_jumped)):
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jump_velocity
 		if wings_upgrade and !is_on_floor():
 			_double_jumped = true
 			_sprite.play("fly")
@@ -197,11 +233,11 @@ func _physics_process(delta: float) -> void:
 			faced_right = false
 		if velocity.y == 0:
 			_sprite.play("walk")
-		velocity.x = direction * SPEED
+		velocity.x = direction * speed
 	else:
 		if velocity == Vector2.ZERO and !_is_crouched:
 			_sprite.play("idle")
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 	move_and_slide()
 
 func die() -> void:

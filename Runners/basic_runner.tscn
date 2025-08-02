@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://wtcdc5r5wspd"]
+[gd_scene load_steps=37 format=3 uid="uid://wtcdc5r5wspd"]
 
 [ext_resource type="Script" uid="uid://c7mi6hc8y2wlr" path="res://Runners/runner.gd" id="1_hn08k"]
 [ext_resource type="Texture2D" uid="uid://bd2l2a15nglc8" path="res://Runners/guy.png" id="2_r5bnu"]
@@ -98,6 +98,10 @@ region = Rect2(200, 200, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwrrq"]
 atlas = ExtResource("2_r5bnu")
 region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjbyb"]
+atlas = ExtResource("2_r5bnu")
+region = Rect2(0, 200, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e4vk3"]
 atlas = ExtResource("2_r5bnu")
@@ -215,6 +219,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vjbyb")
+}],
+"loop": true,
+"name": &"ouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_e4vk3")
 }, {
 "duration": 1.0,
@@ -241,7 +253,8 @@ script = ExtResource("1_hn08k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sc1do")
-animation = &"idle"
+animation = &"ouch"
+frame_progress = 0.997294
 
 [node name="PickupRadius" type="Area2D" parent="."]
 

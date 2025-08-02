@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyy3d4ih2jjg8"]
+[gd_scene load_steps=15 format=3 uid="uid://dyy3d4ih2jjg8"]
 
 [ext_resource type="Script" uid="uid://dh5v3mh50aex" path="res://main_scene/game_scene.gd" id="1_v1wow"]
 [ext_resource type="Texture2D" uid="uid://c8y5ha6pxxsln" path="res://main_scene/backgroundColorForest.png" id="2_j5hk1"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ckbr71skloy0f" path="res://UI/menu_controller.tscn" id="9_udeyl"]
 [ext_resource type="Texture2D" uid="uid://6ma7q10dayd" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/signRight.png" id="10_daj04"]
 [ext_resource type="Texture2D" uid="uid://byh418b0f75dc" path="res://Runners/hud_heartFull.png" id="10_miq82"]
+[ext_resource type="Texture2D" uid="uid://dmuh4uxt10707" path="res://Upgrades/shield.png" id="10_nj3i6"]
 [ext_resource type="AudioStream" uid="uid://bfd820qrtlvof" path="res://main_scene/little town - orchestral.ogg" id="11_vjqtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miq82"]
@@ -104,6 +105,12 @@ texture = ExtResource("10_miq82")
 position = Vector2(153, 613)
 texture = ExtResource("10_miq82")
 
+[node name="Shield" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(213, 613)
+scale = Vector2(0.842857, 0.742857)
+texture = ExtResource("10_nj3i6")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("11_vjqtn")
@@ -114,7 +121,7 @@ bus = &"Music"
 position = Vector2(577, 321)
 
 [node name="Boundries" parent="." instance=ExtResource("6_kdryc")]
-position = Vector2(288, 616)
+position = Vector2(279, 616)
 scale = Vector2(10, 1)
 script = null
 

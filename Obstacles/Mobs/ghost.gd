@@ -21,5 +21,4 @@ func _physics_process(_delta: float) -> void:
 		velocity = position.direction_to(player.position)
 		velocity.x *= SPEED
 		velocity.y *= SPEED
-		print(velocity)
 	move_and_slide()

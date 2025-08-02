@@ -21,8 +21,6 @@ theme = ExtResource("3_sncbj")
 
 [node name="UpgradeMenu" parent="." instance=ExtResource("4_4hamd")]
 visible = false
-theme = ExtResource("3_sncbj")
 
 [node name="GameOverScreen" parent="." instance=ExtResource("5_pluqf")]
 visible = false
-theme = ExtResource("3_sncbj")

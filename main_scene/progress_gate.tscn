@@ -13,7 +13,7 @@
 size = Vector2(92, 127)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1qjn"]
-size = Vector2(45, 460)
+size = Vector2(45, 865)
 
 [node name="ProgressGate" type="StaticBody2D"]
 script = ExtResource("1_m1qjn")
@@ -77,13 +77,13 @@ shape = SubResource("RectangleShape2D_iehft")
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(36.5, 220)
+position = Vector2(35, 17.5)
 shape = SubResource("RectangleShape2D_m1qjn")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(36.5, 220)
+position = Vector2(35, 17)
 shape = SubResource("RectangleShape2D_m1qjn")
 
 [node name="DoorCollider" type="CollisionShape2D" parent="Area2D"]
