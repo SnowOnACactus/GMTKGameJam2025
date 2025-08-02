@@ -14,6 +14,8 @@ const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var taunt: RichTextLabel = $CanvasLayer/Taunt
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var shield: Sprite2D = $CanvasLayer/HealthDisplay/Shield
+@onready var alarm: AudioStreamPlayer2D = $"Alarm sound effect"
+var _alarm_not_sounded = true
 
 
 var tutorial_done := false
@@ -57,14 +59,21 @@ func game_over(reason) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_time_left.text = "Time left: " + (str(floori(_loop_timer.get_time_left()))) + "s"
+	if (floori(_loop_timer.get_time_left())) <=5:
+		if _alarm_not_sounded:
+			_alarm_not_sounded = false
+			alarm.play()
+		_time_left.add_theme_color_override("default_color", Color(1,0,0))
+	else:
+		_time_left.add_theme_color_override("default_color", Color(0,0,0))
 
 func _on_loop() -> void:
 	spawn_pickup()
+	_alarm_not_sounded = true
 	_progress_gate.open = false
 	loop_number += 1
 	var new_time = _loop_timer.time_left + 10
 	_loop_timer.wait_time = new_time
-	
 	_loop_timer.start()
 	if loop_number == 1:
 		taunt.text = "Collect the item to open the door"
