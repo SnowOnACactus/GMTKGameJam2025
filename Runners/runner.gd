@@ -26,7 +26,8 @@ var sounds := {
 }
 
 var sword_upgrade := false
-
+var wings_upgrade := false
+var _double_jumped := false
 @export var health := 3:
 	set(num):
 		if num == 0:
@@ -148,13 +149,18 @@ func _physics_process(delta: float) -> void:
 		_placement_confirmation.texture = preload("res://Runners/icon_checkmark.png")
 		
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or (wings_upgrade and !_double_jumped)):
 		velocity.y = JUMP_VELOCITY
+		if wings_upgrade and !is_on_floor():
+			_double_jumped = true
+			_sprite.play("fly")
 		if _is_crouched:
 			_is_crouched = false
-		_sprite.play("jump")
+		if !wings_upgrade or is_on_floor():
+			_sprite.play("jump")
 		play("jump")
-	
+	if is_on_floor() and wings_upgrade:
+		_double_jumped = false
 	# stop jump when released
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y = 0

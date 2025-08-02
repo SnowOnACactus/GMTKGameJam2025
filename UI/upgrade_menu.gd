@@ -4,7 +4,8 @@ extends Control
 
 var upgrades: Array = [
 	preload("res://Upgrades/shrink.gd"),
-	preload("res://Upgrades/sword_upgrade.gd")
+	preload("res://Upgrades/sword_upgrade.gd"),
+	preload("res://Upgrades/wings.gd")
 ]
 
 func choose_upgrade(button) -> void:
