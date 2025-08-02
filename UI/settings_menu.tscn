@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://1pdtv7n5omoc"]
 
-[ext_resource type="Theme" uid="uid://mxw65pyn6hxu" path="res://UI/menuStyles.tres" id="1_ov8y0"]
-[ext_resource type="Script" uid="uid://dh44yqffmblxo" path="res://ui/settings_menu.gd" id="1_p1327"]
+[ext_resource type="Script" uid="uid://dh44yqffmblxo" path="res://UI/settings_menu.gd" id="1_p1327"]
+[ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="2_jkv84"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jg4jf"]
 bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
@@ -27,16 +27,18 @@ offset_top = -64.2
 offset_bottom = -0.440002
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_jkv84")
 theme_override_styles/panel = SubResource("StyleBoxFlat_jg4jf")
 
 [node name="SettingsVBox" type="VBoxContainer" parent="SettingsBackground"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("2_jkv84")
 alignment = 1
 
 [node name="SettingsTitle" type="RichTextLabel" parent="SettingsBackground/SettingsVBox"]
 layout_mode = 2
-theme = ExtResource("1_ov8y0")
+theme = ExtResource("2_jkv84")
 bbcode_enabled = true
 text = "[center]Settings[/center]"
 fit_content = true
@@ -44,11 +46,13 @@ autowrap_mode = 0
 
 [node name="MusicHBox" type="HBoxContainer" parent="SettingsBackground/SettingsVBox"]
 layout_mode = 2
+theme = ExtResource("2_jkv84")
 
 [node name="MusicLabel" type="RichTextLabel" parent="SettingsBackground/SettingsVBox/MusicHBox"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("2_jkv84")
 bbcode_enabled = true
 text = "[center]Music[/center]"
 fit_content = true
@@ -59,7 +63,7 @@ custom_minimum_size = Vector2(125, 30)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
-theme = ExtResource("1_ov8y0")
+theme = ExtResource("2_jkv84")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -67,11 +71,13 @@ metadata/_edit_group_ = true
 
 [node name="SoundsHBox" type="HBoxContainer" parent="SettingsBackground/SettingsVBox"]
 layout_mode = 2
+theme = ExtResource("2_jkv84")
 
 [node name="SoundsLabel" type="RichTextLabel" parent="SettingsBackground/SettingsVBox/SoundsHBox"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("2_jkv84")
 bbcode_enabled = true
 text = "[center]Sounds[/center]"
 fit_content = true
@@ -82,7 +88,7 @@ custom_minimum_size = Vector2(125, 30)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
-theme = ExtResource("1_ov8y0")
+theme = ExtResource("2_jkv84")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -90,5 +96,5 @@ metadata/_edit_group_ = true
 
 [node name="BackButton" type="Button" parent="SettingsBackground/SettingsVBox"]
 layout_mode = 2
-theme = ExtResource("1_ov8y0")
+theme = ExtResource("2_jkv84")
 text = "Back"

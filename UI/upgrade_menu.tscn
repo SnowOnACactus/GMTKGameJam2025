@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4lejrw3cexiu"]
 
 [ext_resource type="Script" uid="uid://brod6jhk1ibj8" path="res://UI/upgrade_menu.gd" id="1_b1awm"]
-[ext_resource type="Theme" uid="uid://mxw65pyn6hxu" path="res://UI/menuStyles.tres" id="2_f4tld"]
+[ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="1_f4tld"]
 [ext_resource type="PackedScene" uid="uid://bsthn337a4tpl" path="res://UI/upgrade_button.tscn" id="3_f4tld"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0gn4"]
@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_f4tld")
 script = ExtResource("1_b1awm")
 
 [node name="UpgradeBackground" type="PanelContainer" parent="."]
@@ -29,10 +30,12 @@ offset_right = 296.0
 offset_bottom = 191.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_f4tld")
 theme_override_styles/panel = SubResource("StyleBoxFlat_o0gn4")
 
 [node name="MarginContainer" type="MarginContainer" parent="UpgradeBackground"]
 layout_mode = 2
+theme = ExtResource("1_f4tld")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -42,11 +45,12 @@ theme_override_constants/margin_bottom = 20
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 5
+theme = ExtResource("1_f4tld")
 alignment = 1
 
 [node name="UpgradeTitle" type="RichTextLabel" parent="UpgradeBackground/MarginContainer/UpgradeVBox"]
 layout_mode = 2
-theme = ExtResource("2_f4tld")
+theme = ExtResource("1_f4tld")
 bbcode_enabled = true
 text = "[center]Choose an Upgrade[/center]"
 fit_content = true
@@ -55,9 +59,12 @@ autowrap_mode = 0
 [node name="HBoxContainer" type="HBoxContainer" parent="UpgradeBackground/MarginContainer/UpgradeVBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("1_f4tld")
 
 [node name="Upgrade1" parent="UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer" instance=ExtResource("3_f4tld")]
 layout_mode = 2
+theme = ExtResource("1_f4tld")
 
 [node name="Upgrade2" parent="UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer" instance=ExtResource("3_f4tld")]
 layout_mode = 2
+theme = ExtResource("1_f4tld")
