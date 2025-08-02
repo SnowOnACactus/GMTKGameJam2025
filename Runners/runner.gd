@@ -15,6 +15,9 @@ var jump_velocity = -500.0
 @onready var _weapon: Area2D = $Weapon
 @onready var _placement_confirmation: Sprite2D = $PlacementConfirmation
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var _item_spawn_poof: CPUParticles2D = $ItemSpawnPoof
+
+
 
 # This dictionary of dictionaries allows us to label a song and call for it to play("key") 
 # at a specific time just by using the key - please keep to this format
@@ -142,9 +145,11 @@ func _on_use_press() -> void:
 		_hovering_item = held_item.scene.instantiate()
 		held_item = {}
 		if faced_right:
-			_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
-		if !faced_right:
 			_hovering_item.position = Vector2(_thought_bubble.position.x - 200, _thought_bubble.position.y)
+		if !faced_right:
+			_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
+		_item_spawn_poof.position = _hovering_item.position
+		_item_spawn_poof.emitting = true
 		add_child(_hovering_item)
 		_hovering_item.set_physics_process(false)
 		_placement_confirmation.visible = true

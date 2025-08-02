@@ -173,7 +173,6 @@ motion_mode = 0
 
 [node name="Runner" parent="." instance=ExtResource("3_mj2jn")]
 position = Vector2(102, 1194)
-health = 3
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
 position = Vector2(2257, 712)

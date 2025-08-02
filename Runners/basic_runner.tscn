@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://wtcdc5r5wspd"]
+[gd_scene load_steps=39 format=3 uid="uid://wtcdc5r5wspd"]
 
 [ext_resource type="Script" uid="uid://c7mi6hc8y2wlr" path="res://Runners/runner.gd" id="1_hn08k"]
 [ext_resource type="Texture2D" uid="uid://bd2l2a15nglc8" path="res://Runners/guy.png" id="2_r5bnu"]
@@ -247,6 +247,15 @@ size = Vector2(50.1308, 21.1129)
 radius = 31.0
 height = 82.0
 
+[sub_resource type="Curve" id="Curve_bhrub"]
+_limits = [0.0, 1.0, 0.0, 1.10227]
+_data = [Vector2(0, 0.325843), 0.0, 0.0, 0, 0, Vector2(0.726498, 0.662921), 0.0, 0.0, 0, 0, Vector2(1.10227, 0.0674158), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ynd0f"]
+offsets = PackedFloat32Array(0, 0.613333, 1)
+colors = PackedColorArray(0.991639, 0.918569, 0.703106, 1, 0.996646, 0.964603, 0.871069, 1, 1, 1, 1, 0)
+
 [node name="Runner" type="CharacterBody2D"]
 z_index = 100
 script = ExtResource("1_hn08k")
@@ -254,7 +263,7 @@ script = ExtResource("1_hn08k")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sc1do")
 animation = &"ouch"
-frame_progress = 0.598929
+frame_progress = 0.144598
 
 [node name="PickupRadius" type="Area2D" parent="."]
 
@@ -297,3 +306,23 @@ position = Vector2(52, -17)
 texture = ExtResource("6_bhrub")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ItemSpawnPoof" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 25.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 60.0
+scale_amount_min = 15.0
+scale_amount_max = 40.0
+scale_amount_curve = SubResource("Curve_bhrub")
+color_ramp = SubResource("Gradient_ynd0f")
+hue_variation_min = -0.2
+hue_variation_max = 0.2
