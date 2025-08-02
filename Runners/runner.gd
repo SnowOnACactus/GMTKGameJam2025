@@ -25,7 +25,7 @@ var sounds := {
 	"boing": {"audio": preload("res://Runners/540790__magnuswaker__boing-2.wav"), "start_time": 0.0}
 }
 
-
+var sword_upgrade := false
 
 @export var health := 3:
 	set(num):
@@ -178,7 +178,8 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	if Input.is_action_just_pressed("attack"):
-		_on_attack(direction)
+		if sword_upgrade:
+			_on_attack(direction)
 		
 	if velocity.y > 0:
 		_sprite.play("fall")
