@@ -13,6 +13,8 @@ const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var _time_left: RichTextLabel = $CanvasLayer/LoopTimer/TimeLeft
 @onready var taunt: RichTextLabel = $CanvasLayer/Taunt
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var shield: Sprite2D = $CanvasLayer/Shield
+
 
 var tutorial_done := false
 
@@ -33,6 +35,7 @@ func _ready() -> void:
 		await get_tree().create_timer(2.0).timeout
 		taunt.text = "Can you make it through 20 loops?"
 	)
+	_runner.shield_broken.connect(shield.hide)
 	_loop_timer.timeout.connect(func() -> void: game_over("time"))
 	#var tween = create_tween()
 	#tween.tween_property(camera_2d, "zoom", Vector2(0.5,0.5), 10)
@@ -71,7 +74,11 @@ func _on_loop() -> void:
 		taunt.text = "Can you make it through 20 loops?"
 	if (floor(loop_number/5.0) == loop_number/5.0):
 		menu_controller.upgrade_menu.show()
+		menu_controller.upgrade_menu.refresh_upgrades()
 		get_tree().paused = true
+	if _runner.shield_upgrade and (floor(loop_number/2.0) == loop_number/2.0):
+		_runner.shielded = true
+		shield.show()
 
 #probably a better way to do this...
 func _on_hurt_or_heal(health: int) -> void:

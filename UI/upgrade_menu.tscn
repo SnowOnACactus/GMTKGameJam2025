@@ -63,8 +63,6 @@ theme = ExtResource("1_f4tld")
 
 [node name="Upgrade1" parent="UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer" instance=ExtResource("3_f4tld")]
 layout_mode = 2
-theme = ExtResource("1_f4tld")
 
 [node name="Upgrade2" parent="UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer" instance=ExtResource("3_f4tld")]
 layout_mode = 2
-theme = ExtResource("1_f4tld")

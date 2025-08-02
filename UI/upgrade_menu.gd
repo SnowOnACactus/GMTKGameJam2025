@@ -3,25 +3,38 @@ extends Control
 @onready var upgrade_2: MarginContainer = $UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer/Upgrade2
 
 var upgrades: Array = [
-	preload("res://Upgrades/shrink.gd"),
-	preload("res://Upgrades/sword_upgrade.gd"),
-	preload("res://Upgrades/wings.gd")
+	#preload("res://Upgrades/shrink.gd"),
+	#preload("res://Upgrades/sword_upgrade.gd"),
+	#preload("res://Upgrades/wings.gd"),
+	#preload("res://Upgrades/shield_upgrade.gd"),
+	#preload("res://Upgrades/full_heal.gd"),
+	#preload("res://Upgrades/invulnerability_upgrade.gd"),
+	#preload("res://Upgrades/jump_upgrade.gd"),
+	#preload("res://Upgrades/speed_upgrade.gd"),
+	preload("res://Upgrades/rotation_upgrade.gd"),
+	preload("res://Upgrades/removal_upgrade.gd"),
 ]
 
 func choose_upgrade(button) -> void:
 	var upgrade = Upgrade.new()
-	upgrade.set_script(upgrades.pick_random())
+	var script = upgrades.pick_random()
+	upgrade.set_script(script)
 	upgrade._ready()
 	button.texture.texture = upgrade.texture
 	button.title.text = upgrade.title
 	button.explaination.text = upgrade.explaination
-	button.get_button.pressed.connect(upgrade.on_upgrade(get_tree()))
+	button.get_button.pressed.connect(func() -> void:
+		upgrade.on_upgrade(get_tree()).call()
+		upgrades.erase(script)
+	)
 
+func refresh_upgrades() -> void:
+	choose_upgrade(upgrade_1)
+	choose_upgrade(upgrade_2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	choose_upgrade(upgrade_1)
-	choose_upgrade(upgrade_2)
+	refresh_upgrades()
 	
 
 
