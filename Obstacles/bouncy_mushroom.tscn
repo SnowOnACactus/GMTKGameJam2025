@@ -16,7 +16,7 @@ size = Vector2(31, 81)
 size = Vector2(202, 37)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlw4o"]
-size = Vector2(31, 82)
+size = Vector2(23, 82)
 
 [node name="BouncyMushroom" type="StaticBody2D"]
 script = ExtResource("1_gxg1a")

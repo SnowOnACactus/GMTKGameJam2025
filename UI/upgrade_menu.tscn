@@ -17,7 +17,7 @@ grow_vertical = 2
 theme = ExtResource("1_f4tld")
 script = ExtResource("1_b1awm")
 
-[node name="UpgradeBackground" type="PanelContainer" parent="."]
+[node name="UpgradeBackground" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,6 +35,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o0gn4")
 
 [node name="MarginContainer" type="MarginContainer" parent="UpgradeBackground"]
 layout_mode = 2
+offset_right = 596.0
+offset_bottom = 387.0
 theme = ExtResource("1_f4tld")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20

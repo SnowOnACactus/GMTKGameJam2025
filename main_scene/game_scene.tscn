@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyy3d4ih2jjg8"]
+[gd_scene load_steps=18 format=3 uid="uid://dyy3d4ih2jjg8"]
 
 [ext_resource type="Script" uid="uid://dh5v3mh50aex" path="res://main_scene/game_scene.gd" id="1_v1wow"]
 [ext_resource type="Texture2D" uid="uid://c8y5ha6pxxsln" path="res://main_scene/backgroundColorForest.png" id="2_j5hk1"]
 [ext_resource type="PackedScene" uid="uid://wtcdc5r5wspd" path="res://Runners/basic_runner.tscn" id="3_mj2jn"]
 [ext_resource type="PackedScene" uid="uid://dasmqhuk23sr3" path="res://Obstacles/Mobs/slime_mob.tscn" id="4_mixcd"]
 [ext_resource type="PackedScene" uid="uid://3e5fu37docg2" path="res://Obstacles/Mobs/fly_mob.tscn" id="5_mj2jn"]
-[ext_resource type="PackedScene" uid="uid://cf3l3jg1rwsx" path="res://Obstacles/platform.tscn" id="6_kdryc"]
 [ext_resource type="PackedScene" uid="uid://bta7exht03qie" path="res://main_scene/progress_gate.tscn" id="8_e35lh"]
 [ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="8_yvguj"]
 [ext_resource type="PackedScene" uid="uid://ckbr71skloy0f" path="res://UI/menu_controller.tscn" id="9_udeyl"]
@@ -13,41 +12,80 @@
 [ext_resource type="Texture2D" uid="uid://byh418b0f75dc" path="res://Runners/hud_heartFull.png" id="10_miq82"]
 [ext_resource type="Texture2D" uid="uid://dmuh4uxt10707" path="res://Upgrades/shield.png" id="10_nj3i6"]
 [ext_resource type="AudioStream" uid="uid://bfd820qrtlvof" path="res://main_scene/little town - orchestral.ogg" id="11_vjqtn"]
+[ext_resource type="Texture2D" uid="uid://cbujyou4vok1l" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleLeft.png" id="13_48phd"]
+[ext_resource type="Texture2D" uid="uid://b37cfd0lws81c" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleMid.png" id="14_ajot5"]
+[ext_resource type="Texture2D" uid="uid://bh2ujnhxukvwo" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleRight.png" id="15_7vkts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj2o7"]
+size = Vector2(543, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miq82"]
-size = Vector2(26, 591)
+size = Vector2(53, 1425.5)
 
 [node name="GameScene" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_v1wow")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(185.499, 256.5)
-scale = Vector2(1.88574, 1.37402)
+position = Vector2(166, 836)
+scale = Vector2(4.20996, 3.23706)
 texture = ExtResource("2_j5hk1")
 
 [node name="SignRight" type="Sprite2D" parent="."]
-position = Vector2(898, 544)
-scale = Vector2(1.62857, 1.08571)
+position = Vector2(2088, 1190)
+scale = Vector2(1.62857, 1.22857)
 texture = ExtResource("10_daj04")
 
-[node name="Runner" parent="." instance=ExtResource("3_mj2jn")]
-position = Vector2(78, 536)
+[node name="ProgressGate" parent="." instance=ExtResource("8_e35lh")]
+position = Vector2(2258, 658)
 
-[node name="SlimeMob" parent="." instance=ExtResource("4_mixcd")]
-position = Vector2(350, 576)
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(-4, -56)
 
-[node name="FlyMob" parent="." instance=ExtResource("5_mj2jn")]
-position = Vector2(848, 348)
+[node name="Sprite2D4" type="Sprite2D" parent="Floor"]
+position = Vector2(464, 1323)
+scale = Vector2(13.0857, 1)
+texture = ExtResource("13_48phd")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Floor"]
+position = Vector2(1272, 1323)
+scale = Vector2(10, 1)
+texture = ExtResource("14_ajot5")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Floor"]
+position = Vector2(1972, 1323)
+scale = Vector2(10, 1)
+texture = ExtResource("15_7vkts")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Floor"]
+position = Vector2(-1850, 1323)
+scale = Vector2(13.0857, 1)
+texture = ExtResource("13_48phd")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Floor"]
+position = Vector2(-1042, 1323)
+scale = Vector2(10, 1)
+texture = ExtResource("14_ajot5")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Floor"]
+position = Vector2(-342, 1323)
+scale = Vector2(10, 1)
+texture = ExtResource("15_7vkts")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+position = Vector2(990, 1328)
+scale = Vector2(10, 1)
+shape = SubResource("RectangleShape2D_sj2o7")
 
 [node name="MenuController" parent="." instance=ExtResource("9_udeyl")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LoopDisplay" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 11.0
-offset_top = 58.0
-offset_right = 114.0
-offset_bottom = 122.0
+offset_left = 1032.0
+offset_top = 59.0
+offset_right = 1135.0
+offset_bottom = 123.0
 theme = ExtResource("8_yvguj")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 32
@@ -80,10 +118,10 @@ one_shot = true
 autostart = true
 
 [node name="TimeLeft" type="RichTextLabel" parent="CanvasLayer/LoopTimer"]
-offset_left = 11.0
-offset_top = 7.0
-offset_right = 216.0
-offset_bottom = 71.0
+offset_left = 942.0
+offset_top = 10.0
+offset_right = 1147.0
+offset_bottom = 74.0
 theme = ExtResource("8_yvguj")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 32
@@ -91,23 +129,28 @@ bbcode_enabled = true
 text = "Time left: 15s"
 fit_content = true
 autowrap_mode = 0
-metadata/_edit_use_anchors_ = true
 
-[node name="Heart1" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(33, 613)
+[node name="HealthDisplay" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="Sprite2D" parent="CanvasLayer/HealthDisplay"]
+position = Vector2(40.5, 39.5)
 texture = ExtResource("10_miq82")
 
-[node name="Heart2" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(93, 613)
+[node name="Heart2" type="Sprite2D" parent="CanvasLayer/HealthDisplay"]
+position = Vector2(100.5, 39.5)
 texture = ExtResource("10_miq82")
 
-[node name="Heart3" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(153, 613)
+[node name="Heart3" type="Sprite2D" parent="CanvasLayer/HealthDisplay"]
+position = Vector2(160.5, 39.5)
 texture = ExtResource("10_miq82")
 
-[node name="Shield" type="Sprite2D" parent="CanvasLayer"]
+[node name="Shield" type="Sprite2D" parent="CanvasLayer/HealthDisplay"]
 visible = false
-position = Vector2(213, 613)
+position = Vector2(220, 38)
 scale = Vector2(0.842857, 0.742857)
 texture = ExtResource("10_nj3i6")
 
@@ -118,21 +161,20 @@ autoplay = true
 bus = &"Music"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(577, 321)
+position = Vector2(1152, 652)
 
-[node name="Boundries" parent="." instance=ExtResource("6_kdryc")]
-position = Vector2(279, 616)
-scale = Vector2(10, 1)
-script = null
+[node name="SlimeMob" parent="." instance=ExtResource("4_mixcd")]
+position = Vector2(836, 1226)
 
-[node name="LeftWall" type="StaticBody2D" parent="Boundries"]
-position = Vector2(82.3, -610)
-scale = Vector2(0.1, 1)
+[node name="FlyMob" parent="." instance=ExtResource("5_mj2jn")]
+position = Vector2(1932, 1078)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundries/LeftWall"]
-position = Vector2(-1158, 285.5)
+[node name="Runner" parent="." instance=ExtResource("3_mj2jn")]
+position = Vector2(102, 1194)
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(2257, 712)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(-2412.5, -137.25)
 shape = SubResource("RectangleShape2D_miq82")
-
-[node name="ProgressGate" parent="Boundries" instance=ExtResource("8_e35lh")]
-position = Vector2(82.3, -610)
-scale = Vector2(0.1, 1)

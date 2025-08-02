@@ -46,6 +46,7 @@ radius = 13.0
 height = 42.0476
 
 [node name="FlyMob" type="CharacterBody2D" groups=["PickupChoice"]]
+motion_mode = 1
 script = ExtResource("1_p7r53")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
