@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsthn337a4tpl"]
 
 [ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="1_7xvuj"]
-[ext_resource type="Script" uid="uid://cm6w8g2bair67" path="res://UI/upgrade_button.gd" id="1_n4eqk"]
+[ext_resource type="Script" path="res://UI/upgrade_button.gd" id="1_n4eqk"]
 [ext_resource type="Texture2D" uid="uid://b5b3rrq8x1yag" path="res://Upgrades/shrink.png" id="3_7xvuj"]
 
 [node name="UpgradeButton" type="MarginContainer"]
