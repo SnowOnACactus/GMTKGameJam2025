@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://brjmaj2vfsewn"]
+[gd_scene load_steps=5 format=3 uid="uid://brjmaj2vfsewn"]
 
-[ext_resource type="Script" uid="uid://b6277pvilca1w" path="res://Runners/item_spawn_poof.gd" id="1_ghxgw"]
+[ext_resource type="Script" uid="uid://cvlj2uqyhj2im" path="res://Obstacles/Mobs/ghost.gd" id="1_nf3as"]
 [ext_resource type="Texture2D" uid="uid://clrvi8f2em54g" path="res://Obstacles/Mobs/ghost.png" id="2_ghxgw"]
-[ext_resource type="PackedScene" uid="uid://c1stk66ddlo5e" path="res://Runners/item_spawn_poof.tscn" id="3_syp2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syp2o"]
 size = Vector2(33, 32)
@@ -12,7 +11,7 @@ radius = 26.0
 height = 74.0
 
 [node name="Ghost" type="CharacterBody2D"]
-script = ExtResource("1_ghxgw")
+script = ExtResource("1_nf3as")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ghxgw")
@@ -26,5 +25,3 @@ disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CapsuleShape2D_0xrm2")
-
-[node name="ItemSpawnPoof" parent="." instance=ExtResource("3_syp2o")]

@@ -1,0 +1,307 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpo6jls7io43y"]
+
+[ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="1_ux31a"]
+[ext_resource type="Script" uid="uid://bb88gcbp7cl6c" path="res://start_screen/credits_screen.gd" id="2_yeijm"]
+
+[node name="CreditsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ux31a")
+script = ExtResource("2_yeijm")
+
+[node name="CreditsBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -572.0
+offset_top = -316.5
+offset_right = 572.0
+offset_bottom = 316.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ux31a")
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -571.0
+offset_top = -302.5
+offset_right = 572.0
+offset_bottom = 316.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ux31a")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CredistsVBox" type="VBoxContainer" parent="CreditsBackground/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 5
+theme = ExtResource("1_ux31a")
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsBackground/MarginContainer/CredistsVBox"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 13
+
+[node name="CreditsTitle" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_ux31a")
+theme_override_font_sizes/normal_font_size = 27
+bbcode_enabled = true
+text = "[center]Credits[/center]"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreditsBackground/MarginContainer/CredistsVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_ux31a")
+
+[node name="MarginContainer4" type="MarginContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label4" type="Label" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Design"
+horizontal_alignment = 1
+
+[node name="Texture4" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Ian Mortensen - Lead design"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Texture5" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Jed Davies - Designer"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Texture6" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Sean Gibbons-Laurie - Designer"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Texture7" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Cameron Scott - Designer"
+fit_content = true
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HSeparator" type="HSeparator" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_ux31a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Art and textures"
+horizontal_alignment = 1
+
+[node name="Texture2" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Kenny - for their library of amazing assets"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Texture" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lazer Carrot - for the main character spritesheet \"Lil' angel guy\""
+fit_content = true
+autowrap_mode = 2
+
+[node name="Texture3" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer4/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "UI - Godot Theme: Pastel - https://intergenic.itch.io/godot-theme-pastel"
+fit_content = true
+autowrap_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VSeparator" type="VSeparator" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer5" type="MarginContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer5/VBoxContainer3"]
+layout_mode = 2
+text = "Sounds and music"
+horizontal_alignment = 1
+
+[node name="Sound5" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer5/VBoxContainer3"]
+layout_mode = 2
+text = "Bart Kelsey - for the main theme \"The Adventure Begins\""
+fit_content = true
+autowrap_mode = 2
+
+[node name="Sound" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer5/VBoxContainer3"]
+layout_mode = 2
+text = "Getting hit hugh by dersuperanton -- Freesound"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Sound2" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer5/VBoxContainer3"]
+layout_mode = 2
+text = "Game Over Arcade by Mountain_Man -- Freesound"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Sound3" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer5/VBoxContainer3"]
+layout_mode = 2
+text = "Boing 2 by magnuswaker -- Freesound"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Sound4" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer5/VBoxContainer3"]
+layout_mode = 2
+text = "Timeout sound effect by Universfield -- PIxabay"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Sound6" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer5/VBoxContainer3"]
+layout_mode = 2
+text = "plop sound effect by Garuda1982 -- FreeSound"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Sound7" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer5/VBoxContainer3"]
+layout_mode = 2
+text = "hop8.wav by felixyadomi -- FreeSound"
+fit_content = true
+autowrap_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VSeparator2" type="VSeparator" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="MarginContainer6" type="MarginContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer6/VBoxContainer4"]
+layout_mode = 2
+text = "Upgrade Icons"
+horizontal_alignment = 1
+
+[node name="upgrade" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer6/VBoxContainer4"]
+layout_mode = 2
+text = "Eagle Wings PNG by Vecteezy"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Upgrade" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer6/VBoxContainer4"]
+layout_mode = 2
+text = "Shield icons created by kliwir art -- Flaticon"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Upgrade2" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer6/VBoxContainer4"]
+layout_mode = 2
+text = "Biceps icons created by Andy Horvath -- Flaticon"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Upgrade3" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer6/VBoxContainer4"]
+layout_mode = 2
+text = "Parkour icons created by Fahrul Saputra -- Flaticon"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Upgrade4" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer6/VBoxContainer4"]
+layout_mode = 2
+text = "Shrink icons created by karthiks_18 -- Flaticon"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Upgrade5" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer6/VBoxContainer4"]
+layout_mode = 2
+text = "Destroyed planet icons created by Karyative -- Flaticon"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Upgrade6" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer6/VBoxContainer4"]
+layout_mode = 2
+text = "Sports and competition icons created by Mayor Icons -- Flaticon"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Upgrade7" type="RichTextLabel" parent="CreditsBackground/MarginContainer/CredistsVBox/HBoxContainer/MarginContainer6/VBoxContainer4"]
+layout_mode = 2
+text = "Mobile rotation icons created by Kalashnyk -- Flaticon"
+fit_content = true
+autowrap_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CreditsBackground/MarginContainer/CredistsVBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="Button" type="Button" parent="CreditsBackground/MarginContainer/CredistsVBox/MarginContainer2"]
+layout_mode = 2
+text = "Back"

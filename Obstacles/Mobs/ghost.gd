@@ -22,3 +22,6 @@ func _physics_process(_delta: float) -> void:
 		velocity.x *= SPEED
 		velocity.y *= SPEED
 	move_and_slide()
+
+func die() -> void:
+	pass

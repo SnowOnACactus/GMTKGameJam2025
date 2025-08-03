@@ -15,6 +15,9 @@ var jump_velocity = -500.0
 @onready var _weapon: Area2D = $Weapon
 @onready var _placement_confirmation: Sprite2D = $PlacementConfirmation
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var _item_spawn_poof: CPUParticles2D = $ItemSpawnPoof
+
+
 
 # This dictionary of dictionaries allows us to label a song and call for it to play("key") 
 # at a specific time just by using the key - please keep to this format
@@ -26,6 +29,7 @@ var sounds := {
 	"boing": {"audio": preload("res://Runners/540790__magnuswaker__boing-2.wav"), "start_time": 0.0}
 }
 
+var stuck := false
 var invulnerable_frames := false:
 	set(bool):
 		if bool == true:
@@ -34,7 +38,11 @@ var invulnerable_frames := false:
 			invulnerable_frames = false
 		else:
 			invulnerable_frames = false
-var sword_upgrade := false
+var sword_upgrade := false:
+	set(bool):
+		_weapon.monitorable = bool
+		_weapon.monitoring = bool
+		sword_upgrade = bool
 var wings_upgrade := false
 var _double_jumped := false
 var rotation_upgrade := false
@@ -106,8 +114,19 @@ func _ready() -> void:
 					body.get_parent().queue_free()
 					removal_upgrade = false
 				else:
-					velocity.y = -1000
+					velocity.y = -700
 					play("boing")
+			if body.get_parent() is Sticky:
+				if removal_upgrade:
+					body.get_parent().queue_free()
+					removal_upgrade = false
+				else:
+					velocity = Vector2.ZERO
+					stuck = true
+					_pickup_radius.area_exited.connect(func(area) -> void:
+						if area == body:
+							stuck = false
+					, CONNECT_ONE_SHOT)
 	)
 
 func _on_pickup(body) -> void:
@@ -127,7 +146,7 @@ func _on_attack(direction) -> void:
 	if direction < 0:
 		tween.tween_property(_weapon, "rotation_degrees", -150.0, 0.1)
 	else:
-		tween.tween_property(_weapon, "rotation_degrees", 100.0, 0.1)
+		tween.tween_property(_weapon, "rotation_degrees", 130.0, 0.1)
 	#hide and reset sword at the end of animation
 	tween.finished.connect(
 		func() -> void:
@@ -142,10 +161,16 @@ func _on_use_press() -> void:
 		_hovering_item = held_item.scene.instantiate()
 		held_item = {}
 		if faced_right:
-			_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
-		if !faced_right:
 			_hovering_item.position = Vector2(_thought_bubble.position.x - 200, _thought_bubble.position.y)
+		if !faced_right:
+			_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
+		_item_spawn_poof.position = _hovering_item.position
+		_item_spawn_poof.emitting = true
 		add_child(_hovering_item)
+		_hovering_item.collision_layer = 0
+		_hovering_item.collision_mask = 0
+		_hovering_item.hitbox.monitorable = false
+		_hovering_item.hitbox.monitoring = false
 		_hovering_item.set_physics_process(false)
 		_placement_confirmation.visible = true
 		if !get_parent().tutorial_done:
@@ -159,6 +184,10 @@ func _on_use_release() -> void:
 			if _hovering_item is Mob:
 				_hovering_item.starting_position = _hovering_item.global_position * 2
 			_hovering_item.set_physics_process(true)
+			_hovering_item.collision_layer = 1
+			_hovering_item.collision_mask = 1
+			_hovering_item.hitbox.monitorable = true
+			_hovering_item.hitbox.monitoring = true
 			_hovering_item = null
 			has_item = false
 			_placement_confirmation.visible = false
@@ -172,7 +201,7 @@ func play (sound: String) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and !stuck:
 		velocity += get_gravity() * delta
 	
 	#Run from right side to left

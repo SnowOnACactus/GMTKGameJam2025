@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://3e5fu37docg2"]
+[gd_scene load_steps=10 format=3 uid="uid://3e5fu37docg2"]
 
 [ext_resource type="Script" uid="uid://dx8qjxqvm7h0e" path="res://Obstacles/Mobs/fly_mob.gd" id="1_p7r53"]
 [ext_resource type="Texture2D" uid="uid://ch4kohbc0q0ux" path="res://Obstacles/Mobs/enemies.svg" id="2_hpk4e"]
 [ext_resource type="AudioStream" uid="uid://drgc018dv46pv" path="res://Obstacles/Mobs/82077__benboncan__fly-1.wav" id="3_hpk4e"]
-[ext_resource type="PackedScene" uid="uid://c1stk66ddlo5e" path="res://Runners/item_spawn_poof.tscn" id="4_lyo4k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7r53"]
 atlas = ExtResource("2_hpk4e")
@@ -53,11 +52,7 @@ script = ExtResource("1_p7r53")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -5)
 sprite_frames = SubResource("SpriteFrames_cbkkl")
-animation = &"fly"
-frame_progress = 0.123253
-
-[node name="ItemSpawnPoof" parent="AnimatedSprite2D" instance=ExtResource("4_lyo4k")]
-position = Vector2(-3, -3)
+animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -5)
@@ -72,3 +67,4 @@ shape = SubResource("CapsuleShape2D_u1h0b")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_hpk4e")
+bus = &"Sounds"
