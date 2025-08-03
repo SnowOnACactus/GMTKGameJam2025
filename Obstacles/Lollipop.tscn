@@ -8,7 +8,7 @@
 radius = 32.3883
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a54w7"]
-radius = 40.0125
+radius = 42.0119
 
 [node name="Lollipop" type="StaticBody2D"]
 script = ExtResource("1_32axl")

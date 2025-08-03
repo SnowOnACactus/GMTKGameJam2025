@@ -117,13 +117,6 @@ func _ready() -> void:
 				if removal_upgrade:
 					body.get_parent().queue_free()
 					removal_upgrade = false
-				else:
-					velocity = Vector2.ZERO
-					stuck = true
-					_pickup_radius.area_exited.connect(func(area) -> void:
-						if area == body:
-							stuck = false
-					, CONNECT_ONE_SHOT)
 			if body.get_parent() is Slippery and (body.get_parent().get_parent() != self):
 				if removal_upgrade:
 					body.get_parent().queue_free()
@@ -204,9 +197,11 @@ func play (sound: String) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor() and !stuck:
+	if not is_on_floor() and !_check_for_stuck():
 		velocity += get_gravity() * delta
-	
+	if _check_for_stuck():
+		velocity = Vector2.ZERO
+		
 	#Run from right side to left
 	if global_position.x > get_viewport_rect().size.x + 25:
 		global_position.x -= get_viewport_rect().size.x + 40
@@ -292,6 +287,12 @@ func _check_for_slip() -> bool:
 		if child.get_parent() is Slippery:
 			slip = true
 	return slip
+func _check_for_stuck() -> bool:
+	var stuck = false
+	for child in _pickup_radius.get_overlapping_areas():
+		if child.get_parent() is Sticky:
+			stuck = true
+	return stuck
 
 func die() -> void:
 	set_physics_process(false)

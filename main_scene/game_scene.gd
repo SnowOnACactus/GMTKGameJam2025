@@ -148,7 +148,7 @@ func spawn_pickup() -> void:
 	if pickup.has_overlapping_areas(): _find_open_area(pickup)
 
 func _find_open_area(item: Pickup) -> void:
-	item.global_position = Vector2(randf_range(20, get_viewport_rect().size.x/1.5), randf_range(550, 400))
+	item.global_position = Vector2(randf_range(20, get_viewport_rect().size.x/1.5), randf_range(600, 450))
 	await get_tree().create_timer(0.1).timeout
 	if item.has_overlapping_areas():
 		_find_open_area(item)

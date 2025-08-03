@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func on_upgrade(tree:SceneTree) -> Callable:
 	return func() -> void:
-		tree.get_root().get_node("GameScene/Runner").jump_velocity = -800.0
+		tree.get_root().get_node("GameScene/Runner").jump_velocity = -650.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
