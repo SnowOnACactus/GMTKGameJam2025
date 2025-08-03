@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=4 uid="uid://d0u4ajpqu7m5s"]
 
 [ext_resource type="Script" uid="uid://1xv1if0dqmyc" path="res://start_screen/title_screen.gd" id="1_iaef4"]
-[ext_resource type="Texture2D" uid="uid://b5021mtm3j2ms" path="res://ArtAssets/UI Assets/kenney_ui-pack-pixel-adventure/Tilesheets/Large tiles/Thick outline/tilemap.png" id="2_5whv5"]
+[ext_resource type="Texture2D" uid="uid://b5021mtm3j2ms" path="res://UI/Thick outline/tilemap.png" id="2_5whv5"]
 [ext_resource type="Texture2D" uid="uid://cxsju3d7u3p2p" path="res://UI/backgroundCastles.png" id="2_816ia"]
-[ext_resource type="Texture2D" uid="uid://cy1bb6h4f3q7a" path="res://ArtAssets/UI Assets/kenney_ui-pack-pixel-adventure/Tilesheets/Large tiles/Thick outline/tilemap_packed.png" id="3_816ia"]
+[ext_resource type="Texture2D" uid="uid://cy1bb6h4f3q7a" path="res://UI/Thick outline/tilemap_packed.png" id="3_816ia"]
 [ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="5_udsnl"]
 [ext_resource type="PackedScene" uid="uid://bpo6jls7io43y" path="res://start_screen/credits_screen.tscn" id="6_03jbd"]
 

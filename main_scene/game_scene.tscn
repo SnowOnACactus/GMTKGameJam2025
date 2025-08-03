@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://c8y5ha6pxxsln" path="res://main_scene/backgroundColorForest.png" id="2_j5hk1"]
 [ext_resource type="PackedScene" uid="uid://wtcdc5r5wspd" path="res://Runners/basic_runner.tscn" id="3_mj2jn"]
 [ext_resource type="PackedScene" uid="uid://dasmqhuk23sr3" path="res://Obstacles/Mobs/slime_mob.tscn" id="4_mixcd"]
-[ext_resource type="PackedScene" path="res://main_scene/floor.tscn" id="5_2lep2"]
+[ext_resource type="PackedScene" uid="uid://du17o7rq7w6u0" path="res://main_scene/floor.tscn" id="5_2lep2"]
 [ext_resource type="PackedScene" uid="uid://3e5fu37docg2" path="res://Obstacles/Mobs/fly_mob.tscn" id="5_mj2jn"]
 [ext_resource type="PackedScene" uid="uid://bta7exht03qie" path="res://main_scene/progress_gate.tscn" id="8_e35lh"]
 [ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="8_yvguj"]
 [ext_resource type="PackedScene" uid="uid://ckbr71skloy0f" path="res://UI/menu_controller.tscn" id="9_udeyl"]
-[ext_resource type="Texture2D" uid="uid://6ma7q10dayd" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/signRight.png" id="10_daj04"]
+[ext_resource type="Texture2D" uid="uid://6ma7q10dayd" path="res://main_scene/signRight.png" id="10_daj04"]
 [ext_resource type="Texture2D" uid="uid://byh418b0f75dc" path="res://Runners/hud_heartFull.png" id="10_miq82"]
 [ext_resource type="Texture2D" uid="uid://dmuh4uxt10707" path="res://Upgrades/shield.png" id="10_nj3i6"]
 [ext_resource type="AudioStream" uid="uid://bfd820qrtlvof" path="res://main_scene/little town - orchestral.ogg" id="11_vjqtn"]
@@ -76,9 +76,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -220.0
-offset_top = 158.0
+offset_top = 121.0
 offset_right = 220.0
-offset_bottom = 222.0
+offset_bottom = 185.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme = ExtResource("8_yvguj")
