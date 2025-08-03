@@ -3,7 +3,7 @@ extends Upgrade
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	title = "Sword!"
-	explaination = "It, uh, doesn't do anything!"
+	explaination = "Press SHIFT to use the sword!"
 	texture = preload("res://Upgrades/swordSilver.png")
 
 func on_upgrade(tree: SceneTree) -> Callable:

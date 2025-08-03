@@ -1,4 +1,4 @@
-extends Node2D
+class_name GameScene extends Node2D
 @onready var _runner: CharacterBody2D = $Runner
 const PICKUP = preload("res://Pickup/pickup.tscn")
 @onready var _progress_gate: StaticBody2D = $ProgressGate
@@ -86,6 +86,12 @@ func _on_loop() -> void:
 		tutorial_done = true
 	if loop_number == 3:
 		taunt.text = "Can you make it through 20 loops?"
+	if loop_number == 10:
+		taunt.text = "Did you know you can crouch to place objects lower?"
+	if loop_number == 10:
+		taunt.text = "Did you know flies die to spikes?"
+	if loop_number == 20:
+		taunt.text = "You did 20 loops! Thank you for playing"
 	if (floor(loop_number/5.0) == loop_number/5.0):
 		menu_controller.upgrade_menu.show()
 		menu_controller.upgrade_menu.refresh_upgrades()

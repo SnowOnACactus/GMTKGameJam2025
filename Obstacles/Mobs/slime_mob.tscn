@@ -51,8 +51,7 @@ script = ExtResource("1_oojpn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9, 0)
 sprite_frames = SubResource("SpriteFrames_cbkkl")
-animation = &"walk"
-frame_progress = 0.537243
+animation = &"die"
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -67,3 +66,4 @@ shape = SubResource("CapsuleShape2D_jfs4r")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_pykqv")
+bus = &"Sounds"

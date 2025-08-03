@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://brjmaj2vfsewn"]
 
-[ext_resource type="Script" uid="uid://b6277pvilca1w" path="res://Runners/item_spawn_poof.gd" id="1_ghxgw"]
+[ext_resource type="Script" uid="uid://cvlj2uqyhj2im" path="res://Obstacles/Mobs/ghost.gd" id="1_nf3as"]
 [ext_resource type="Texture2D" uid="uid://clrvi8f2em54g" path="res://Obstacles/Mobs/ghost.png" id="2_ghxgw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_syp2o"]
@@ -11,7 +11,7 @@ radius = 26.0
 height = 74.0
 
 [node name="Ghost" type="CharacterBody2D"]
-script = ExtResource("1_ghxgw")
+script = ExtResource("1_nf3as")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ghxgw")
