@@ -6,12 +6,15 @@ var _optional_sprites:= [
 	preload("res://Obstacles/houseDarkAlt2.png"),
 	preload("res://Obstacles/houseDarkAlt.png")
 ]
+@onready var _sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @export var crumbling = true
 @export var intact = false
 var integrity = 10:
 	set(num):
-		if num < integrity:
-			_sprite.modulate = _sprite.modulate.darkened(0.1)
+		if (num < integrity) and (num % 2 == 0):
+			_sprite.modulate = _sprite.modulate.darkened(0.2)
+			_sound.play([0.0, 1.44, 2.37, 4.02].pick_random())
+			await get_tree().create_timer(0.9).timeout.connect(_sound.stop)
 		integrity = num
 		if integrity <= 0:
 			queue_free()
