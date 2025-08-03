@@ -36,9 +36,9 @@ func _physics_process(delta: float) -> void:
 			position.x -= speed * delta
 		
 		if _dir_up:
-			position.y -= speed * delta
+			position.y -= (speed/4) * delta
 		if !_dir_up:
-			position.y += speed * delta
+			position.y += (speed/4) * delta
 		
 		move_and_slide()
 	if dead: position.y += 300 * delta

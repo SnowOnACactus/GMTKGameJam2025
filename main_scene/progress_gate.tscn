@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://bta7exht03qie"]
 
 [ext_resource type="Script" uid="uid://c0lc4wici3nth" path="res://main_scene/progress_gate.gd" id="1_m1qjn"]
-[ext_resource type="Texture2D" uid="uid://bbkdvvlb8m188" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleCenter.png" id="1_pmq8q"]
-[ext_resource type="Texture2D" uid="uid://b5pqhrb3lyn73" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/door_closedMid.png" id="2_s6fsl"]
-[ext_resource type="Texture2D" uid="uid://dg2fofhnsacru" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/door_closedTop.png" id="3_1wrhe"]
-[ext_resource type="Texture2D" uid="uid://bvvx6jnb7kw46" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/door_openTop.png" id="5_iehft"]
-[ext_resource type="Texture2D" uid="uid://cwangkm2bmh52" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/door_openMid.png" id="6_1cf6k"]
+[ext_resource type="Texture2D" uid="uid://bbkdvvlb8m188" path="res://main_scene/castleCenter.png" id="1_pmq8q"]
+[ext_resource type="Texture2D" uid="uid://b5pqhrb3lyn73" path="res://main_scene/door_closedMid.png" id="2_s6fsl"]
+[ext_resource type="Texture2D" uid="uid://dg2fofhnsacru" path="res://main_scene/door_closedTop.png" id="3_1wrhe"]
+[ext_resource type="Texture2D" uid="uid://bvvx6jnb7kw46" path="res://main_scene/door_openTop.png" id="5_iehft"]
+[ext_resource type="Texture2D" uid="uid://cwangkm2bmh52" path="res://main_scene/door_openMid.png" id="6_1cf6k"]
 
 [sub_resource type="TileSet" id="TileSet_m1qjn"]
 

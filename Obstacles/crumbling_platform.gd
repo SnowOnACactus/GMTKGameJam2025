@@ -22,7 +22,7 @@ var _optional_sprites:= [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if !intact:
-		crumbling = randf() < 0.5
+		crumbling = randf() < 0.7
 	_sprite.texture = _optional_sprites.pick_random()
 	if crumbling:
 		_hitbox.area_entered.connect(func(body)-> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccc8hf7xnfi7n"
-path="res://.godot/imported/barnacle_dead.png-fd80ddb8899ada315b4d71081a6e127a.ctex"
+uid="uid://cy1bb6h4f3q7a"
+path="res://.godot/imported/tilemap_packed.png-02d660a1d6a198dd195f89a975881bcb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Obstacles/Mobs/barnacle_dead.png"
-dest_files=["res://.godot/imported/barnacle_dead.png-fd80ddb8899ada315b4d71081a6e127a.ctex"]
+source_file="res://UI/Thick outline/tilemap_packed.png"
+dest_files=["res://.godot/imported/tilemap_packed.png-02d660a1d6a198dd195f89a975881bcb.ctex"]
 
 [params]
 

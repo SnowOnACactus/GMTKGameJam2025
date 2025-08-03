@@ -3,10 +3,9 @@ class_name Pickup extends Area2D
 
 # Here is the list of possible obstacles and the texture used by the player's thought bubble
 var random_item_array : Array[Dictionary] = [
-	{"texture": preload("res://Obstacles/Mobs/flyFly1.png"), "scene": preload("res://Obstacles/Mobs/fly_mob.tscn")},
-	{"texture": preload("res://Obstacles/Mobs/slimeWalk1.png"), "scene": preload("res://Obstacles/Mobs/slime_mob.tscn")},
 	{"texture": preload("res://Obstacles/castleCenter_rounded.png"), "scene":preload("res://Obstacles/platform.tscn")},
-	{"texture": preload("res://Obstacles/spikes.png"), "scene": preload("res://Obstacles/spike_trap.tscn")},
+	{"texture": preload("res://Obstacles/spikes.png"), "scene": preload("res://Obstacles/spike_trap.tscn")},	{"texture": preload("res://Obstacles/Mobs/flyFly1.png"), "scene": preload("res://Obstacles/Mobs/fly_mob.tscn")},
+	{"texture": preload("res://Obstacles/Mobs/slimeWalk1.png"), "scene": preload("res://Obstacles/Mobs/slime_mob.tscn")},
 	{"texture": preload("res://Obstacles/shroomRedAltLeft.png"), "scene": preload("res://Obstacles/bouncy_mushroom.tscn")},
 	{"texture": preload("res://Obstacles/Mobs/ghost.png"), "scene": preload("res://Obstacles/Mobs/ghost.tscn")},
 	{"texture": preload("res://Obstacles/lollipopRed.png"), "scene": preload("res://Obstacles/Lollipop.tscn")},
@@ -28,8 +27,7 @@ func _ready() -> void:
 
 func pick_random_item() -> Dictionary:
 	var spawn = random_item_array.pick_random()
-	var game_scene: GameScene= get_parent()
-	if game_scene.loop_number < 5:#use first 4 obstacles only on early levels
+	if get_parent().loop_number < 3:#use first 4 obstacles only on early levels
 		spawn = random_item_array[randi() % 3]
 	return spawn
 

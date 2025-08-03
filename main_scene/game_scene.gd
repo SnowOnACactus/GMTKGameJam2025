@@ -104,7 +104,7 @@ func _on_loop() -> void:
 		taunt.text = "The ground looks unstable... careful you don't fall through"
 	if loop_number == 10:
 		taunt.text = "Did you know you can crouch to place objects lower?"
-	if loop_number == 10:
+	if loop_number == 15:
 		taunt.text = "Did you know flies die to spikes?"
 	if loop_number == 20:
 		taunt.text = "You did 20 loops! Thank you for playing"
