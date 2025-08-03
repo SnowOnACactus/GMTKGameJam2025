@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://y6od2d23okcl" path="res://Runners/thought_bubble.png" id="3_e4vk3"]
 [ext_resource type="Texture2D" uid="uid://c6aloh0ft0hn1" path="res://Runners/swordSilver.png" id="4_lqk5h"]
 [ext_resource type="Texture2D" uid="uid://bhoo4tdmhwy5b" path="res://Obstacles/castleCenter_rounded.png" id="4_nqshr"]
-[ext_resource type="Script" uid="uid://bypy5h3c7f3kq" path="res://Runners/weapon.gd" id="5_ynd0f"]
+[ext_resource type="Script" path="res://Runners/weapon.gd" id="5_ynd0f"]
 [ext_resource type="Texture2D" uid="uid://dfrxy3wssstyt" path="res://Runners/icon_checkmark.png" id="6_bhrub"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nqshr"]

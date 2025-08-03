@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dyy3d4ih2jjg8"]
+[gd_scene load_steps=24 format=3 uid="uid://dyy3d4ih2jjg8"]
 
 [ext_resource type="Script" uid="uid://dh5v3mh50aex" path="res://main_scene/game_scene.gd" id="1_v1wow"]
 [ext_resource type="Texture2D" uid="uid://c8y5ha6pxxsln" path="res://main_scene/backgroundColorForest.png" id="2_j5hk1"]
@@ -20,6 +20,22 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sj2o7"]
 size = Vector2(543, 72)
+
+[sub_resource type="Curve" id="Curve_7vkts"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0.0113636, 155.056), 0.0, 0.0, 0, 0, Vector2(0.511364, 6.74158), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_sj2o7"]
+_data = [Vector2(0.00568181, 1), 0.0, 0.0, 0, 0, Vector2(0.3125, 0.797753), 0.0, 0.0, 0, 0, Vector2(0.482955, 0.0337079), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_lqwv3"]
+colors = PackedColorArray(1, 0.425787, 0.357085, 1, 0.878431, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_fps7a"]
+offsets = PackedFloat32Array(0, 0.853333, 0.98)
+colors = PackedColorArray(0.968537, 0.000486241, 0.000267607, 1, 0.999965, 0.621066, 0.563689, 1, 0.736816, 0.0839244, 0.109718, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miq82"]
 size = Vector2(53, 1425.5)
@@ -142,13 +158,82 @@ offset_bottom = 40.0
 position = Vector2(40.5, 39.5)
 texture = ExtResource("10_miq82")
 
+[node name="Heart1Pop" type="CPUParticles2D" parent="CanvasLayer/HealthDisplay/Heart1"]
+position = Vector2(-0.5, -3.5)
+emitting = false
+amount = 250
+lifetime = 0.5
+one_shot = true
+speed_scale = 0.4
+explosiveness = 1.0
+randomness = 0.48
+emission_shape = 1
+emission_sphere_radius = 18.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 160.0
+initial_velocity_max = 300.0
+linear_accel_curve = SubResource("Curve_7vkts")
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_sj2o7")
+color_ramp = SubResource("Gradient_lqwv3")
+color_initial_ramp = SubResource("Gradient_fps7a")
+
 [node name="Heart2" type="Sprite2D" parent="CanvasLayer/HealthDisplay"]
-position = Vector2(100.5, 39.5)
+position = Vector2(97, 39.5)
 texture = ExtResource("10_miq82")
 
+[node name="Heart2Pop" type="CPUParticles2D" parent="CanvasLayer/HealthDisplay/Heart2"]
+position = Vector2(-0.5, -3.5)
+emitting = false
+amount = 250
+lifetime = 0.5
+one_shot = true
+speed_scale = 0.4
+explosiveness = 1.0
+randomness = 0.48
+emission_shape = 1
+emission_sphere_radius = 18.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 160.0
+initial_velocity_max = 300.0
+linear_accel_curve = SubResource("Curve_7vkts")
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_sj2o7")
+color_ramp = SubResource("Gradient_lqwv3")
+color_initial_ramp = SubResource("Gradient_fps7a")
+
 [node name="Heart3" type="Sprite2D" parent="CanvasLayer/HealthDisplay"]
-position = Vector2(160.5, 39.5)
+position = Vector2(154, 39.5)
 texture = ExtResource("10_miq82")
+
+[node name="Heart3Pop" type="CPUParticles2D" parent="CanvasLayer/HealthDisplay/Heart3"]
+position = Vector2(0, -3.5)
+emitting = false
+amount = 250
+lifetime = 0.5
+one_shot = true
+speed_scale = 0.4
+explosiveness = 1.0
+randomness = 0.48
+emission_shape = 1
+emission_sphere_radius = 18.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 160.0
+initial_velocity_max = 300.0
+linear_accel_curve = SubResource("Curve_7vkts")
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_sj2o7")
+color_ramp = SubResource("Gradient_lqwv3")
+color_initial_ramp = SubResource("Gradient_fps7a")
 
 [node name="Shield" type="Sprite2D" parent="CanvasLayer/HealthDisplay"]
 visible = false

@@ -17,6 +17,9 @@ const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var _audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var alarm: AudioStreamPlayer2D = $"Alarm sound effect"
 var _alarm_not_sounded = true
+@onready var H3Pop = $CanvasLayer/HealthDisplay/Heart3/Heart3Pop
+@onready var H2Pop = $CanvasLayer/HealthDisplay/Heart2/Heart2Pop
+@onready var H1Pop = $CanvasLayer/HealthDisplay/Heart1/Heart1Pop
 
 
 var tutorial_done := false
@@ -107,14 +110,18 @@ func _on_hurt_or_heal(health: int) -> void:
 			_heart_1.texture = _HEART_EMPTY
 			_heart_2.texture = _HEART_EMPTY
 			_heart_3.texture = _HEART_EMPTY
+			H1Pop.emitting = true
 		1:
 			_heart_1.texture = _HEART_FULL
 			_heart_2.texture = _HEART_EMPTY
 			_heart_3.texture = _HEART_EMPTY
+			H2Pop.emitting = true
 		2:
 			_heart_1.texture = _HEART_FULL
 			_heart_2.texture = _HEART_FULL
 			_heart_3.texture = _HEART_EMPTY
+			H3Pop.emitting = true
+			
 		3:
 			_heart_1.texture = _HEART_FULL
 			_heart_2.texture = _HEART_FULL
