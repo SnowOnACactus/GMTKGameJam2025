@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwlrgtcpppiw2"]
+
+[ext_resource type="Script" uid="uid://cctstxrqt7tkk" path="res://ice.gd" id="1_ccytt"]
+[ext_resource type="Texture2D" uid="uid://63lsr800528t" path="res://Obstacles/iceBlock.png" id="2_q1dx4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uulc4"]
+size = Vector2(137, 67.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_maymt"]
+size = Vector2(137, 69.5)
+
+[node name="Ice" type="StaticBody2D"]
+script = ExtResource("1_ccytt")
+
+[node name="IceBlock2" type="Sprite2D" parent="."]
+position = Vector2(35, 0)
+texture = ExtResource("2_q1dx4")
+
+[node name="IceBlock" type="Sprite2D" parent="."]
+position = Vector2(-35, 0)
+texture = ExtResource("2_q1dx4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.25)
+shape = SubResource("RectangleShape2D_uulc4")
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(-35, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(35.5, -1.75)
+shape = SubResource("RectangleShape2D_maymt")

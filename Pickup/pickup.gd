@@ -9,7 +9,8 @@ var random_item_array : Array[Dictionary] = [
 	{"texture": preload("res://Obstacles/spikes.png"), "scene": preload("res://Obstacles/spike_trap.tscn")},
 	{"texture": preload("res://Obstacles/shroomRedAltLeft.png"), "scene": preload("res://Obstacles/bouncy_mushroom.tscn")},
 	{"texture": preload("res://Obstacles/Mobs/ghost.png"), "scene": preload("res://Obstacles/Mobs/ghost.tscn")},
-	{"texture": preload("res://Obstacles/lollipopRed.png"), "scene": preload("res://Obstacles/Lollipop.tscn")}
+	{"texture": preload("res://Obstacles/lollipopRed.png"), "scene": preload("res://Obstacles/Lollipop.tscn")},
+	{"texture": preload("res://Obstacles/iceBlockAlt.png"), "scene": preload("res://Obstacles/ice.tscn")}
 ]
 @onready var _possible_obstacle: Sprite2D = $PossibleObstacle
 @onready var _timer: Timer = $Timer
@@ -35,3 +36,7 @@ func pick_random_item() -> Dictionary:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func _check_and_find_open_area() -> void:
+	if has_overlapping_areas():
+		get_parent()._find_open_area(self)

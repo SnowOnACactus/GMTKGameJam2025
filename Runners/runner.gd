@@ -29,6 +29,7 @@ var sounds := {
 	"boing": {"audio": preload("res://Runners/540790__magnuswaker__boing-2.wav"), "start_time": 0.0}
 }
 
+var direction := 0.0
 var stuck := false
 var invulnerable_frames := false:
 	set(bool):
@@ -110,7 +111,7 @@ func _ready() -> void:
 					body.get_parent().queue_free()
 					removal_upgrade = false
 				else:
-					velocity.y = -700
+					velocity.y = jump_velocity - 200
 					play("boing")
 			if body.get_parent() is Sticky and (body.get_parent().get_parent() != self):
 				if removal_upgrade:
@@ -123,6 +124,10 @@ func _ready() -> void:
 						if area == body:
 							stuck = false
 					, CONNECT_ONE_SHOT)
+			if body.get_parent() is Slippery and (body.get_parent().get_parent() != self):
+				if removal_upgrade:
+					body.get_parent().queue_free()
+					removal_upgrade = false
 	)
 
 func _on_pickup(body) -> void:
@@ -250,10 +255,14 @@ func _physics_process(delta: float) -> void:
 	# Handle use release
 	if Input.is_action_just_released("use"):
 		_on_use_release()
-
 	# Get the input direction and handle the movement/deceleration.
-	var direction := Input.get_axis("move_left", "move_right")
-	
+	if !_check_for_slip():
+		direction = Input.get_axis("move_left", "move_right")
+	if _check_for_slip():
+		if faced_right:
+			direction = -1.0
+		if !faced_right:
+			direction = 1.0
 	if Input.is_action_just_pressed("attack"):
 		if sword_upgrade:
 			_on_attack(direction)
@@ -266,7 +275,9 @@ func _physics_process(delta: float) -> void:
 			faced_right = true
 		if direction > 0:
 			faced_right = false
-		if velocity.y == 0:
+		if velocity.y == 0 and _check_for_slip():
+			_sprite.play("ouch")
+		if velocity.y == 0 and !_check_for_slip():
 			_sprite.play("walk")
 		velocity.x = direction * speed
 	else:
@@ -274,6 +285,13 @@ func _physics_process(delta: float) -> void:
 			_sprite.play("idle")
 		velocity.x = move_toward(velocity.x, 0, speed)
 	move_and_slide()
+
+func _check_for_slip() -> bool:
+	var slip = false
+	for child in _pickup_radius.get_overlapping_areas():
+		if child.get_parent() is Slippery:
+			slip = true
+	return slip
 
 func die() -> void:
 	set_physics_process(false)
