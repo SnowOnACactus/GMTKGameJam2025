@@ -1,10 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4lejrw3cexiu"]
 
 [ext_resource type="Script" uid="uid://brod6jhk1ibj8" path="res://UI/upgrade_menu.gd" id="1_b1awm"]
-[ext_resource type="Theme" uid="uid://mxw65pyn6hxu" path="res://UI/menuStyles.tres" id="2_f4tld"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0gn4"]
-bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+[ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="1_f4tld"]
+[ext_resource type="PackedScene" uid="uid://bsthn337a4tpl" path="res://UI/upgrade_button.tscn" id="3_f4tld"]
 
 [node name="UpgradeMenu" type="Control"]
 layout_mode = 3
@@ -13,25 +11,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_f4tld")
 script = ExtResource("1_b1awm")
 
-[node name="UpgradeBackground" type="PanelContainer" parent="."]
+[node name="UpgradeBackground" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -156.0
-offset_right = 192.0
-offset_bottom = 100.0
+offset_left = -300.0
+offset_top = -196.0
+offset_right = 296.0
+offset_bottom = 191.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_o0gn4")
+theme = ExtResource("1_f4tld")
 
 [node name="MarginContainer" type="MarginContainer" parent="UpgradeBackground"]
 layout_mode = 2
+offset_right = 596.0
+offset_bottom = 387.0
+theme = ExtResource("1_f4tld")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -41,11 +43,13 @@ theme_override_constants/margin_bottom = 20
 process_mode = 3
 layout_mode = 2
 size_flags_vertical = 5
+theme = ExtResource("1_f4tld")
 alignment = 1
 
-[node name="PauseTitle" type="RichTextLabel" parent="UpgradeBackground/MarginContainer/UpgradeVBox"]
+[node name="UpgradeTitle" type="RichTextLabel" parent="UpgradeBackground/MarginContainer/UpgradeVBox"]
 layout_mode = 2
-theme = ExtResource("2_f4tld")
+theme = ExtResource("1_f4tld")
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[center]Choose an Upgrade[/center]"
 fit_content = true
@@ -54,31 +58,10 @@ autowrap_mode = 0
 [node name="HBoxContainer" type="HBoxContainer" parent="UpgradeBackground/MarginContainer/UpgradeVBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("1_f4tld")
 
-[node name="MarginContainer" type="MarginContainer" parent="UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer"]
+[node name="Upgrade1" parent="UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer" instance=ExtResource("3_f4tld")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
-[node name="Upgrade1" type="Button" parent="UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer/MarginContainer"]
+[node name="Upgrade2" parent="UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer" instance=ExtResource("3_f4tld")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_f4tld")
-text = "1"
-
-[node name="MarginContainer2" type="MarginContainer" parent="UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Upgrade2" type="Button" parent="UpgradeBackground/MarginContainer/UpgradeVBox/HBoxContainer/MarginContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_f4tld")
-text = "2"

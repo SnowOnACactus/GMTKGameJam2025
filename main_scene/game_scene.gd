@@ -1,11 +1,11 @@
-extends Node2D
+class_name GameScene extends Node2D
 @onready var _runner: CharacterBody2D = $Runner
 const PICKUP = preload("res://Pickup/pickup.tscn")
-@onready var _progress_gate: StaticBody2D = $Boundries/ProgressGate
+@onready var _progress_gate: StaticBody2D = $ProgressGate
 @onready var _loop_display: RichTextLabel = $CanvasLayer/LoopDisplay
-@onready var _heart_1: Sprite2D = $CanvasLayer/Heart1
-@onready var _heart_2: Sprite2D = $CanvasLayer/Heart2
-@onready var _heart_3: Sprite2D = $CanvasLayer/Heart3
+@onready var _heart_1: Sprite2D = $CanvasLayer/HealthDisplay/Heart1
+@onready var _heart_2: Sprite2D = $CanvasLayer/HealthDisplay/Heart2
+@onready var _heart_3: Sprite2D = $CanvasLayer/HealthDisplay/Heart3
 const _HEART_EMPTY = preload("res://Runners/hud_heartEmpty.png")
 const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var menu_controller: CanvasLayer = $MenuController
@@ -13,6 +13,11 @@ const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var _time_left: RichTextLabel = $CanvasLayer/LoopTimer/TimeLeft
 @onready var taunt: RichTextLabel = $CanvasLayer/Taunt
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var shield: Sprite2D = $CanvasLayer/HealthDisplay/Shield
+@onready var _audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var alarm: AudioStreamPlayer2D = $"Alarm sound effect"
+var _alarm_not_sounded = true
+
 
 var tutorial_done := false
 
@@ -33,7 +38,9 @@ func _ready() -> void:
 		await get_tree().create_timer(2.0).timeout
 		taunt.text = "Can you make it through 20 loops?"
 	)
+	_runner.shield_broken.connect(shield.hide)
 	_loop_timer.timeout.connect(func() -> void: game_over("time"))
+	_audio_stream_player_2d.finished.connect(_audio_stream_player_2d.play)
 	#var tween = create_tween()
 	#tween.tween_property(camera_2d, "zoom", Vector2(0.5,0.5), 10)
 	#var tween2 = create_tween()
@@ -54,9 +61,19 @@ func game_over(reason) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_time_left.text = "Time left: " + (str(floori(_loop_timer.get_time_left()))) + "s"
+	#5sec alert sound and red text
+	if (floori(_loop_timer.get_time_left())) <=5:
+		if _alarm_not_sounded and (floori(_loop_timer.get_time_left())) > 0:
+			_alarm_not_sounded = false
+			alarm.play()
+		_time_left.add_theme_color_override("default_color", Color(1,0,0))
+	else:
+		#reset text to black
+		_time_left.add_theme_color_override("default_color", Color(0,0,0))
 
 func _on_loop() -> void:
 	spawn_pickup()
+	_alarm_not_sounded = true
 	_progress_gate.open = false
 	loop_number += 1
 	var new_time = _loop_timer.time_left + 10
@@ -69,9 +86,19 @@ func _on_loop() -> void:
 		tutorial_done = true
 	if loop_number == 3:
 		taunt.text = "Can you make it through 20 loops?"
+	if loop_number == 10:
+		taunt.text = "Did you know you can crouch to place objects lower?"
+	if loop_number == 10:
+		taunt.text = "Did you know flies die to spikes?"
+	if loop_number == 20:
+		taunt.text = "You did 20 loops! Thank you for playing"
 	if (floor(loop_number/5.0) == loop_number/5.0):
 		menu_controller.upgrade_menu.show()
+		menu_controller.upgrade_menu.refresh_upgrades()
 		get_tree().paused = true
+	if _runner.shield_upgrade and (floor(loop_number/2.0) == loop_number/2.0):
+		_runner.shielded = true
+		shield.show()
 
 #probably a better way to do this...
 func _on_hurt_or_heal(health: int) -> void:

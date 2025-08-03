@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cemayjwwkfnky"]
+
+[ext_resource type="Script" uid="uid://dbeml6tg68f8y" path="res://Obstacles/lollipop.gd" id="1_32axl"]
+[ext_resource type="Texture2D" uid="uid://1alttd5b7v0r" path="res://Obstacles/lollipopRed.png" id="2_froux"]
+[ext_resource type="Texture2D" uid="uid://eb1fwkrrjsln" path="res://Obstacles/lollipopBase.png" id="3_eosen"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vh3wr"]
+radius = 32.3883
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a54w7"]
+radius = 36.0
+
+[node name="Lollipop" type="StaticBody2D"]
+script = ExtResource("1_32axl")
+
+[node name="LollipopRed" type="Sprite2D" parent="."]
+texture = ExtResource("2_froux")
+
+[node name="LollipopBase" type="Sprite2D" parent="."]
+position = Vector2(0, 68)
+texture = ExtResource("3_eosen")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vh3wr")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_a54w7")

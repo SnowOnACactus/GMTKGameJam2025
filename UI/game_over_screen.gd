@@ -1,7 +1,7 @@
 extends Control
-@onready var try_again_button: Button = $GameOverBackground/GameOverVBox/TryAgainButton
-@onready var quit_button: Button = $GameOverBackground/GameOverVBox/QuitButton
-@onready var game_over_title: RichTextLabel = $GameOverBackground/GameOverVBox/GameOverTitle
+@onready var try_again_button: Button = $GameOverBackground/GameOverVBox/MarginContainer2/TryAgainButton
+@onready var quit_button: Button = $GameOverBackground/GameOverVBox/MarginContainer3/QuitButton
+@onready var game_over_title: Label = $GameOverBackground/GameOverVBox/MarginContainer/GameOverTitle
 
 
 

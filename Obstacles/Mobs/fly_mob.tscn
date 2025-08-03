@@ -46,13 +46,13 @@ radius = 13.0
 height = 42.0476
 
 [node name="FlyMob" type="CharacterBody2D" groups=["PickupChoice"]]
+motion_mode = 1
 script = ExtResource("1_p7r53")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -5)
 sprite_frames = SubResource("SpriteFrames_cbkkl")
-animation = &"fly"
-frame_progress = 0.123253
+animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -5)
@@ -67,3 +67,4 @@ shape = SubResource("CapsuleShape2D_u1h0b")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_hpk4e")
+bus = &"Sounds"

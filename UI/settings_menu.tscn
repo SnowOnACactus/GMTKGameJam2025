@@ -1,10 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://1pdtv7n5omoc"]
 
-[ext_resource type="Theme" uid="uid://mxw65pyn6hxu" path="res://ui/menuStyles.tres" id="1_ov8y0"]
-[ext_resource type="Script" path="res://ui/settings_menu.gd" id="1_p1327"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jg4jf"]
-bg_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+[ext_resource type="Theme" uid="uid://mxw65pyn6hxu" path="res://UI/menuStyles.tres" id="1_ov8y0"]
+[ext_resource type="Script" uid="uid://dh44yqffmblxo" path="res://UI/settings_menu.gd" id="1_p1327"]
+[ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="2_jkv84"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -13,82 +11,116 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ov8y0")
 script = ExtResource("1_p1327")
 
-[node name="SettingsBackground" type="PanelContainer" parent="."]
+[node name="SettingsBackground" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.467
-anchor_top = 0.415
-anchor_right = 0.6
-anchor_bottom = 0.593
-offset_left = -128.64
-offset_top = -64.2
-offset_bottom = -0.440002
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -157.0
+offset_right = 195.0
+offset_bottom = 157.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jg4jf")
+theme = ExtResource("2_jkv84")
 
-[node name="SettingsVBox" type="VBoxContainer" parent="SettingsBackground"]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -133.0
+offset_right = 147.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsVBox" type="VBoxContainer" parent="SettingsBackground/MarginContainer"]
 process_mode = 3
 layout_mode = 2
+theme = ExtResource("2_jkv84")
 alignment = 1
 
-[node name="SettingsTitle" type="RichTextLabel" parent="SettingsBackground/SettingsVBox"]
+[node name="SettingsTitle" type="RichTextLabel" parent="SettingsBackground/MarginContainer/SettingsVBox"]
 layout_mode = 2
-theme = ExtResource("1_ov8y0")
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("2_jkv84")
 bbcode_enabled = true
 text = "[center]Settings[/center]"
 fit_content = true
 autowrap_mode = 0
 
-[node name="MusicHBox" type="HBoxContainer" parent="SettingsBackground/SettingsVBox"]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsBackground/MarginContainer/SettingsVBox"]
 layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 5
 
-[node name="MusicLabel" type="RichTextLabel" parent="SettingsBackground/SettingsVBox/MusicHBox"]
+[node name="MusicHBox" type="HBoxContainer" parent="SettingsBackground/MarginContainer/SettingsVBox/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_jkv84")
+
+[node name="MusicLabel" type="RichTextLabel" parent="SettingsBackground/MarginContainer/SettingsVBox/MarginContainer/MusicHBox"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("2_jkv84")
 bbcode_enabled = true
 text = "[center]Music[/center]"
 fit_content = true
 autowrap_mode = 0
 
-[node name="MusicSlider" type="HSlider" parent="SettingsBackground/SettingsVBox/MusicHBox"]
+[node name="MusicSlider" type="HSlider" parent="SettingsBackground/MarginContainer/SettingsVBox/MarginContainer/MusicHBox"]
 custom_minimum_size = Vector2(125, 30)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
-theme = ExtResource("1_ov8y0")
+theme = ExtResource("2_jkv84")
 max_value = 1.0
 step = 0.01
 value = 1.0
 metadata/_edit_group_ = true
 
-[node name="SoundsHBox" type="HBoxContainer" parent="SettingsBackground/SettingsVBox"]
+[node name="MarginContainer2" type="MarginContainer" parent="SettingsBackground/MarginContainer/SettingsVBox"]
 layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 20
 
-[node name="SoundsLabel" type="RichTextLabel" parent="SettingsBackground/SettingsVBox/SoundsHBox"]
+[node name="SoundsHBox" type="HBoxContainer" parent="SettingsBackground/MarginContainer/SettingsVBox/MarginContainer2"]
+layout_mode = 2
+theme = ExtResource("2_jkv84")
+
+[node name="SoundsLabel" type="RichTextLabel" parent="SettingsBackground/MarginContainer/SettingsVBox/MarginContainer2/SoundsHBox"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("2_jkv84")
 bbcode_enabled = true
 text = "[center]Sounds[/center]"
 fit_content = true
 autowrap_mode = 0
 
-[node name="SoundsSlider" type="HSlider" parent="SettingsBackground/SettingsVBox/SoundsHBox"]
+[node name="SoundsSlider" type="HSlider" parent="SettingsBackground/MarginContainer/SettingsVBox/MarginContainer2/SoundsHBox"]
 custom_minimum_size = Vector2(125, 30)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 1
-theme = ExtResource("1_ov8y0")
+theme = ExtResource("2_jkv84")
 max_value = 1.0
 step = 0.01
 value = 1.0
 metadata/_edit_group_ = true
 
-[node name="BackButton" type="Button" parent="SettingsBackground/SettingsVBox"]
+[node name="BackButton" type="Button" parent="SettingsBackground/MarginContainer/SettingsVBox"]
 layout_mode = 2
-theme = ExtResource("1_ov8y0")
+size_flags_vertical = 3
+theme = ExtResource("2_jkv84")
 text = "Back"

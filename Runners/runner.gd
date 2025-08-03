@@ -4,9 +4,10 @@ signal unlock
 signal hurt_or_heal
 signal game_over
 signal overlap
+signal shield_broken
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+var speed = 300.0
+var jump_velocity = -500.0
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _pickup_radius: Area2D = $PickupRadius
 @onready var _thought_bubble: Sprite2D = $ThoughtBubble
@@ -14,6 +15,9 @@ const JUMP_VELOCITY = -600.0
 @onready var _weapon: Area2D = $Weapon
 @onready var _placement_confirmation: Sprite2D = $PlacementConfirmation
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var _item_spawn_poof: CPUParticles2D = $ItemSpawnPoof
+
+
 
 # This dictionary of dictionaries allows us to label a song and call for it to play("key") 
 # at a specific time just by using the key - please keep to this format
@@ -25,7 +29,33 @@ var sounds := {
 	"boing": {"audio": preload("res://Runners/540790__magnuswaker__boing-2.wav"), "start_time": 0.0}
 }
 
-
+var stuck := false
+var invulnerable_frames := false:
+	set(bool):
+		if bool == true:
+			invulnerable_frames = true
+			await get_tree().create_timer(invulnerable_upgrade).timeout
+			invulnerable_frames = false
+		else:
+			invulnerable_frames = false
+var sword_upgrade := false:
+	set(bool):
+		_weapon.monitorable = bool
+		_weapon.monitoring = bool
+		sword_upgrade = bool
+var wings_upgrade := false
+var _double_jumped := false
+var rotation_upgrade := false
+var invulnerable_upgrade := 1
+var shielded := false:
+	set(bool):
+		if bool == false: shield_broken.emit()
+		shielded = bool
+var removal_upgrade = false
+var shield_upgrade := false:
+	set(bool):
+		if bool == true: shielded = true
+		shield_upgrade = bool
 
 @export var health := 3:
 	set(num):
@@ -33,6 +63,8 @@ var sounds := {
 			game_over.emit()
 			die()
 		if num > 0 and num < health:
+			invulnerable_frames = true
+			_sprite.play("ouch")
 			play("pain")
 		health = num
 		hurt_or_heal.emit(health)
@@ -53,6 +85,10 @@ var _is_crouched := false:
 		_sprite.flip_h = !_sprite.flip_h
 var faced_right := true:
 	set(bool):
+		if _hovering_item and bool:
+			_hovering_item.position.x = _thought_bubble.position.x - 200
+		if _hovering_item and !bool:
+			_hovering_item.position.x = _thought_bubble.position.x + 200
 		faced_right = bool
 		_sprite.flip_h = bool
 
@@ -63,11 +99,34 @@ func _ready() -> void:
 		func(body) -> void: 
 			if body is Pickup: 
 				_on_pickup(body)
-			if body.get_parent() is Mob or body.get_parent() is Hurt:
-				health -= 1
+			if (body.get_parent() is Mob or body.get_parent() is Hurt) and !invulnerable_frames:
+				if removal_upgrade:
+					body.get_parent().queue_free()
+					removal_upgrade = false
+				else:
+					if shielded:
+						shielded = false
+						invulnerable_frames = true
+					else:
+						health -= 1
 			if body.get_parent() is Bouncy:
-				velocity.y = -1000
-				play("boing")
+				if removal_upgrade:
+					body.get_parent().queue_free()
+					removal_upgrade = false
+				else:
+					velocity.y = -700
+					play("boing")
+			if body.get_parent() is Sticky:
+				if removal_upgrade:
+					body.get_parent().queue_free()
+					removal_upgrade = false
+				else:
+					velocity = Vector2.ZERO
+					stuck = true
+					_pickup_radius.area_exited.connect(func(area) -> void:
+						if area == body:
+							stuck = false
+					, CONNECT_ONE_SHOT)
 	)
 
 func _on_pickup(body) -> void:
@@ -87,7 +146,7 @@ func _on_attack(direction) -> void:
 	if direction < 0:
 		tween.tween_property(_weapon, "rotation_degrees", -150.0, 0.1)
 	else:
-		tween.tween_property(_weapon, "rotation_degrees", 100.0, 0.1)
+		tween.tween_property(_weapon, "rotation_degrees", 130.0, 0.1)
 	#hide and reset sword at the end of animation
 	tween.finished.connect(
 		func() -> void:
@@ -101,8 +160,17 @@ func _on_use_press() -> void:
 		_thought_bubble.visible = false
 		_hovering_item = held_item.scene.instantiate()
 		held_item = {}
-		_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
+		if faced_right:
+			_hovering_item.position = Vector2(_thought_bubble.position.x - 200, _thought_bubble.position.y)
+		if !faced_right:
+			_hovering_item.position = Vector2(_thought_bubble.position.x + 200, _thought_bubble.position.y)
+		_item_spawn_poof.position = _hovering_item.position
+		_item_spawn_poof.emitting = true
 		add_child(_hovering_item)
+		_hovering_item.collision_layer = 0
+		_hovering_item.collision_mask = 0
+		_hovering_item.hitbox.monitorable = false
+		_hovering_item.hitbox.monitoring = false
 		_hovering_item.set_physics_process(false)
 		_placement_confirmation.visible = true
 		if !get_parent().tutorial_done:
@@ -112,10 +180,14 @@ func _on_use_release() -> void:
 	# Let the item go in the scene world where it was
 	if _hovering_item:
 		if !_hovering_item.hitbox.has_overlapping_areas():
-			if _hovering_item is Mob:
-				_hovering_item.starting_position = _hovering_item.global_position
 			_hovering_item.reparent(get_tree().get_root().get_node("GameScene"), true)
+			if _hovering_item is Mob:
+				_hovering_item.starting_position = _hovering_item.global_position * 2
 			_hovering_item.set_physics_process(true)
+			_hovering_item.collision_layer = 1
+			_hovering_item.collision_mask = 1
+			_hovering_item.hitbox.monitorable = true
+			_hovering_item.hitbox.monitoring = true
 			_hovering_item = null
 			has_item = false
 			_placement_confirmation.visible = false
@@ -129,36 +201,44 @@ func play (sound: String) -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and !stuck:
 		velocity += get_gravity() * delta
 	
 	#Run from right side to left
-	if global_position.x > get_viewport_rect().size.x + 50:
-		global_position.x -= get_viewport_rect().size.x + 90
+	if global_position.x > get_viewport_rect().size.x + 25:
+		global_position.x -= get_viewport_rect().size.x + 40
 		loop.emit()
 	
 	#Run from left to right - do we want this? Commenting out as it currently can trigger loops
 	#if global_position.x < -50:
 	#	global_position.x += get_viewport_rect().size.x + 90
 	
+	if rotation_upgrade and _hovering_item:
+		_hovering_item.rotation += delta
+	
 	#display placement errors:
 	if _hovering_item and _hovering_item.hitbox.has_overlapping_areas():
 		_placement_confirmation.texture = preload("res://Runners/icon_cross.png")
 	if _hovering_item and !_hovering_item.hitbox.has_overlapping_areas():
 		_placement_confirmation.texture = preload("res://Runners/icon_checkmark.png")
-		
+	
+
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or (wings_upgrade and !_double_jumped)):
+		velocity.y = jump_velocity
+		if wings_upgrade and !is_on_floor():
+			_double_jumped = true
+			_sprite.play("fly")
 		if _is_crouched:
 			_is_crouched = false
-		_sprite.play("jump")
+		if !wings_upgrade or is_on_floor():
+			_sprite.play("jump")
 		play("jump")
-	
+	if is_on_floor() and wings_upgrade:
+		_double_jumped = false
 	# stop jump when released
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y = 0
-
 	if Input.is_action_just_pressed("move_down") and is_on_floor():
 		_is_crouched = true
 
@@ -174,11 +254,11 @@ func _physics_process(delta: float) -> void:
 		_on_use_release()
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	if Input.is_action_just_pressed("attack"):
-		_on_attack(direction)
+		if sword_upgrade:
+			_on_attack(direction)
 		
 	if velocity.y > 0:
 		_sprite.play("fall")
@@ -190,11 +270,11 @@ func _physics_process(delta: float) -> void:
 			faced_right = false
 		if velocity.y == 0:
 			_sprite.play("walk")
-		velocity.x = direction * SPEED
+		velocity.x = direction * speed
 	else:
 		if velocity == Vector2.ZERO and !_is_crouched:
 			_sprite.play("idle")
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 	move_and_slide()
 
 func die() -> void:

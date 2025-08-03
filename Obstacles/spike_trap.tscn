@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c515bxlcrr2nb"]
+[gd_scene load_steps=7 format=3 uid="uid://c515bxlcrr2nb"]
 
 [ext_resource type="Texture2D" uid="uid://byvokgul66sd8" path="res://Obstacles/spikes.png" id="1_s4xqn"]
 [ext_resource type="Script" uid="uid://c5pdtsx62hl60" path="res://Obstacles/spike_trap.gd" id="1_tcqjr"]
 [ext_resource type="Texture2D" uid="uid://eascmnwiu6e2" path="res://Obstacles/particleBrick1a.png" id="2_tcqjr"]
+[ext_resource type="PackedScene" uid="uid://c1stk66ddlo5e" path="res://Runners/item_spawn_poof.tscn" id="4_7jmf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jmf2"]
 size = Vector2(70, 26)
@@ -31,3 +32,6 @@ shape = SubResource("RectangleShape2D_7jmf2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_e8xb6")
+
+[node name="ItemSpawnPoof" parent="." instance=ExtResource("4_7jmf2")]
+position = Vector2(2, 1)

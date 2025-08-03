@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name Platform extends StaticBody2D
 @onready var hitbox: Area2D = $Hitbox
 
 

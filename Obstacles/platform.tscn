@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf3l3jg1rwsx"]
+[gd_scene load_steps=8 format=3 uid="uid://cf3l3jg1rwsx"]
 
 [ext_resource type="Texture2D" uid="uid://cbujyou4vok1l" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleLeft.png" id="1_ly373"]
 [ext_resource type="Script" uid="uid://o17lds03brum" path="res://Obstacles/platform.gd" id="1_m6yps"]
 [ext_resource type="Texture2D" uid="uid://b37cfd0lws81c" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleMid.png" id="2_m6yps"]
 [ext_resource type="Texture2D" uid="uid://bh2ujnhxukvwo" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleRight.png" id="3_yve67"]
+[ext_resource type="PackedScene" uid="uid://c1stk66ddlo5e" path="res://Runners/item_spawn_poof.tscn" id="5_yve67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvuld"]
 size = Vector2(212, 72)
@@ -33,3 +34,11 @@ shape = SubResource("RectangleShape2D_wvuld")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_ly373")
+
+[node name="ItemSpawnPoof" parent="." instance=ExtResource("5_yve67")]
+
+[node name="ItemSpawnPoof2" parent="." instance=ExtResource("5_yve67")]
+position = Vector2(-61, 1)
+
+[node name="ItemSpawnPoof3" parent="." instance=ExtResource("5_yve67")]
+position = Vector2(58, 1)
