@@ -27,7 +27,11 @@ func _ready() -> void:
 #	return new_texture
 
 func pick_random_item() -> Dictionary:
-	return random_item_array.pick_random()
+	var spawn = random_item_array.pick_random()
+	var game_scene: GameScene= get_parent()
+	if game_scene.loop_number < 5:#use first 4 obstacles only on early levels
+		spawn = random_item_array[randi() % 3]
+	return spawn
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

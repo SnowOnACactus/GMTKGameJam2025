@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8y5ha6pxxsln" path="res://main_scene/backgroundColorForest.png" id="2_j5hk1"]
 [ext_resource type="PackedScene" uid="uid://wtcdc5r5wspd" path="res://Runners/basic_runner.tscn" id="3_mj2jn"]
 [ext_resource type="PackedScene" uid="uid://dasmqhuk23sr3" path="res://Obstacles/Mobs/slime_mob.tscn" id="4_mixcd"]
-[ext_resource type="PackedScene" uid="uid://du17o7rq7w6u0" path="res://main_scene/floor.tscn" id="5_2lep2"]
+[ext_resource type="PackedScene" path="res://main_scene/floor.tscn" id="5_2lep2"]
 [ext_resource type="PackedScene" uid="uid://3e5fu37docg2" path="res://Obstacles/Mobs/fly_mob.tscn" id="5_mj2jn"]
 [ext_resource type="PackedScene" uid="uid://bta7exht03qie" path="res://main_scene/progress_gate.tscn" id="8_e35lh"]
 [ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="8_yvguj"]
