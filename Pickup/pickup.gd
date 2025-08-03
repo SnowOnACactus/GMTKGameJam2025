@@ -32,3 +32,7 @@ func pick_random_item() -> Dictionary:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func _check_and_find_open_area() -> void:
+	if has_overlapping_areas():
+		get_parent()._find_open_area(self)

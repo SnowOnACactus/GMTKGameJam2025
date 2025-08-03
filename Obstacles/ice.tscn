@@ -24,9 +24,9 @@ texture = ExtResource("2_q1dx4")
 position = Vector2(0.5, 0.25)
 shape = SubResource("RectangleShape2D_uulc4")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(-35, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(35.5, -1.75)
 shape = SubResource("RectangleShape2D_maymt")

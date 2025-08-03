@@ -111,7 +111,7 @@ func _ready() -> void:
 					body.get_parent().queue_free()
 					removal_upgrade = false
 				else:
-					velocity.y = -700
+					velocity.y = jump_velocity - 200
 					play("boing")
 			if body.get_parent() is Sticky and (body.get_parent().get_parent() != self):
 				if removal_upgrade:
@@ -275,7 +275,9 @@ func _physics_process(delta: float) -> void:
 			faced_right = true
 		if direction > 0:
 			faced_right = false
-		if velocity.y == 0:
+		if velocity.y == 0 and _check_for_slip():
+			_sprite.play("ouch")
+		if velocity.y == 0 and !_check_for_slip():
 			_sprite.play("walk")
 		velocity.x = direction * speed
 	else:

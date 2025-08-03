@@ -1,4 +1,6 @@
 class_name Slippery extends StaticBody2D
+@onready var hitbox: Area2D = $Hitbox
+
 var textures:= [
 	preload("res://Obstacles/iceBlock.png"),
 	preload("res://Obstacles/iceBlockAlt.png")

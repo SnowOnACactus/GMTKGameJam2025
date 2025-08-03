@@ -33,12 +33,13 @@ var loop_number := 0:
 var out_of_bounds := false
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready() -> void:	
 	_runner.loop.connect(_on_loop)
 	_runner.unlock.connect(func() -> void: _progress_gate.open = true)
 	_runner.hurt_or_heal.connect(_on_hurt_or_heal)
 	_runner.game_over.connect(func() -> void: game_over("die"))
 	_runner.overlap.connect(func() -> void:
+		print("overlap")
 		taunt.text = "[color=red]Overlapping is not allowed. Try again![/color]"
 		await get_tree().create_timer(2.0).timeout
 		taunt.text = "Can you make it through 20 loops?"
@@ -63,6 +64,7 @@ func game_over(reason) -> void:
 		await get_tree().create_timer(0.3).timeout
 		_runner.die()
 		menu_controller.game_over_screen.game_over_title.text = "You fell forever"
+	taunt.text = "Come on, you can do it!"
 	await get_tree().create_timer(2.5).timeout
 	menu_controller.game_over_screen.show()
 	get_tree().paused = true
@@ -84,9 +86,9 @@ func _process(delta: float) -> void:
 		game_over("out of bounds")
 
 func _on_loop() -> void:
-	spawn_pickup()
 	_alarm_not_sounded = true
 	_progress_gate.open = false
+	spawn_pickup()
 	loop_number += 1
 	var new_time = _loop_timer.time_left + 10
 	_loop_timer.wait_time = new_time
@@ -142,3 +144,12 @@ func spawn_pickup() -> void:
 	var pickup = PICKUP.instantiate()
 	add_child(pickup)
 	pickup.global_position = Vector2(randf_range(100, get_viewport_rect().size.x/2), 450)
+	await get_tree().create_timer(0.1).timeout
+	if pickup.has_overlapping_areas(): _find_open_area(pickup)
+
+func _find_open_area(item: Pickup) -> void:
+	item.global_position = Vector2(randf_range(20, get_viewport_rect().size.x/1.5), randf_range(550, 400))
+	await get_tree().create_timer(0.1).timeout
+	if item.has_overlapping_areas():
+		_find_open_area(item)
+	
