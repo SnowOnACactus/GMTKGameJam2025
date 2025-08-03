@@ -684,7 +684,7 @@ offset_bottom = 235.0
 grow_horizontal = 2
 theme = ExtResource("5_udsnl")
 theme_override_font_sizes/font_size = 50
-text = "Loop Quest"
+text = "Clutter Quest"
 
 [node name="CreditsButton" type="Button" parent="."]
 layout_mode = 1

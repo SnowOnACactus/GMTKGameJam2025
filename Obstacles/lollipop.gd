@@ -1,4 +1,5 @@
 class_name Sticky extends StaticBody2D
+@onready var hitbox: Area2D = $Hitbox
 
 
 # Called when the node enters the scene tree for the first time.
