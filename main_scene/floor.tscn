@@ -1,0 +1,172 @@
+[gd_scene load_steps=2 format=3 uid="uid://du17o7rq7w6u0"]
+
+[ext_resource type="PackedScene" uid="uid://ctr1xtggpy3ef" path="res://Obstacles/crumbling_platform.tscn" id="4_r1s6d"]
+
+[node name="Floor" type="StaticBody2D"]
+
+[node name="CrumblingPlatform2" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1033, 1.9999)
+
+[node name="CrumblingPlatform3" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1103, 1.9999)
+
+[node name="CrumblingPlatform4" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1173, 1.9999)
+
+[node name="CrumblingPlatform5" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1243, 1.9999)
+
+[node name="CrumblingPlatform6" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1313, 1.9999)
+
+[node name="CrumblingPlatform7" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1383, 1.9999)
+
+[node name="CrumblingPlatform8" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1453, 1.9999)
+
+[node name="CrumblingPlatform9" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1523, 1.9999)
+
+[node name="CrumblingPlatform10" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1593, 1.9999)
+
+[node name="CrumblingPlatform11" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1663, 1.9999)
+
+[node name="CrumblingPlatform12" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1733, 1.9999)
+
+[node name="CrumblingPlatform13" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1803, 1.9999)
+
+[node name="CrumblingPlatform14" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1873, 1.9999)
+
+[node name="CrumblingPlatform15" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(1943, 1.9999)
+
+[node name="CrumblingPlatform16" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(2013, 1.9999)
+
+[node name="CrumblingPlatform17" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(2083, 1.9999)
+
+[node name="CrumblingPlatform18" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(2153, 1.9999)
+
+[node name="CrumblingPlatform19" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(2223, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform20" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(2293, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform21" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(2363, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform22" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(2433, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform23" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(2503, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(963, 1.9999)
+
+[node name="CrumblingPlatform32" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(473, 1.9999)
+
+[node name="CrumblingPlatform33" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(543, 1.9999)
+
+[node name="CrumblingPlatform34" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(613, 1.9999)
+
+[node name="CrumblingPlatform35" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(683, 1.9999)
+
+[node name="CrumblingPlatform36" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(753, 1.9999)
+
+[node name="CrumblingPlatform37" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(823, 1.9999)
+
+[node name="CrumblingPlatform38" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(893, 1.9999)
+
+[node name="CrumblingPlatform39" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(403, 1.9999)
+
+[node name="CrumblingPlatform40" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-87, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform41" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-17, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform42" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(53, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform43" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(123, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform44" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(193, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform45" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(263, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform46" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(333, 1.9999)
+
+[node name="CrumblingPlatform47" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-157, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform48" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-647, 1.9999)
+
+[node name="CrumblingPlatform49" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-577, 1.9999)
+
+[node name="CrumblingPlatform50" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-507, 1.9999)
+
+[node name="CrumblingPlatform51" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-437, 1.9999)
+
+[node name="CrumblingPlatform52" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-367, 1.9999)
+
+[node name="CrumblingPlatform53" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-297, 1.9999)
+
+[node name="CrumblingPlatform54" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-227, 1.9999)
+crumbling = false
+intact = true
+
+[node name="CrumblingPlatform55" parent="." instance=ExtResource("4_r1s6d")]
+position = Vector2(-717, 1.9999)

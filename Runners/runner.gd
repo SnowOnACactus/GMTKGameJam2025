@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 signal loop
 signal unlock
 signal hurt_or_heal
@@ -38,11 +38,7 @@ var invulnerable_frames := false:
 			invulnerable_frames = false
 		else:
 			invulnerable_frames = false
-var sword_upgrade := false:
-	set(bool):
-		_weapon.monitorable = bool
-		_weapon.monitoring = bool
-		sword_upgrade = bool
+var sword_upgrade := false
 var wings_upgrade := false
 var _double_jumped := false
 var rotation_upgrade := false
@@ -116,7 +112,7 @@ func _ready() -> void:
 				else:
 					velocity.y = -700
 					play("boing")
-			if body.get_parent() is Sticky:
+			if body.get_parent() is Sticky and (body.get_parent().get_parent() != self):
 				if removal_upgrade:
 					body.get_parent().queue_free()
 					removal_upgrade = false
@@ -140,7 +136,9 @@ func _on_pickup(body) -> void:
 
 func _on_attack(direction) -> void:
 	#show sword
-	_weapon.visible = true
+	_weapon.visible = true		
+	_weapon.monitorable = true
+	_weapon.monitoring = true
 	var tween = create_tween()
 	#swing sword
 	if direction < 0:
@@ -152,6 +150,8 @@ func _on_attack(direction) -> void:
 		func() -> void:
 			_weapon.visible = false
 			_weapon.rotation = 0
+			_weapon.monitorable = false
+			_weapon.monitoring = false
 	)
 
 func _on_use_press() -> void:
@@ -170,7 +170,6 @@ func _on_use_press() -> void:
 		_hovering_item.collision_layer = 0
 		_hovering_item.collision_mask = 0
 		_hovering_item.hitbox.monitorable = false
-		_hovering_item.hitbox.monitoring = false
 		_hovering_item.set_physics_process(false)
 		_placement_confirmation.visible = true
 		if !get_parent().tutorial_done:
@@ -187,7 +186,6 @@ func _on_use_release() -> void:
 			_hovering_item.collision_layer = 1
 			_hovering_item.collision_mask = 1
 			_hovering_item.hitbox.monitorable = true
-			_hovering_item.hitbox.monitoring = true
 			_hovering_item = null
 			has_item = false
 			_placement_confirmation.visible = false
@@ -278,6 +276,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func die() -> void:
+	set_physics_process(false)
 	play("game_over")
 	_sprite.play("die")
-	set_physics_process(false)

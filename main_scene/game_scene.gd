@@ -16,6 +16,8 @@ const _HEART_FULL = preload("res://Runners/hud_heartFull.png")
 @onready var shield: Sprite2D = $CanvasLayer/HealthDisplay/Shield
 @onready var _audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var alarm: AudioStreamPlayer2D = $"Alarm sound effect"
+@onready var _floor: StaticBody2D = $Floor
+
 var _alarm_not_sounded = true
 @onready var H3Pop = $CanvasLayer/HealthDisplay/Heart3/Heart3Pop
 @onready var H2Pop = $CanvasLayer/HealthDisplay/Heart2/Heart2Pop
@@ -28,7 +30,7 @@ var loop_number := 0:
 	set(num):
 		loop_number = num
 		_loop_display.text = ("Loop " + str(num))
-
+var out_of_bounds := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,12 +53,16 @@ func _ready() -> void:
 	
 
 func game_over(reason) -> void:
-	_loop_timer.stop()
+	_loop_timer.paused = true
 	if reason == "time":
 		_runner.die()
 		menu_controller.game_over_screen.game_over_title.text = "You ran out of time"
 	if reason == "die":
 		menu_controller.game_over_screen.game_over_title.text = "You died"
+	if reason == "out of bounds":
+		await get_tree().create_timer(0.3).timeout
+		_runner.die()
+		menu_controller.game_over_screen.game_over_title.text = "You fell forever"
 	await get_tree().create_timer(2.5).timeout
 	menu_controller.game_over_screen.show()
 	get_tree().paused = true
@@ -73,6 +79,9 @@ func _process(delta: float) -> void:
 	else:
 		#reset text to black
 		_time_left.add_theme_color_override("default_color", Color(0,0,0))
+	if !out_of_bounds and (_runner.position.y > _floor.position.y):
+		out_of_bounds = true
+		game_over("out of bounds")
 
 func _on_loop() -> void:
 	spawn_pickup()

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctr1xtggpy3ef"]
+
+[ext_resource type="Script" uid="uid://dpoowys1qdp8f" path="res://crumbling_platform.gd" id="1_gk6gr"]
+[ext_resource type="Texture2D" uid="uid://dtkberp007shw" path="res://Obstacles/houseDarkAlt2.png" id="2_87xfj"]
+[ext_resource type="AudioStream" uid="uid://cbsfsjog4kre0" path="res://Obstacles/488660__fission9__tumbling-rocks.wav" id="3_87xfj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gphsy"]
+size = Vector2(70, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5res"]
+size = Vector2(70, 77)
+
+[node name="CrumblingPlatform" type="StaticBody2D"]
+script = ExtResource("1_gk6gr")
+
+[node name="HouseDarkAlt2" type="Sprite2D" parent="."]
+texture = ExtResource("2_87xfj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_gphsy")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_j5res")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_87xfj")
+bus = &"Sounds"

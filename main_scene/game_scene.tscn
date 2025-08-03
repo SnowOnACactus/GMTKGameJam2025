@@ -1,9 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://dyy3d4ih2jjg8"]
+
+[gd_scene load_steps=16 format=3 uid="uid://dyy3d4ih2jjg8"]
+
 
 [ext_resource type="Script" uid="uid://dh5v3mh50aex" path="res://main_scene/game_scene.gd" id="1_v1wow"]
 [ext_resource type="Texture2D" uid="uid://c8y5ha6pxxsln" path="res://main_scene/backgroundColorForest.png" id="2_j5hk1"]
 [ext_resource type="PackedScene" uid="uid://wtcdc5r5wspd" path="res://Runners/basic_runner.tscn" id="3_mj2jn"]
 [ext_resource type="PackedScene" uid="uid://dasmqhuk23sr3" path="res://Obstacles/Mobs/slime_mob.tscn" id="4_mixcd"]
+[ext_resource type="PackedScene" uid="uid://du17o7rq7w6u0" path="res://main_scene/floor.tscn" id="5_2lep2"]
 [ext_resource type="PackedScene" uid="uid://3e5fu37docg2" path="res://Obstacles/Mobs/fly_mob.tscn" id="5_mj2jn"]
 [ext_resource type="PackedScene" uid="uid://bta7exht03qie" path="res://main_scene/progress_gate.tscn" id="8_e35lh"]
 [ext_resource type="Theme" uid="uid://bxi4lg4xa8uq4" path="res://ArtAssets/UI Assets/pastel/pastel.tres" id="8_yvguj"]
@@ -12,14 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://byh418b0f75dc" path="res://Runners/hud_heartFull.png" id="10_miq82"]
 [ext_resource type="Texture2D" uid="uid://dmuh4uxt10707" path="res://Upgrades/shield.png" id="10_nj3i6"]
 [ext_resource type="AudioStream" uid="uid://bfd820qrtlvof" path="res://main_scene/little town - orchestral.ogg" id="11_vjqtn"]
-[ext_resource type="Texture2D" uid="uid://cbujyou4vok1l" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleLeft.png" id="13_48phd"]
-[ext_resource type="Texture2D" uid="uid://b37cfd0lws81c" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleMid.png" id="14_ajot5"]
-[ext_resource type="Texture2D" uid="uid://bh2ujnhxukvwo" path="res://ArtAssets/Platformer Art Complete Pack/Base pack/Tiles/castleRight.png" id="15_7vkts"]
 [ext_resource type="AudioStream" uid="uid://cayxklrvjrxc0" path="res://main_scene/error-011-352286.ogg" id="16_ajot5"]
-[ext_resource type="PackedScene" uid="uid://cemayjwwkfnky" path="res://Obstacles/Lollipop.tscn" id="17_7vkts"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj2o7"]
-size = Vector2(543, 72)
 
 [sub_resource type="Curve" id="Curve_7vkts"]
 _limits = [-200.0, 200.0, 0.0, 1.0]
@@ -38,15 +34,15 @@ offsets = PackedFloat32Array(0, 0.853333, 0.98)
 colors = PackedColorArray(0.968537, 0.000486241, 0.000267607, 1, 0.999965, 0.621066, 0.563689, 1, 0.736816, 0.0839244, 0.109718, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miq82"]
-size = Vector2(53, 1425.5)
+size = Vector2(1215, 1425.5)
 
 [node name="GameScene" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_v1wow")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(166, 836)
-scale = Vector2(4.20996, 3.23706)
+position = Vector2(1052.75, 906)
+scale = Vector2(2.47803, 1.97266)
 texture = ExtResource("2_j5hk1")
 
 [node name="SignRight" type="Sprite2D" parent="."]
@@ -55,45 +51,10 @@ scale = Vector2(1.62857, 1.22857)
 texture = ExtResource("10_daj04")
 
 [node name="ProgressGate" parent="." instance=ExtResource("8_e35lh")]
-position = Vector2(2258, 658)
+position = Vector2(2262, 662)
 
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(-4, -56)
-
-[node name="Sprite2D4" type="Sprite2D" parent="Floor"]
-position = Vector2(464, 1323)
-scale = Vector2(13.0857, 1)
-texture = ExtResource("13_48phd")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Floor"]
-position = Vector2(1272, 1323)
-scale = Vector2(10, 1)
-texture = ExtResource("14_ajot5")
-
-[node name="Sprite2D6" type="Sprite2D" parent="Floor"]
-position = Vector2(1972, 1323)
-scale = Vector2(10, 1)
-texture = ExtResource("15_7vkts")
-
-[node name="Sprite2D7" type="Sprite2D" parent="Floor"]
-position = Vector2(-1850, 1323)
-scale = Vector2(13.0857, 1)
-texture = ExtResource("13_48phd")
-
-[node name="Sprite2D8" type="Sprite2D" parent="Floor"]
-position = Vector2(-1042, 1323)
-scale = Vector2(10, 1)
-texture = ExtResource("14_ajot5")
-
-[node name="Sprite2D9" type="Sprite2D" parent="Floor"]
-position = Vector2(-342, 1323)
-scale = Vector2(10, 1)
-texture = ExtResource("15_7vkts")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
-position = Vector2(990, 1328)
-scale = Vector2(10, 1)
-shape = SubResource("RectangleShape2D_sj2o7")
+[node name="Floor" parent="." instance=ExtResource("5_2lep2")]
+position = Vector2(-4, 1268)
 
 [node name="MenuController" parent="." instance=ExtResource("9_udeyl")]
 
@@ -264,12 +225,15 @@ position = Vector2(102, 1194)
 position = Vector2(2257, 712)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-position = Vector2(-2412.5, -137.25)
+position = Vector2(-2993.5, -137.25)
+shape = SubResource("RectangleShape2D_miq82")
+
+[node name="Area2D" type="Area2D" parent="LeftWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall/Area2D"]
+position = Vector2(-2993.5, -137.25)
 shape = SubResource("RectangleShape2D_miq82")
 
 [node name="Alarm sound effect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_ajot5")
 bus = &"Sounds"
-
-[node name="Lollipop" parent="." instance=ExtResource("17_7vkts")]
-position = Vector2(462, 988)
