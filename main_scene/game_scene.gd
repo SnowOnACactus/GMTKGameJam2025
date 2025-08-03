@@ -98,6 +98,8 @@ func _on_loop() -> void:
 		tutorial_done = true
 	if loop_number == 3:
 		taunt.text = "Can you make it through 20 loops?"
+	if loop_number == 5:
+		taunt.text = "The ground looks unstable... careful you don't fall through"
 	if loop_number == 10:
 		taunt.text = "Did you know you can crouch to place objects lower?"
 	if loop_number == 10:

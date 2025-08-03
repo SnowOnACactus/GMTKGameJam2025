@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=16 format=3 uid="uid://dyy3d4ih2jjg8"]
-
+[gd_scene load_steps=20 format=3 uid="uid://dyy3d4ih2jjg8"]
 
 [ext_resource type="Script" uid="uid://dh5v3mh50aex" path="res://main_scene/game_scene.gd" id="1_v1wow"]
 [ext_resource type="Texture2D" uid="uid://c8y5ha6pxxsln" path="res://main_scene/backgroundColorForest.png" id="2_j5hk1"]

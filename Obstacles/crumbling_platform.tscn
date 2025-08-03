@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ctr1xtggpy3ef"]
 
-[ext_resource type="Script" uid="uid://dpoowys1qdp8f" path="res://crumbling_platform.gd" id="1_gk6gr"]
+[ext_resource type="Script" uid="uid://dpoowys1qdp8f" path="res://Obstacles/crumbling_platform.gd" id="1_gk6gr"]
 [ext_resource type="Texture2D" uid="uid://dtkberp007shw" path="res://Obstacles/houseDarkAlt2.png" id="2_87xfj"]
 [ext_resource type="AudioStream" uid="uid://cbsfsjog4kre0" path="res://Obstacles/488660__fission9__tumbling-rocks.wav" id="3_87xfj"]
 
